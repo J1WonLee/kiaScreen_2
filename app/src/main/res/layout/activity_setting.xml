@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/setting_nv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/setting_nv_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/setting_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" >
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="설정"
+                    android:fontFamily="@font/kiamedium"
+                    android:layout_gravity="center"
+                    android:textSize="26sp" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <TextView
+                android:id="@+id/push_setting_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_push_text"
+                android:layout_marginLeft="@dimen/setting_tv_margin_left"
+                app:layout_constraintTop_toBottomOf="@+id/setting_toolbar"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/push_setting_context_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_push_content"
+                android:textSize="@dimen/setting_content_tv_size"
+                android:fontFamily="@font/kialight"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="2sp"
+                android:paddingBottom="40dp"
+                android:paddingLeft="@dimen/setting_content_tv_padding_left"
+                app:layout_constraintTop_toBottomOf="@+id/push_setting_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/push_setting_tv" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/push_switch"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:switchMinWidth="@dimen/switch_min_width"
+                app:thumbTint="@color/white"
+                app:trackTint="@drawable/switch_checker_track"
+                android:layout_marginRight="@dimen/setting_tv_margin_right"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/push_setting_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/push_setting_tv"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/base_gray_txt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/push_setting_context_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/auto_login_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_auto_login_text"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/push_setting_context_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/push_setting_tv" />
+
+            <TextView
+                android:id="@+id/auto_login_context_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_auto_login_content"
+                android:fontFamily="@font/kialight"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/setting_content_tv_size"
+                android:lineSpacingExtra="2sp"
+                android:paddingBottom="40dp"
+                android:paddingLeft="@dimen/setting_content_tv_padding_left"
+                app:layout_constraintTop_toBottomOf="@+id/auto_login_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/auto_login_tv" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/auto_login_switch"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:switchMinWidth="@dimen/switch_min_width"
+                app:thumbTint="@color/white"
+                app:trackTint="@drawable/switch_checker_track"
+                android:layout_marginRight="@dimen/setting_tv_margin_right"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/auto_login_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/auto_login_tv"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/base_gray_txt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/auto_login_context_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/cur_version_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_cur_version_text"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/auto_login_context_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/push_setting_tv" />
+
+            <TextView
+                android:id="@+id/cur_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:layout_marginRight="@dimen/setting_tv_margin_right"
+                app:layout_constraintTop_toTopOf="@+id/cur_version_tv"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/cur_version_context_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_cur_version_content"
+                android:fontFamily="@font/kialight"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/setting_content_tv_size"
+                android:lineSpacingExtra="2sp"
+                android:paddingBottom="40dp"
+                android:paddingLeft="@dimen/setting_content_tv_padding_left"
+                app:layout_constraintTop_toBottomOf="@+id/cur_version_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/cur_version_tv" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/base_gray_txt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/cur_version_context_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/law_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/law_title"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/cur_version_context_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/cur_version_context_tv" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/law_title_img"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_arrow_right_1"
+                android:layout_marginRight="@dimen/setting_tv_margin_right"
+                app:layout_constraintTop_toTopOf="@+id/law_title_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/law_title_tv"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/privacy_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_title"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/law_title_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/law_title_tv" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/privacy_img"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_arrow_right_1"
+                android:layout_marginRight="@dimen/setting_tv_margin_right"
+                app:layout_constraintTop_toTopOf="@+id/privacy_title_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/privacy_title_tv"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/opensrc_license_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/opensrc_license_title"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/privacy_title_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/privacy_title_tv" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/opensrc_license_img"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_arrow_right_1"
+                android:layout_marginRight="@dimen/setting_tv_margin_right"
+                app:layout_constraintTop_toTopOf="@+id/opensrc_license_title_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/opensrc_license_title_tv"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <View
+                android:id="@+id/opensrc_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/base_gray_txt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/opensrc_license_title_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/cs_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_customer_support_title"
+                android:lineSpacingExtra="9sp"
+                android:textSize="@dimen/setting_content_tv_size"
+                android:layout_marginTop="@dimen/setting_tv_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/opensrc_line"
+                app:layout_constraintLeft_toLeftOf="@+id/opensrc_license_title_tv" />
+
+            <TextView
+                android:id="@+id/cs_number_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_customer_support_number"
+                android:textSize="24sp"
+                android:fontFamily="@font/kiab"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/cs_title_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/cs_title_tv" />
+
+            <TextView
+                android:id="@+id/cs_desc_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="@string/setting_customer_support_desc_call"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintLeft_toRightOf="@+id/cs_number_title"
+                app:layout_constraintTop_toTopOf="@+id/cs_number_title"
+                app:layout_constraintBottom_toBottomOf="@+id/cs_number_title" />
+
+            <TextView
+                android:id="@+id/cs_day_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="@string/setting_customer_support_desc_time"
+                app:layout_constraintTop_toBottomOf="@+id/cs_number_title"
+                app:layout_constraintLeft_toLeftOf="@+id/cs_number_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

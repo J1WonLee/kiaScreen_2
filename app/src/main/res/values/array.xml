@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="brand_array">
+        <item>기아</item>
+        <item>쉐보레</item>
+        <item>현대</item>
+    </string-array>
+
+    <string-array name="driving_period_array">
+        <item>1년</item>
+        <item>2년</item>
+        <item>3년</item>
+        <item>4년</item>
+        <item>5년</item>
+        <item>6년</item>
+        <item>7년</item>
+    </string-array>
+
+    <string-array name="driving_distance_array">
+        <item>1만km/1년</item>
+        <item>1.5만km/1년</item>
+        <item>2만km/1년</item>
+    </string-array>
+
+    <string-array name="tax_register_cond_array">
+        <item>일반인</item>
+        <item>장애 1~3급</item>
+        <item>장애 4~6급</item>
+        <item>시각장애 4급</item>
+        <item>국가유공자</item>
+        <item>광주민주화</item>
+        <item>고엽제 후유증</item>
+        <item>렌터카</item>
+    </string-array>
+
+    <string-array name="fond_register_cond_array">
+        <item>강원</item>
+        <item>경기</item>
+    </string-array>
+
+    <string-array name="gang_won_array">
+        <item>강릉시</item>
+        <item>고성군</item>
+        <item>동해시</item>
+    </string-array>
+
+    <string-array name="kyonggi_array">
+        <item>가평균</item>
+        <item>고양시</item>
+        <item>과천시</item>
+    </string-array>
+
+    <string-array name="sns_spinner_array">
+        <item>기아멤버스</item>
+        <item>기아 공식 블로그</item>
+        <item>네이버 포스트</item>
+        <item>페이스북</item>
+        <item>인스타그램</item>
+        <item>유튜브</item>
+    </string-array>
+
+
+    <string-array name="sitemap_spinner_array">
+        <item>글로벌경영연구소</item>
+        <item>기아 타이거즈</item>
+        <item>기아군용</item>
+        <item>프라이버시 센터</item>
+        <item>Kia Connect</item>
+    </string-array>
+
+    <string-array name="email_domain_array">
+        <item>직접입력</item>
+        <item>네이버</item>
+        <item>네이트</item>
+        <item>구글</item>
+        <item>다음</item>
+
+    </string-array>
+
+    <string-array name="cs_purchase_guide_array" >
+        <item>- 구매 프로그램, Purchas</item>
+        <item>- 세금, Tax</item>
+        <item>- 등록, Enroll</item>
+        <item>- 유의 사항, Caution</item>
+        <item>- 출하 및 탁송 정보, Ship</item>
+    </string-array>
+
+    <string-array name="cs_array" >
+        <item>- 고객센터 안내, Cs</item>
+        <item>- 1:1문의, Inquire</item>
+        <item>- FAQ, Faq</item>
+        <item>- 칭찬 알림방, Appearance</item>
+        <item>- 하자 재발 통보, Problem</item>
+    </string-array>
+
+    <string-array name="new_kia_array" >
+        <item>- Our Symbol, Symbol</item>
+        <item>- Our Movement, Movement</item>
+        <item>- Our Design, Design</item>
+    </string-array>
+
+    <string-array name="maintance_array">
+        <item>- 기아 멤버스, Members</item>
+        <item>- 카엔라이프몰, CarAndLife</item>
+    </string-array>
+
+    <string-array name="kia_experience_array">
+        <item>- Kia 360, Kia360</item>
+        <item>- 플래그십 스토어, FlagShip</item>
+        <item>- 언플러그드 그라운드, Unpluged</item>
+        <item>- Driving Experience, DrivingExperience</item>
+    </string-array>
+
+    <string-array name="sustain_array">
+        <item>- Change the Colors, Change</item>
+    </string-array>
+
+    <string-array name="rent_array">
+        <item>- 기아렌터카, KiaRent</item>
+        <item>- 기아플렉스, KiaFlex</item>
+        <item>- 위블 비즈, Bizz</item>
+    </string-array>
+
+</resources>

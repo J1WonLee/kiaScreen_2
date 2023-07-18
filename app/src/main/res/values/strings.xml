@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">kiaScreen</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="main_model_comparison_desc_txt">원하시는 기아의 차량을 국내 판매 중인 차량과 빠르게 비교하실 수 있습니다 \n (최대 3개까지 선택 가능)</string>
+    <string name="main_model_comparison_reset_txt">선택 초기화</string>
+    <string name="main_model_comparison_extra_txt">엔진 및 트림은 기본 가격 기준으로 선택되고 각 항목에서 변경 가능합니다</string>
+
+    <string name="model_comparison_desc_title_1">성능 / 제원</string>
+    <string name="model_comparison_desc_title_2">경제성 / 환경</string>
+    <string name="model_comparison_desc_title_3">충돌 / 안전</string>
+    <string name="model_comparison_desc_title_4">등록비</string>
+
+    <string name="notice_1">∙ 비교 차량의 총 구입 비용은 개별소비세 3.5%가 적용된 가격입니다. (면세 차량 제외)</string>
+    <string name="notice_2">∙ 자동차 이미지는 참조용으로 구입 시점과 제조사 수시 변경으로 판매차량과 다를 수 있으니 해당 모델 판매점에 확인바랍니다.</string>
+    <string name="notice_3">∙ 상기 내용은 고객님의 차량 구입 의사결정에 도움을 드리고자 제공하는 참고용 서비스로 법적 효력이 없으며, 실제 구입 시 차이가 있을 수 있습니다.</string>
+    <string name="notice_4">∙ 상기 차량별 비교 정보는 각 제조업체의 카탈로그 및 홈페이지에 공개된 자료를 바탕으로 작성 되었습니다.</string>
+    <string name="notice_5">∙ 수시로 최신정보를 갱신하고 있으나 간혹 업데이트가 늦어지는 경우가 발생할 수 있습니다.</string>
+
+    <string name="bottom_menu_1">판매 네트워크</string>
+    <string name="bottom_menu_2">견적 내기</string>
+    <string name="bottom_menu_3">구매 상담 신청</string>
+    <string name="bottom_menu_4">시승 신청</string>
+    <string name="bottom_menu_5">기아렌터카</string>
+
+    <string name="personal_info_manuel">개인정보 처리방침</string>
+    <string name="privacy_center">프라이버시 센터</string>
+    <string name="trial">이용약관</string>
+    <string name="cyber_audit">윤리경영 사이버감사실</string>
+    <string name="e_annoucement">전자 공고</string>
+    <string name="site_map">사이트맵</string>
+
+
+    <string name="setting_push_text">PUSH 알림</string>
+    <string name="setting_push_content">이벤트, 행사에 대한 알림을 받습니다</string>
+
+    <string name="setting_auto_login_text">자동 로그인</string>
+    <string name="setting_auto_login_content">자동로그인을 사용할 경우 타인에게 고객의 정보가\n노출될 위험이 있습니다</string>
+
+    <string name="setting_cur_version_text">현재 버전</string>
+    <string name="setting_cur_version_content">현재 %1$s 버전이 최신버전입니다</string>
+
+    <string name="setting_customer_support_title">고객지원센터</string>
+    <string name="setting_customer_support_desc_call">(발신자 부담)</string>
+    <string name="setting_customer_support_number">1234-1234</string>
+    <string name="setting_customer_support_desc_time">월 - 금 09:00 ~ 18:00 / 토, 일요일, 공휴일은 휴무</string>
+
+    <string name="law_title">이용 약관</string>
+    <string name="law_pop_title">이용약관 동의</string>
+    <string name="privacy_title">개인정보처리방침</string>
+    <string name="privacy_pop_title">개인정보 위탁에 관한 동의</string>
+    <string name="opensrc_license_title">오픈소스 라이센스</string>
+
+
+    <string name="text_confirm">확인</string>
+    <string name="term_agreement_title">환영합니다!\n아래 약관에 동의하시면\n시작됩니다</string>
+    <string name="text_agree_all">전체동의</string>
+    <string name="cd_hi">약관에 동의해주세요</string>
+    <string name="text_agree_location">개인 정보 이용 동의(필수)</string>
+    <string name="text_agree_marketing_push">마케팅 정보 동의 (선택)</string>
+    <string name="text_start">시작하기</string>
+    <string name="text_term">이용약관</string>
+
+    <string name="text_location_term">위치기반서비스 이용약관</string>
+    <string name="text_location_term_with_spaces">위치기반 서비스 이용약관</string>
+    <string name="text_service_term_title">서비스 이용약관</string>
+
+    <string name="text_check_permissions_title">고객님의 편리한 \n이용을 위해 아래 \n권한의 허용이 필요합니다</string>
+    <string name="text_permission_noti_title">알림(선택)</string>
+    <string name="text_permission_noti_description">푸시 알림 수신</string>
+
+    <string name="text_permission_overall_description">위 접근건한은 고객님께 더 나은 서비스를 제공하기 위해 사용됩니다. 허용에 동의하지 않으셔도 이용하실 수 있습니</string>
+
+    <string name="text_permission_storage_title">저장 공간</string>
+    <string name="text_permission_storage_description">저장 공간 접근 허용</string>
+
+    <string name="text_service_term_1">제 1조 (목적)\n 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.\n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.</string>
+
+    <string name="text_service_term_2">제 2조 (용어의 정의)\n 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.\n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.</string>
+
+    <string name="text_service_term_3">제 3조 (용어의 정의)\n 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.\n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.</string>
+
+    <string name="text_insurance_title">보험료 산출 안내</string>
+
+    <string name="text_insurance_guide_1">(유의 사항)보험료 산출은 가입자의 운전경력 및 손해율 그리고 가입시기, 가입하실 보험사에 따라 달라질 수 있음을 알려드립니다.</string>
+
+    <string name="text_insurance_guide_2">각 모델의 차량가격으로 보험료를 산출하지만, 업데이트 시점에 따라 가격이 정확하지 않을 수 있습니다.</string>
+
+    <string name="text_insurance_guide_3">보험료 산출은 다음과 같은 조건에서 산출하였습니다.</string>
+
+    <string name="text_insurance_guide_4">자동차 용도 - 출퇴근 및 가정용, 신규 가입 조건</string>
+
+    <string name="text_insurance_guide_5">물적 사고 기준액 - 50만원</string>
+
+    <string name="text_insurance_guide_6">운전자 - 1인(32~37세), 연령한정 - 30세 이상 한정 특약</string>
+
+    <string name="text_insurance_guide_7">대인1 - 무한, 대인2 - 무한, 대물 - 2원, 자기신체 - 5천만원</string>
+
+    <string name="text_insurance_guide_8">무보험 - 가입, 자기차량손해 - 부담금 있음, 긴급출동 가입</string>
+</resources>

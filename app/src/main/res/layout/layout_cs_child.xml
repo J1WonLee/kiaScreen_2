@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.copy.kiascreen.custom.MenuWrapperLinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/child_item_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/center">
+
+    <TextView
+        android:id="@+id/first_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="- 고객센터 안내 "
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/second_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/kialight"
+        android:text="- 1:1 문의 "
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/third_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/kialight"
+        android:text="- FAQ "
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/fourth_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/kialight"
+        android:text="- 칭찬 알림방 "
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/fifth_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/kialight"
+        android:text="- 하자 재발 통보 "
+        android:textSize="15sp" />
+
+</com.copy.kiascreen.custom.MenuWrapperLinearLayout>

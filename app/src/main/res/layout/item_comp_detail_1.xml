@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/item_comp_cfc_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/engine_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="엔진" />
+
+        <TextView
+            android:id="@+id/engine_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="구동모터(kw)" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_city_fc_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_cfc_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/fuel_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="연료" />
+
+        <TextView
+            android:id="@+id/fuel_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="전기" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_hfc_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_city_fc_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/gear_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="변속기" />
+
+        <TextView
+            android:id="@+id/gear_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="단속고정기어" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_feg_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_hfc_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/output_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="최고 출력 (kW/ps)" />
+
+        <TextView
+            android:id="@+id/output_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="150 / 204" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_max_torque_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_feg_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/torque_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="최대 토크(Nm)" />
+
+        <TextView
+            android:id="@+id/torque_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="255" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_cc_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_max_torque_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/cc_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="배기량 (cc)" />
+
+        <TextView
+            android:id="@+id/cc_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_dm_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_cc_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/dm_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="구동방식" />
+
+        <TextView
+            android:id="@+id/dm_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="FWD(전륜구동)" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_tank_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_dm_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tank_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="연료탱크 (l)" />
+
+        <TextView
+            android:id="@+id/tank_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_battery_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_tank_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/battery_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="배터리 종류" />
+
+        <TextView
+            android:id="@+id/battery_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="리튬 이온" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_bc_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_battery_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/bc_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="배터리 충전 용량(kWh)" />
+
+        <TextView
+            android:id="@+id/bc_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="64.8" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_drive_distance_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_bc_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/drive_distance_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1회 충전 주행거리 (km)" />
+
+        <TextView
+            android:id="@+id/drive_distance_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="401" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_ct_rapid_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_drive_distance_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/drive_ct_rapid_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="충전시간 (급속)" />
+
+        <TextView
+            android:id="@+id/drive_ct_rapid_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="45분(80%)" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_ct_normal_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_ct_rapid_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/drive_ct_normal_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="충전시간 (완속)" />
+
+        <TextView
+            android:id="@+id/drive_ct_normal_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="45분(80%)" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_ol_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_ct_normal_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/ol_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="전장" />
+
+        <TextView
+            android:id="@+id/ol_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="180mm" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/item_comp_width_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_ol_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/width_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="전폭" />
+
+        <TextView
+            android:id="@+id/width_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="180mm" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_height_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_width_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/height_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="전고" />
+
+        <TextView
+            android:id="@+id/height_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="1,570" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_wb_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_height_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/wb_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="측간거리" />
+
+        <TextView
+            android:id="@+id/wb_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="2,720" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_ft_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_wb_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/ft_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="윤거전" />
+
+        <TextView
+            android:id="@+id/ft_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="1,571" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_bt_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_ft_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/bt_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="윤거후" />
+
+        <TextView
+            android:id="@+id/bt_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="1,581" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_tire_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_bt_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tire_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="윤거후" />
+
+        <TextView
+            android:id="@+id/tire_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="215/55R17" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_comp_cw_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_comp_tire_linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/cw_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="공차 중량(kg)" />
+
+        <TextView
+            android:id="@+id/cw_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/comp_item_text_marginTop"
+            android:textStyle="bold"
+            android:text="1,705" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

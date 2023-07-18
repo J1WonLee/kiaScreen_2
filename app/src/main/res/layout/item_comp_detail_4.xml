@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/comp_total_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="합계"
+        android:textSize="16sp"
+        android:fontFamily="@font/kiamedium"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/comp_total_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kiamedium"
+        android:textSize="16sp"
+        android:hint="2,000,000원"
+        android:layout_marginTop="@dimen/comp_item_text_marginTop"
+        app:layout_constraintTop_toBottomOf="@+id/comp_total_title_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/comp_total_title_tv" />
+
+    <TextView
+        android:id="@+id/acquisition_tax_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:text="취득세"
+        android:textSize="16sp"
+        android:fontFamily="@font/kiamedium"
+        app:layout_constraintTop_toBottomOf="@+id/comp_total_content_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/comp_total_content_tv" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/acquisition_tax_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_info_outline"
+        android:layout_marginLeft="@dimen/comp_detail_4_marginTop"
+        app:layout_constraintTop_toTopOf="@+id/acquisition_tax_title_tv"
+        app:layout_constraintLeft_toRightOf="@+id/acquisition_tax_title_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/acquisition_tax_title_tv"/>
+
+    <TextView
+        android:id="@+id/acquisition_tax_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comp_detail_4_marginTop"
+        android:fontFamily="@font/kiamedium"
+        android:textSize="16sp"
+        android:text="1,234,234원"
+        app:layout_constraintTop_toBottomOf="@+id/acquisition_tax_title_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/acquisition_tax_title_tv" />
+
+    <TextView
+        android:id="@+id/register_cond_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        android:fontFamily="@font/kiamedium"
+        android:textSize="16sp"
+        android:text="등록 조건"
+        app:layout_constraintTop_toBottomOf="@+id/acquisition_tax_content_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/acquisition_tax_title_tv" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/register_cond_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comp_detail_4_marginTop"
+        android:background="@drawable/spinner_background_2"
+        app:layout_constraintTop_toBottomOf="@+id/register_cond_title_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/register_cond_title_tv" />
+
+    <TextView
+        android:id="@+id/fond_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공채금액(할인)"
+        android:textSize="16sp"
+        android:fontFamily="@font/kiamedium"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        app:layout_constraintTop_toBottomOf="@+id/register_cond_spinner"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fond_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_info_outline"
+        android:layout_marginLeft="@dimen/comp_detail_4_marginTop"
+        app:layout_constraintTop_toTopOf="@+id/fond_title_tv"
+        app:layout_constraintLeft_toRightOf="@+id/fond_title_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/fond_title_tv"/>
+
+    <TextView
+        android:id="@+id/fond_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kiamedium"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/comp_detail_4_marginTop"
+        app:layout_constraintTop_toBottomOf="@+id/fond_title_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/fond_title_tv"
+        android:hint="0원"/>
+
+    <TextView
+        android:id="@+id/register_place_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kiamedium"
+        android:text="등록 지역"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/comp_item_linear_marginTop"
+        app:layout_constraintTop_toBottomOf="@+id/fond_content_tv"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/register_place_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comp_detail_4_marginTop"
+        android:background="@drawable/spinner_background_2"
+        app:layout_constraintTop_toBottomOf="@+id/register_place_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/register_place_tv" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/register_place_child_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/comp_detail_4_marginTop"
+        android:background="@drawable/spinner_background_2"
+        app:layout_constraintTop_toBottomOf="@+id/register_place_spinner"
+        app:layout_constraintLeft_toLeftOf="@+id/register_place_spinner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

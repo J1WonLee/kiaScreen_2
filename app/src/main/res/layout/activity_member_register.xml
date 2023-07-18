@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registry.MemberRegisterActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/regit_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/gohome_menu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/toolbar_title_size"
+            android:fontFamily="@font/kiamedium"
+            android:text="로그인" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintTop_toBottomOf="@+id/regit_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/register_title_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/kia_logo3"
+                android:scaleType="fitXY"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/register_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가입하기"
+                android:fontFamily="@font/kiab"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/register_title_img"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_id_et"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="아이디"
+                android:backgroundTint="@color/black"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/register_title_tv"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/dup_chk_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아이디 중복 확인을 해주세요"
+                android:textSize="10sp"
+                android:textColor="@color/red"
+                app:layout_constraintTop_toBottomOf="@+id/input_id_et"
+                app:layout_constraintLeft_toLeftOf="@+id/input_id_et" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/id_dup_chk_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중복 확인"
+                android:textColor="@color/white"
+                android:background="@drawable/border_dup_id_chk"
+                app:layout_constraintTop_toTopOf="@+id/input_id_et"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/input_id_et"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_email_et"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
+                android:hint="이메일 주소"
+                android:inputType="textEmailAddress"
+                android:backgroundTint="@color/black"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:nextFocusDown="@id/input_pwd_et"
+                app:layout_constraintTop_toBottomOf="@+id/dup_chk_tv"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/mail_spinner"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/input_email_et"
+                app:layout_constraintLeft_toRightOf="@+id/input_email_et"
+                app:layout_constraintTop_toTopOf="@+id/input_email_et" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pwd_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:boxBackgroundColor="@color/white"
+                style="@style/EditTextGreyStyle"
+                android:theme="@style/EditTextGreyStyle"
+                app:layout_constraintTop_toBottomOf="@+id/input_email_et"
+                app:layout_constraintLeft_toLeftOf="parent" >
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/input_pwd_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="비밀번호"
+                        android:inputType="textPassword"
+                        android:nextFocusDown="@id/input_pwd_chk_et"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pwd_chk_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:boxBackgroundColor="@color/white"
+                style="@style/EditTextGreyStyle"
+                android:theme="@style/EditTextGreyStyle"
+                app:layout_constraintTop_toBottomOf="@+id/pwd_input_layout"
+                app:layout_constraintLeft_toLeftOf="parent" >
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/input_pwd_chk_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textPassword"
+                    android:hint="비밀번호 확인"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/pwd_chk_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀 번호가 일치하지 않습니다"
+                android:textSize="10sp"
+                android:textColor="@color/red"
+                app:layout_constraintTop_toBottomOf="@+id/pwd_chk_input_layout"
+                app:layout_constraintLeft_toLeftOf="@+id/input_id_et" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/input_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="이름"
+                android:backgroundTint="@color/black"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/pwd_chk_tv"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/register_btn"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="회원 가입 하기"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@drawable/border_dup_id_chk"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/input_name_et"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

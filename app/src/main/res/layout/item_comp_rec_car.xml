@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/rec_img"
+        android:src="@drawable/car_blank_"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/rec_car_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="차량 명"
+        app:layout_constraintTop_toBottomOf="@+id/rec_img"
+        app:layout_constraintLeft_toLeftOf="@+id/rec_img"
+        app:layout_constraintRight_toRightOf="@+id/rec_img" />
+
+    <TextView
+        android:id="@+id/rec_car_price_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="가격"
+        app:layout_constraintTop_toBottomOf="@+id/rec_car_title_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/rec_car_title_tv"
+        app:layout_constraintRight_toRightOf="@+id/rec_car_title_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

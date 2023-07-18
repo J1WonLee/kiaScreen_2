@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/login_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" >
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:fontFamily="@font/kiamedium"
+            android:textSize="@dimen/toolbar_title_size"
+            android:layout_gravity="center" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <EditText
+        android:id="@+id/login_id_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="아이디"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:paddingLeft="10dp"
+        android:inputType="text"
+        android:background="@drawable/border_login_edit_text"
+        android:nextFocusDown="@id/login_pwd_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/login_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <EditText
+        android:id="@+id/login_pwd_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="비밀 번호"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:nextFocusDown="@id/login_btn"
+        android:background="@drawable/border_login_edit_text"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/login_id_edit_text"
+        app:layout_constraintLeft_toLeftOf="@+id/login_id_edit_text"
+        app:layout_constraintRight_toRightOf="@+id/login_id_edit_text"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/login_pwd_edit_text"
+        app:layout_constraintLeft_toLeftOf="@+id/login_pwd_edit_text"
+        app:layout_constraintRight_toRightOf="@+id/login_pwd_edit_text" />
+
+    <TextView
+        android:id="@+id/find_id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아아디 찾기"
+        android:fontFamily="@font/kiab"
+        android:layout_marginTop="25dp"
+        app:layout_constraintLeft_toLeftOf="@+id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+    <TextView
+        android:id="@+id/find_id_pwd_indicator_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|"
+        android:fontFamily="@font/kiab"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintLeft_toRightOf="@+id/find_id_tv"
+        app:layout_constraintTop_toTopOf="@+id/find_id_tv" />
+
+    <TextView
+        android:id="@+id/find_pwd_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 초기화"
+        android:fontFamily="@font/kiab"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintLeft_toRightOf="@+id/find_id_pwd_indicator_tv"
+        app:layout_constraintTop_toTopOf="@+id/find_id_tv" />
+
+    <TextView
+        android:id="@+id/register_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원 가입"
+        android:fontFamily="@font/kiab"
+        app:layout_constraintTop_toTopOf="@+id/find_id_tv"
+        app:layout_constraintRight_toRightOf="@+id/login_btn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

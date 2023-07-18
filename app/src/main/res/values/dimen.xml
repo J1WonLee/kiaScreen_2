@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="menu_text_size">15sp</dimen>
+    <dimen name="menu_item_text_size">10sp</dimen>
+
+    <dimen name="menu_text_margintop">20dp</dimen>
+    <dimen name="overlay_bottom_item_left_margin">15dp</dimen>
+
+    <dimen name="menu_item_wrapper_padding">10dp</dimen>
+    <dimen name="menu_item_padding">10dp</dimen>
+
+
+    <dimen name="menu_expand_toggle_size">40dp</dimen>
+    <dimen name="menu_expand_toggle_margin">20dp</dimen>
+
+    <dimen name="spinner_top_margin">50dp</dimen>
+
+    <dimen name="recycler_padding">15dp</dimen>
+
+    <dimen name="img_margin">30dp</dimen>
+
+    <dimen name="dialog_padding">30dp</dimen>
+
+    <dimen name="main_comp_txt_margin">20dp</dimen>
+    <dimen name="rv_margin_top">30dp</dimen>
+
+    <dimen name="comp_item_linear_marginTop">30dp</dimen>
+    <dimen name="comp_item_text_marginTop">20dp</dimen>
+
+    <dimen name="notice_title_marginTop">15dp</dimen>
+    <dimen name="notice_text_marginTop">10dp</dimen>
+
+    <dimen name="main_bottom_text_marginTop">35dp</dimen>
+    <dimen name="main_img_margin_right">15dp</dimen>
+    <dimen name="main_arrow_margin_right">20dp</dimen>
+    <dimen name="main_bottom_text_marginRight">20dp</dimen>
+
+    <dimen name="spinner_wrapper_padding">20dp</dimen>
+    <dimen name="bottom_text_Margintop">30dp</dimen>
+
+    <dimen name="mypage_text_size">15sp</dimen>
+    <dimen name="mypage_horline_marginTop">5dp</dimen>
+    <dimen name="mypage_arrow_marginRight">10dp</dimen>
+
+    <dimen name="comp_detail_4_marginTop">15dp</dimen>
+
+    <dimen name="intro_app_title_size">70sp</dimen>
+
+
+    <dimen name="dialog_btn_margin_right">20dp</dimen>
+    <dimen name="dialog_text_margin_top">10dp</dimen>
+
+    <dimen name="setting_tv_margin_right">30dp</dimen>
+    <dimen name="setting_tv_margin_top">30dp</dimen>
+    <dimen name="setting_tv_margin_left">30dp</dimen>
+    <dimen name="setting_content_tv_size">12sp</dimen>
+    <dimen name="setting_content_tv_padding_left">30dp</dimen>
+    <dimen name="switch_min_width">60dp</dimen>
+
+    <dimen name="dialog_fragment_findid_marginTop">40dp</dimen>
+
+    <dimen name="userinfo_marginTop">30dp</dimen>
+
+    <dimen name="toolbar_title_size">25sp</dimen>
+
+    <dimen name="comp_dialog_padding">20dp</dimen>
+    <dimen name="comp_dialog_margin">15dp</dimen>
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/dialog_dot"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/tab_default_dot" />
+
+    <TextView
+        android:id="@+id/content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kiamedium"
+        android:textColor="@color/gray_txt"
+        android:layout_marginLeft="@dimen/comp_dialog_padding"
+        android:hint="@string/text_insurance_guide_1" />
+
+
+</LinearLayout>

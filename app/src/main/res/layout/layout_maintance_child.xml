@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.copy.kiascreen.custom.MenuWrapperLinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/maintance_item_wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/maintance">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="- 기아멤버스 "
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/kialight"
+        android:text="- 카엔라이프몰 "
+        android:textSize="15sp" />
+
+</com.copy.kiascreen.custom.MenuWrapperLinearLayout>
