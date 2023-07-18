@@ -1,5 +1,7 @@
 package com.copy.kiascreen.comparison.vo
 
+import android.util.Log
+
 object CompListItems {
     private val performItem = PerformanceItem(
         "구동모터(150kW)",
@@ -100,5 +102,10 @@ object CompListItems {
     private var updatedItem = CompItem(performItem2, econItem2, safetyItem2)
 
     fun getUpdatedItem() = updatedItem
+
+    fun resetCompItemList() {
+        compItemList = mutableListOf(compItem)
+        Log.d("compItemTest", "after reset size = ${compItemList.size}")
+    }
 
 }

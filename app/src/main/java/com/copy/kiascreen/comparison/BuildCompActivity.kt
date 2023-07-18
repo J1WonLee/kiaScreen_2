@@ -80,6 +80,8 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         CompExtraPriceAdapter(this)
     }
 
+    private var isResetClicked = false
+
     override fun inflateLayout(layoutInflater: LayoutInflater) = ActivityBuildCmpBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -193,7 +195,12 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
                 CompListItems.addCompItem()
             }
 
-            initPerformanceVp2()
+            if (!isResetClicked) {
+                initPerformanceVp2()
+            } else {
+                setDataAfterReset()
+            }
+
             setScrollListener2()
             binding.mainBottomSheet.visibility = View.GONE
         }
@@ -204,6 +211,13 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         econViewPager2.adapter = econAdapter
         safetyViewPager2.adapter = safetyAdapter
         extraPriceViewPager2.adapter = extraPriceAdapter
+    }
+
+    private fun setDataAfterReset() {
+        performAdapter.setPerfromDataAfterReset()
+        econAdapter.setEconDataAfterReset()
+        safetyAdapter.setSafetyDataAfterReset()
+        extraPriceAdapter.setExtraPriceDataAfterReset()
     }
 
     override fun onAddBtnClick(stage : Int) {
@@ -426,6 +440,9 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
                 isEnabled = false
                 setBackgroundColor(resources.getColor(R.color.btn_gray))
             }
+            CompListItems.resetCompItemList()
+            isResetClicked = true
+
         }
     }
 

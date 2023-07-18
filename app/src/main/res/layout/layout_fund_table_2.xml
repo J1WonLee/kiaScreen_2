@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/sort_view"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/sort_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="종류"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/sort_view"
+        app:layout_constraintLeft_toLeftOf="@+id/sort_view"
+        app:layout_constraintRight_toRightOf="@+id/sort_view"
+        app:layout_constraintBottom_toBottomOf="@+id/sort_view" />
+
+    <View
+        android:id="@+id/sort_view_2"
+        android:layout_width="100dp"
+        android:layout_height="1050dp"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toBottomOf="@+id/sort_view"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/sort_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비사업용"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/sort_view_2"
+        app:layout_constraintLeft_toLeftOf="@+id/sort_view_2"
+        app:layout_constraintRight_toRightOf="@+id/sort_view_2"
+        app:layout_constraintBottom_toBottomOf="@+id/sort_view_2" />
+
+    <View
+        android:id="@+id/blank_view"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/sort_view"
+        app:layout_constraintLeft_toRightOf="@+id/sort_view" />
+
+    <TextView
+        android:id="@+id/blank_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/blank_view"
+        app:layout_constraintLeft_toLeftOf="@+id/blank_view"
+        app:layout_constraintRight_toRightOf="@+id/blank_view"
+        app:layout_constraintBottom_toBottomOf="@+id/blank_view" />
+
+    <View
+        android:id="@+id/blank_view_2"
+        android:layout_width="100dp"
+        android:layout_height="700dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/blank_view"
+        app:layout_constraintLeft_toRightOf="@+id/sort_view" />
+
+    <TextView
+        android:id="@+id/blank_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="승용"
+        app:layout_constraintTop_toTopOf="@+id/blank_view_2"
+        app:layout_constraintLeft_toLeftOf="@+id/blank_view_2"
+        app:layout_constraintRight_toRightOf="@+id/blank_view_2"
+        app:layout_constraintBottom_toBottomOf="@+id/blank_view_2" />
+
+    <View
+        android:id="@+id/blank_view_3"
+        android:layout_width="100dp"
+        android:layout_height="300dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/blank_view_2"
+        app:layout_constraintLeft_toRightOf="@+id/sort_view" />
+
+    <TextView
+        android:id="@+id/blank_tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="승합"
+        app:layout_constraintTop_toTopOf="@+id/blank_view_3"
+        app:layout_constraintLeft_toLeftOf="@+id/blank_view_3"
+        app:layout_constraintRight_toRightOf="@+id/blank_view_3"
+        app:layout_constraintBottom_toBottomOf="@+id/blank_view_3" />
+
+    <View
+        android:id="@+id/blank_view_4"
+        android:layout_width="100dp"
+        android:layout_height="51dp"
+        android:background="@drawable/border_left_bottom_transparent"
+        app:layout_constraintTop_toBottomOf="@+id/blank_view_3"
+        app:layout_constraintLeft_toRightOf="@+id/sort_view" />
+
+    <TextView
+        android:id="@+id/blank_tv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="화물"
+        app:layout_constraintTop_toTopOf="@+id/blank_view_4"
+        app:layout_constraintLeft_toLeftOf="@+id/blank_view_4"
+        app:layout_constraintRight_toRightOf="@+id/blank_view_4"
+        app:layout_constraintBottom_toBottomOf="@+id/blank_view_4" />
+
+    <View
+        android:id="@+id/divide_view"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/sort_view"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view" />
+
+    <TextView
+        android:id="@+id/divide_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="구분"
+        app:layout_constraintTop_toTopOf="@+id/divide_view"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view"
+        app:layout_constraintRight_toRightOf="@+id/divide_view"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view" />
+
+    <View
+        android:id="@+id/divide_view_2"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_2" />
+
+    <TextView
+        android:id="@+id/divide_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1600cc 미만"
+        android:fontFamily="@font/kialight"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_2"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_2"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_2"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_2" />
+
+    <View
+        android:id="@+id/divide_view_3"
+        android:layout_width="180dp"
+        android:layout_height="300dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_2"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_2" />
+
+    <TextView
+        android:id="@+id/divide_tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="@font/kialight"
+        android:text="중형 (1600cc~2000cc\n 미만이거나 길이,너비,높이\n중 어느 하나라도\n 소형 (길이 4.7m, 너비 1.7m, 높이\n 2m 이하인 것)을 초과하는 것)"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_3"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_3"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_3"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_3" />
+
+    <View
+        android:id="@+id/divide_view_4"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_3"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_3" />
+
+    <TextView
+        android:id="@+id/divide_tv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="대형(2000cc 이상이거나\n 길이,너비,높이\n 모두소형을 초과 하는 것)"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_4"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_4"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_4"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_4" />
+
+    <View
+        android:id="@+id/divide_view_5"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_4"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_3" />
+
+    <TextView
+        android:id="@+id/divide_tv_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="다목적 형"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_5"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_5"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_5"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_5" />
+
+    <View
+        android:id="@+id/divide_view_6"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_5"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_3" />
+
+    <TextView
+        android:id="@+id/divide_tv_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="7-10 인승"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_6"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_6"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_6"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_6" />
+
+    <View
+        android:id="@+id/divide_view_7"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_6"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_3" />
+
+    <TextView
+        android:id="@+id/divide_tv_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="@font/kialight"
+        android:text="소형(승차정원 11명 이상\n 15명 이하인 승합자동차로서\n길이 4.7미터\n, 너비 1.7 미터\n, 높이 2.0미터 이하인 것)"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_7"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_7"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_7"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_7" />
+
+    <View
+        android:id="@+id/divide_view_8"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_7"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_3" />
+
+    <TextView
+        android:id="@+id/divide_tv_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="@font/kialight"
+        android:text="중형(길이, 너비, \n높이 어느 \n하나라도 소형을 초과 한 것)"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_8"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_8"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_8"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_8" />
+
+
+    <View
+        android:id="@+id/divide_view_9"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_8"
+        app:layout_constraintLeft_toRightOf="@+id/blank_view_3" />
+
+    <TextView
+        android:id="@+id/divide_tv_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="@font/kialight"
+        android:text="최대적재량 1톤 이하로써\n 총중량 3.5톤 이하인 것"
+        app:layout_constraintTop_toTopOf="@+id/divide_view_9"
+        app:layout_constraintLeft_toLeftOf="@+id/divide_view_9"
+        app:layout_constraintRight_toRightOf="@+id/divide_view_9"
+        app:layout_constraintBottom_toBottomOf="@+id/divide_view_9" />
+
+
+
+    <View
+        android:id="@+id/city_fund_view"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/sort_view"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view" />
+
+
+    <TextView
+        android:id="@+id/city_fund_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="도시철도채권"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view" />
+
+    <View
+        android:id="@+id/city_fund_view_2"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_2" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="0%"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_2"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_2"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_2"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_2" />
+
+    <View
+        android:id="@+id/city_fund_view_3"
+        android:layout_width="180dp"
+        android:layout_height="300dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_2"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_3" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="12%"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_3"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_3"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_3"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_3" />
+
+    <View
+        android:id="@+id/city_fund_view_4"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_3"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_4" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="12%"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_4"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_4"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_4"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_4" />
+
+    <View
+        android:id="@+id/city_fund_view_5"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_4"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_5" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="12%"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_5"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_5"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_5"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_5" />
+
+    <View
+        android:id="@+id/city_fund_view_6"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_5"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_6" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="7-10 인승"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_6"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_6"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_6"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_6" />
+
+    <View
+        android:id="@+id/city_fund_view_7"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_6"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_7" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="39만원 정액"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_7"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_7"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_7"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_7" />
+
+    <View
+        android:id="@+id/city_fund_view_8"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_7"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_8" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="65만원 정액"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_8"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_8"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_8"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_8" />
+
+
+    <View
+        android:id="@+id/city_fund_view_9"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
+        android:background="@drawable/border_left_bottom_right_trans"
+        app:layout_constraintTop_toBottomOf="@+id/divide_view_8"
+        app:layout_constraintLeft_toRightOf="@+id/divide_view_9" />
+
+    <TextView
+        android:id="@+id/city_fund_tv_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="19.5만원 정액"
+        app:layout_constraintTop_toTopOf="@+id/city_fund_view_9"
+        app:layout_constraintLeft_toLeftOf="@+id/city_fund_view_9"
+        app:layout_constraintRight_toRightOf="@+id/city_fund_view_9"
+        app:layout_constraintBottom_toBottomOf="@+id/city_fund_view_9" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

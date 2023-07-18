@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/aq_first_row_view"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/aq_first_row_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="차종"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/aq_first_row_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_first_row_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_first_row_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_first_row_view" />
+
+    <View
+        android:id="@+id/aq_first_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_bottom_transparent"
+        app:layout_constraintTop_toBottomOf="@+id/aq_first_row_view"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/aq_first_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="하이브리드"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="@font/kiab"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/aq_first_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_first_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_first_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_first_column_view" />
+
+    <View
+        android:id="@+id/aq_fourth_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_bottom_transparent"
+        app:layout_constraintTop_toBottomOf="@+id/aq_first_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_first_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_first_column_view"/>
+
+    <TextView
+        android:id="@+id/aq_fourth_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전기차"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="@font/kiab"
+        app:layout_constraintTop_toTopOf="@+id/aq_fourth_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_fourth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_fourth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_fourth_column_view" />
+
+    <View
+        android:id="@+id/aq_seventh_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_bottom_transparent"
+        app:layout_constraintTop_toBottomOf="@+id/aq_fourth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_fourth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_fourth_column_view"/>
+
+    <TextView
+        android:id="@+id/aq_seventh_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수소차"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:fontFamily="@font/kiab"
+        app:layout_constraintTop_toTopOf="@+id/aq_seventh_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_seventh_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_seventh_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_seventh_column_view" />
+
+    <View
+        android:id="@+id/aq_second_row_view"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:background="@drawable/border_left_black"
+        app:layout_constraintTop_toTopOf="@+id/aq_first_row_view"
+        app:layout_constraintLeft_toRightOf="@+id/aq_first_row_view" />
+
+    <TextView
+        android:id="@+id/aq_second_row_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="과세기준액"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/aq_second_row_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_second_row_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_second_row_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_second_row_view" />
+
+    <View
+        android:id="@+id/aq_second_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_left_bottom_trans"
+        app:layout_constraintTop_toBottomOf="@+id/aq_second_row_view"
+        app:layout_constraintLeft_toRightOf="@+id/aq_first_column_view" />
+
+    <TextView
+        android:id="@+id/aq_second_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_fund_table3_content_1"
+        android:textColor="@color/black"
+        android:fontFamily="@font/kialight"
+        app:layout_constraintTop_toTopOf="@+id/aq_second_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_second_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_second_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_second_column_view" />
+
+    <View
+        android:id="@+id/aq_fifth_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_left_bottom_trans"
+        app:layout_constraintTop_toBottomOf="@+id/aq_second_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_second_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_second_column_view"/>
+
+    <TextView
+        android:id="@+id/aq_fifth_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="@string/text_fund_table3_content_2"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/aq_fifth_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_fifth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_fifth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_fifth_column_view" />
+
+    <View
+        android:id="@+id/aq_eighth_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_left_bottom_trans"
+        app:layout_constraintTop_toBottomOf="@+id/aq_fifth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_fifth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_fifth_column_view"/>
+
+    <TextView
+        android:id="@+id/aq_eighth_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kialight"
+        android:text="@string/text_fund_table3_content_3"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_eighth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_eighth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_eighth_column_view"
+        app:layout_constraintTop_toTopOf="@+id/aq_eighth_column_view"
+        app:layout_constraintVertical_bias="0.494" />
+
+    <View
+        android:id="@+id/aq_third_row_view"
+        android:layout_width="230dp"
+        android:layout_height="70dp"
+        android:background="@drawable/border_left_black"
+        app:layout_constraintTop_toTopOf="@+id/aq_first_row_view"
+        app:layout_constraintLeft_toRightOf="@+id/aq_second_row_view" />
+
+    <TextView
+        android:id="@+id/aq_third_row_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비고"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@+id/aq_third_row_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_third_row_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_third_row_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_third_row_view" />
+
+    <View
+        android:id="@+id/aq_third_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_left_bottom_trans"
+        app:layout_constraintTop_toBottomOf="@+id/aq_third_row_view"
+        app:layout_constraintLeft_toRightOf="@+id/aq_second_column_view" />
+
+    <TextView
+        android:id="@+id/aq_third_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2024년 12월 31일까지"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/aq_third_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_third_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_third_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_third_column_view" />
+
+    <View
+        android:id="@+id/aq_sixth_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_left_bottom_trans"
+        app:layout_constraintTop_toBottomOf="@+id/aq_third_column_view"
+        app:layout_constraintLeft_toLefttOf="@+id/aq_third_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_third_column_view"/>
+
+    <TextView
+        android:id="@+id/aq_sixth_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2024년 12월 31일까지"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/aq_sixth_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_sixth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_sixth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_sixth_column_view" />
+
+    <View
+        android:id="@+id/aq_ninth_column_view"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/border_left_bottom_trans"
+        app:layout_constraintTop_toBottomOf="@+id/aq_sixth_column_view"
+        app:layout_constraintLeft_toLefttOf="@+id/aq_sixth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_sixth_column_view"/>
+
+    <TextView
+        android:id="@+id/aq_ninth_column_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2024년 12월 31일까지"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@+id/aq_ninth_column_view"
+        app:layout_constraintBottom_toBottomOf="@+id/aq_ninth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_ninth_column_view"
+        app:layout_constraintRight_toRightOf="@+id/aq_ninth_column_view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

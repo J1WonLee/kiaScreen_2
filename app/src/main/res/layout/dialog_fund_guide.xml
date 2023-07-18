@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dialog_close_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_close_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/safety_guide_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kiabold"
+                android:text="@string/text_insurance_title"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_close_img"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/aq_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취득세"
+                app:layout_constraintTop_toBottomOf="@+id/safety_guide_title_tv"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fund_content_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/aq_title_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/aq_title_tv" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fund_content_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="차종별 취득세 = "
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fund_content_1"
+                app:layout_constraintLeft_toLeftOf="@+id/aq_title_tv" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fund_content_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 과세기준액 x 아래 해당차종 세율"
+                android:textColor="@color/red"
+                app:layout_constraintTop_toBottomOf="@+id/fund_content_2"
+                app:layout_constraintLeft_toLeftOf="@+id/aq_title_tv" />
+
+            <TextView
+                android:id="@+id/fund_tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="차종별 취득세 = "
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fund_content_3"
+                app:layout_constraintLeft_toLeftOf="@+id/aq_title_tv" />
+
+            <TextView
+                android:id="@+id/fund_tv_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 과세기준액 x 아래 해당차종 세율"
+                android:textColor="@color/red"
+                app:layout_constraintLeft_toRightOf="@+id/fund_tv_2"
+                app:layout_constraintTop_toTopOf="@+id/fund_tv_2"
+                app:layout_constraintBottom_toBottomOf="@+id/fund_tv_2" />
+
+            <TextView
+                android:id="@+id/fund_title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취득세"
+                app:layout_constraintTop_toBottomOf="@+id/fund_tv_3"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fund_content_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fund_title_2"
+                app:layout_constraintLeft_toLeftOf="@+id/fund_title_2" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fund_content_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="차종별 취득세 = "
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fund_content_4"
+                app:layout_constraintLeft_toLeftOf="@+id/aq_title_tv" />
+
+            <TextView
+                android:id="@+id/fund_title_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="채권의 종류"
+                app:layout_constraintTop_toBottomOf="@+id/fund_content_5"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/first_hor_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/fund_title_3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <include
+                    layout="@layout/layout_fund_table_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/fund_title_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                android:text="비사업용 차량 채권 매입금액 요율 – 서울(도시철도채권) 신규등록기준"
+                app:layout_constraintTop_toBottomOf="@+id/first_hor_view"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/first_hor_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fund_title_4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <include
+                    layout="@layout/layout_fund_table_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/fund_title_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                android:text="장애인·국가유공자 공채 매입 면제"
+                app:layout_constraintTop_toBottomOf="@+id/first_hor_view_2"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/handied_linear"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                android:layout_marginLeft="@dimen/comp_dialog_margin"
+                android:layout_marginRight="@dimen/comp_dialog_margin"
+                android:background="@color/transparent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_title_5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="대상"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/kiab"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:text="장애인으로서 장애등급 제1급부터 제3급(시각장애인등급 4급포함)까지에 해당하는 사람" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:text="국가유공자로서 상이등급 1급부터 7급까지의 판정을 받은 사람 5.18민주화운동부상자로서 신체장해등급 1급부터 14급까지의 판정을 받은 사람" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:text="고엽제 후유의증환자로서 경도(輕度) 장애 이상의 장애등급 판정을 받은 사람" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="차종"
+                    android:textSize="15sp"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:fontFamily="@font/kiab"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:fontFamily="@font/kialight"
+                    android:text="2000cc 이하 승용차" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:fontFamily="@font/kialight"
+                    android:text="7인승 이상 승용차" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/comp_dialog_margin"
+                    android:fontFamily="@font/kialight"
+                    android:text="15인승 이하 승합차" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fund_title_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                android:text="친환경 자동차 공채 매입 면제"
+                app:layout_constraintTop_toBottomOf="@+id/handied_linear"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/first_hor_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fund_title_6"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <include
+                    layout="@layout/layout_fund_table_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상기 내용은 예고 없이 변경될 수 있으며, 정확한 내용은 지점/대리점에서 확인하시기 바랍니다."
+                android:fontFamily="@font/kialight"
+                android:textColor="@color/base_gray_txt"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/first_hor_view_3"
+                app:layout_constraintLeft_toLeftOf="@+id/aq_title_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,4 +98,29 @@
     <string name="text_insurance_guide_7">대인1 - 무한, 대인2 - 무한, 대물 - 2원, 자기신체 - 5천만원</string>
 
     <string name="text_insurance_guide_8">무보험 - 가입, 자기차량손해 - 부담금 있음, 긴급출동 가입</string>
+
+    <string name="text_fuel_guide_title">유류비 안내</string>
+    <string name="text_fuel_guide_title_2">휘발유, 경유, LPG, 수소 유류비 계산</string>
+    <string name="text_fuel_guide_1">유류비 산식 = 설정한 운행 기간의 총 주행거리x해당 연료 주유소 전국 평균값/선택한 모델 복합연비</string>
+    <string name="text_fuel_guide_2">해당 연료 유류비 주유소 전국 평균값 인용</string>
+    <string name="text_fuel_guide_3">- 휘발유, 경유, LPG : 한국석유공사</string>
+    <string name="text_fuel_guide_4">- 수소 : 환경부 무공해차 통합누리집</string>
+    <string name="text_fuel_guide_title_3">전기차 전기비용 계산</string>
+
+    <string name="text_fuel_guide_5">대부분 충전요금(약 95%)+운영비용(약 4~6%)</string>
+    <string name="text_fuel_guide_6">충전요금 산식은 유류비 산식과 같지만, 복합연비 대신 선택한 모델의 복합전비로 계산</string>
+    <string name="text_fuel_guide_7">운영비용은 여러 형태 충전소 방문시를 고려한 보정 비용이며, 대략 충전요금의 4~6% 적용</string>
+    <string name="text_fuel_guide_8">운영비용은 선택한 모델의 항속거리(1회 충전시 주행거리)와 전비 효율에 영향을 받는데 항속거리가 클수록 전비가 높을수록 충전소 방문이 적게 되므로 낮게 산출됨</string>
+    <string name="text_fuel_guide_9">충전요금 인용 : 한국전력공사</string>
+    <string name="text_fuel_guide_10">충전요금은 공용충전기와 가정용 충전기를 동시 사용하는 것으로 하며 중간부하시간대 전기 요금을 적용함</string>
+
+    <string name="text_safety_title">신차 안전도 평가 안내</string>
+    <string name="text_safety_content_1">본 신차안전도 평가결과는 국토교통부 주관 안전도 평가 후 발표된 자료입니다.(교통안전공단 자세한 내용 www.kncap.org 참조)</string>
+    <string name="text_safety_content_2">안전도 종합등급 안전도평가에서 실시하고 있는 정면충돌, 측면충돌, 보행자 등 22개 항목의 평가 결과를 종합하여 평가 대상 차량의 안전도를 등급(1~5등급)과 점수(100점 만점)로 소비자들에게 제공합니다.</string>
+    <string name="text_safety_content_3">1등급일수록 가장 안전한 차량입니다.</string>
+    <string name="text_safety_content_4">매년 자동차 판매수가 많거나 판매가 급증 추세인 차 그리고 과거 평가를 하지 않은 모델 중에서 평가를 실시하며, 평가에 사용된 차량의 에어백 등의 안전장비는 실제 구입하시는 차량과 다를 수 있으므로 확인 하시길 바랍니다.</string>
+
+    <string name="text_fund_table3_content_1">서울,부산,대구(달성군제외),창원 :\n200만원까지\n그 외 지역 : 150만원까지\n인천 : 전액(2023년 12월 31일까지)</string>
+    <string name="text_fund_table3_content_2">서울,부산,대구(달성군제외) :\n250만원까지\n강원, 충남, 충북 : 150만원까지\n그 외 지역 : 전액)</string>
+    <string name="text_fund_table3_content_3">서울,인천,부산,대구(달성군제외) :\n250만원까지\n충남 : 150만원까지\n그 외 지역 : 전액</string>
 </resources>

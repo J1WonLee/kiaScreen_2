@@ -60,6 +60,14 @@ class CompPerformanceAdapter : RecyclerView.Adapter<CompPerformanceAdapter.Perfo
          showDiffItems(data[0].perform)
     }
 
+    fun setPerfromDataAfterReset() {
+        Log.d("compTest", "CompPerformanceAdapter setPerfromDataAfterReset called")
+        data = CompListItems.compItemList.toMutableList()
+        Log.d("compTest", "CompPerformanceAdapter setPerfromDataAfterReset data size = ${data.size}")
+        showDiffItems(data[0].perform)
+        notifyDataSetChanged()
+    }
+
     fun addPerFormData(newData : CompItem) {
         Log.d("compTest", "CompPerformanceAdapter addData called")
         this.data.add(newData)

@@ -34,6 +34,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
     private var basePrice = 0
     private var isLastItemDeleted = false
     private var lastSelectedItem  = LastSelectedItem()
+    private var delClicked = false
 
     fun addSpinnerItem(addItems : MutableList<Brand>) {
         mitems.add(addItems)
@@ -86,6 +87,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
                 Log.d("adapterTest", "carSpinnerSelected Item = ${binding.carSpinner.selectedItemPosition} , totalCount = ${binding.carSpinner.adapter.count}")
 
                 mInterface?.onAddBtnClick(stage)
+
             }
         }
 
@@ -109,6 +111,8 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
                     Log.d("adapterTest", "==== onDelBtnCLick, beforeSize = $beforeSize, position = $position")
                     isLastItemDeleted = true
                 }
+
+                delClicked = true
             }
         }
 
@@ -418,7 +422,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             mInterface?.setRecCarImg()
             basePrice = trimPrice + (trimPrice * 0.1).toInt()
         }
-
+        Log.d("updateTest", "===calculatePrice test ==== ")
         setSelectedItemList(binding, adapterPosition, afterPrice)
     }
 
@@ -502,6 +506,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             binding.buildBtn.visibility = View.GONE
             binding.purchaseConsultBtn.visibility = View.GONE
             binding.priceWrapper.visibility = View.GONE
+            binding.comparItemDelImg.visibility = View.VISIBLE
 
             // ComparImgAdapter
             binding.recCarWrapperConstraint.visibility = View.VISIBLE
@@ -601,12 +606,21 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
 
         // headerRecycler 아이템 갱신 및 비교 내역 아이템 갱신
-        mInterface?.addHeaderRecycler(selectedCar, adapterPosition)
+//        mInterface?.addHeaderRecycler(selectedCar, adapterPosition)
 //        mInterface?.setCompPager2Item(adapterPosition)
-
+        // headerRecycler 아이템 갱신 및 비교 내역 아이템 갱신
+        // 두번 째 아이템 삭제 시, 마지막 아이템이 두번째 위치로 오게 되면서, update 해주는 함수가 remove 함수 후에 호출되고 있음.
+        // 막기 위해서, 아이템 삭제 시 flag를 true로 두고, 한번 해당 함수가 호출되면 delflag 해제, 다음에 갱신 및 추가시 수정 먹도로 함
         if (beforeSize != 3 || adapterPosition != 1) {
+            mInterface?.addHeaderRecycler(selectedCar, adapterPosition)
             mInterface?.setCompPager2Item(adapterPosition)
         }
+        else if (!delClicked) {
+            mInterface?.addHeaderRecycler(selectedCar, adapterPosition)
+            mInterface?.setCompPager2Item(adapterPosition)
+        }
+
+        delClicked = false
     }
 
     fun getSelectedCar() : MutableList<SelectedOption> {

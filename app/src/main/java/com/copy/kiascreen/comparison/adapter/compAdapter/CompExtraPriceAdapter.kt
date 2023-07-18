@@ -16,7 +16,7 @@ import com.copy.kiascreen.util.StringTypeUtil
 import okhttp3.internal.notify
 
 class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompExtraPriceAdapter.ExtraPriceHolder>(){
-    private val data = CompListItems.compItemList.toMutableList()
+    private var data = CompListItems.compItemList.toMutableList()
     private var extraString = context.resources.getStringArray(R.array.tax_register_cond_array)
     private var localString = context.resources.getStringArray(R.array.fond_register_cond_array)
     private var gangwonString = context.resources.getStringArray(R.array.gang_won_array)
@@ -45,6 +45,13 @@ class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompEx
 
         this.data.removeAt(position)
         this.notifyDataSetChanged()
+    }
+
+    fun setExtraPriceDataAfterReset() {
+        Log.d("compTest", "CompExtraPriceAdapter setExtraPriceDataAfterReset called")
+        data = CompListItems.compItemList.toMutableList()
+        Log.d("compTest", "CompExtraPriceAdapter setExtraPriceDataAfterReset data size = ${data.size}")
+        notifyDataSetChanged()
     }
 
     inner class ExtraPriceHolder(val binding : ItemCompDetail4Binding) : RecyclerView.ViewHolder(binding.root) {

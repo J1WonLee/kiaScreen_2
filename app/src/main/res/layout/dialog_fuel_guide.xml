@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/comp_dialog_padding"
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dialog_close_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_close_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/fuel_guide_title_tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kiabold"
+                android:text="@string/text_fuel_guide_title"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_close_img"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+            <TextView
+                android:id="@+id/fuel_guide_title_tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_fuel_guide_title_2"
+                android:fontFamily="@font/kiabold"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_guide_title_tv_1"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_guide_title_tv_2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_1"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1" />
+
+            <TextView
+                android:id="@+id/fuel_sub_content_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_fuel_guide_3"
+                android:layout_marginLeft="@dimen/comp_dialog_subtext_marinLeft"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_2"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1" />
+
+
+            <TextView
+                android:id="@+id/fuel_sub_content_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_fuel_guide_4"
+                android:layout_marginTop="@dimen/comp_dialog_subtext_marinTop"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_sub_content_1"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_sub_content_1" />
+
+            <TextView
+                android:id="@+id/fuel_guide_title_tv_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_fuel_guide_title_2"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                android:fontFamily="@font/kiabold"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_sub_content_2"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_guide_title_tv_2" />
+
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_guide_title_tv_3"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_3"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1"  />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_4"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_5"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_6"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/fuel_content_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_content_7"
+                app:layout_constraintLeft_toLeftOf="@+id/fuel_content_1"
+                app:layout_constraintRight_toRightOf="@+id/fuel_content_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

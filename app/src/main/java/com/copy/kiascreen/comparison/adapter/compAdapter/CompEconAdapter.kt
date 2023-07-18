@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.copy.kiascreen.R
+import com.copy.kiascreen.comparison.BuildCompActivity
+import com.copy.kiascreen.comparison.dialogfragment.InsuranceFragment
 import com.copy.kiascreen.comparison.vo.CompItem
 import com.copy.kiascreen.comparison.vo.CompListItems
 import com.copy.kiascreen.comparison.vo.EconItem
@@ -46,7 +48,6 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
         }
     }
 
-
     init {
         showDiffItems(data[0].econ)
     }
@@ -73,6 +74,14 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
         isUpdatedFlag = true
         this.data.removeAt(position)
         this.notifyDataSetChanged()
+    }
+
+    fun setEconDataAfterReset() {
+        Log.d("compTest", "CompEconAdapter setEconDataAfterReset called")
+        data = CompListItems.compItemList.toMutableList()
+        Log.d("compTest", "CompEconAdapter setEconDataAfterReset data size = ${data.size}")
+        showDiffItems(data[0].econ)
+        notifyDataSetChanged()
     }
 
     inner class EconHolder(val binding : ItemCompDetail2Binding) : RecyclerView.ViewHolder(binding.root) {
@@ -114,6 +123,13 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
                 Log.d("compTest", "=== CompEconAdapter setFirstItemBackground exception error : ${e.message} ===")
             }
         }
+
+        fun setInsuranceGuideClickListener() {
+            binding.insuranceImg.setOnClickListener {
+                val activity = context as BuildCompActivity
+                InsuranceFragment().show(activity.supportFragmentManager, null)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EconHolder {
@@ -121,7 +137,10 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
         return EconHolder(binding)
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int {
+        Log.d("compTest", "CompEconAdapter getItemCount size = ${data.size}")
+        return data.size
+    }
 
     override fun onBindViewHolder(holder: EconHolder, position: Int) {
         Log.d("compTest", "CompEconAdapter onBIndeVieHolder position = $position")
@@ -135,6 +154,8 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
         if (position > 0) {
             holder.setDiffItemBackground(position)
         }
+
+        holder.setInsuranceGuideClickListener()
     }
 
     private fun initData(binding : ItemCompDetail2Binding, item : EconItem) {

@@ -20,5 +20,9 @@ class LayoutDialogContent @JvmOverloads constructor(context: Context, attr : Att
         addView(binding.root)
     }
 
+    fun setLayoutText(content : Int) {
+        binding.contentTv.setText(content)
+    }
+
 
 }

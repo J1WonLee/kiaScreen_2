@@ -2,98 +2,115 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/comp_dialog_padding"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/dialog_close_img"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_close_24"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/insurance_guide_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/kiabold"
-        android:text="@string/text_insurance_title"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_close_img"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_guide_title_tv"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_1"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dialog_close_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_close_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_2"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+            <TextView
+                android:id="@+id/insurance_guide_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kiabold"
+                android:text="@string/text_insurance_title"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_close_img"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_3"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1"  />
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_guide_title_tv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_4"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_1"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_5"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_2"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_6"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_3"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1"  />
 
-    <com.copy.kiascreen.custom.layout.LayoutDialogContent
-        android:id="@+id/insurance_content_8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/comp_dialog_margin"
-        app:layout_constraintTop_toBottomOf="@+id/insurance_content_7"
-        app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
-        app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_4"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_5"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_6"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+
+            <com.copy.kiascreen.custom.layout.LayoutDialogContent
+                android:id="@+id/insurance_content_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/comp_dialog_margin"
+                app:layout_constraintTop_toBottomOf="@+id/insurance_content_7"
+                app:layout_constraintLeft_toLeftOf="@+id/insurance_content_1"
+                app:layout_constraintRight_toRightOf="@+id/insurance_content_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

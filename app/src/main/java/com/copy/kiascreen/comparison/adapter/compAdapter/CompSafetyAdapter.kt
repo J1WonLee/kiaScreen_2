@@ -16,7 +16,7 @@ import kotlin.reflect.KProperty1
 import kotlin.reflect.full.memberProperties
 
 class CompSafetyAdapter : RecyclerView.Adapter<CompSafetyAdapter.SafetyHolder>(){
-    private val data = CompListItems.compItemList.toMutableList()
+    private var data = CompListItems.compItemList.toMutableList()
     private var differentFields  : List<KProperty1<SafetyItem, *>>? = null
     private var differentFieldsMap : kotlin.collections.HashMap< Int ,List<KProperty1<SafetyItem, *>>> = kotlin.collections.HashMap<Int, List<KProperty1<SafetyItem, *>>>()
     private var isUpdatedFlag = false
@@ -59,6 +59,14 @@ class CompSafetyAdapter : RecyclerView.Adapter<CompSafetyAdapter.SafetyHolder>()
         this.data.removeAt(position)
         isUpdatedFlag = true
         this.notifyDataSetChanged()
+    }
+
+    fun setSafetyDataAfterReset() {
+        Log.d("compTest", "CompSafetyAdapter setSafetyDataAfterReset called")
+        data = CompListItems.compItemList.toMutableList()
+        Log.d("compTest", "CompSafetyAdapter setSafetyDataAfterReset data size = ${data.size}")
+        showDiffItems(data[0].safetyItem)
+        notifyDataSetChanged()
     }
 
     inner class SafetyHolder(val binding:ItemCompDetail3Binding) : RecyclerView.ViewHolder(binding.root){
