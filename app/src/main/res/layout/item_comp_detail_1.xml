@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -20,6 +21,8 @@
             android:id="@+id/engine_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="엔진" />
 
         <TextView
@@ -27,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="구동모터(kw)" />
 
     </LinearLayout>
@@ -47,6 +51,8 @@
             android:id="@+id/fuel_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="연료" />
 
         <TextView
@@ -54,7 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="전기" />
 
     </LinearLayout>
@@ -74,6 +81,8 @@
             android:id="@+id/gear_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="변속기" />
 
         <TextView
@@ -81,7 +90,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="단속고정기어" />
 
     </LinearLayout>
@@ -101,6 +111,8 @@
             android:id="@+id/output_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="최고 출력 (kW/ps)" />
 
         <TextView
@@ -108,7 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="150 / 204" />
 
     </LinearLayout>
@@ -128,6 +141,8 @@
             android:id="@+id/torque_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="최대 토크(Nm)" />
 
         <TextView
@@ -135,7 +150,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="255" />
 
     </LinearLayout>
@@ -155,6 +171,8 @@
             android:id="@+id/cc_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="배기량 (cc)" />
 
         <TextView
@@ -162,7 +180,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="0" />
 
     </LinearLayout>
@@ -182,6 +201,8 @@
             android:id="@+id/dm_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="구동방식" />
 
         <TextView
@@ -189,7 +210,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="FWD(전륜구동)" />
 
     </LinearLayout>
@@ -209,6 +231,8 @@
             android:id="@+id/tank_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="연료탱크 (l)" />
 
         <TextView
@@ -216,7 +240,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="0" />
 
     </LinearLayout>
@@ -236,6 +261,8 @@
             android:id="@+id/battery_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="배터리 종류" />
 
         <TextView
@@ -243,7 +270,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="리튬 이온" />
 
     </LinearLayout>
@@ -263,6 +291,8 @@
             android:id="@+id/bc_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="배터리 충전 용량(kWh)" />
 
         <TextView
@@ -270,7 +300,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="64.8" />
 
     </LinearLayout>
@@ -290,6 +321,8 @@
             android:id="@+id/drive_distance_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="1회 충전 주행거리 (km)" />
 
         <TextView
@@ -297,7 +330,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="401" />
 
     </LinearLayout>
@@ -317,6 +351,8 @@
             android:id="@+id/drive_ct_rapid_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="충전시간 (급속)" />
 
         <TextView
@@ -324,7 +360,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="45분(80%)" />
 
     </LinearLayout>
@@ -344,6 +381,8 @@
             android:id="@+id/drive_ct_normal_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="충전시간 (완속)" />
 
         <TextView
@@ -351,7 +390,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="45분(80%)" />
 
     </LinearLayout>
@@ -371,6 +411,8 @@
             android:id="@+id/ol_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="전장" />
 
         <TextView
@@ -378,7 +420,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="180mm" />
 
     </LinearLayout>
@@ -399,6 +442,8 @@
             android:id="@+id/width_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="전폭" />
 
         <TextView
@@ -406,7 +451,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="180mm" />
 
     </LinearLayout>
@@ -426,6 +472,8 @@
             android:id="@+id/height_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="전고" />
 
         <TextView
@@ -433,7 +481,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="1,570" />
 
     </LinearLayout>
@@ -453,6 +502,8 @@
             android:id="@+id/wb_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="측간거리" />
 
         <TextView
@@ -460,7 +511,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="2,720" />
 
     </LinearLayout>
@@ -480,6 +532,8 @@
             android:id="@+id/ft_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="윤거전" />
 
         <TextView
@@ -487,7 +541,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="1,571" />
 
     </LinearLayout>
@@ -507,6 +562,8 @@
             android:id="@+id/bt_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="윤거후" />
 
         <TextView
@@ -514,7 +571,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="1,581" />
 
     </LinearLayout>
@@ -534,6 +592,8 @@
             android:id="@+id/tire_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="윤거후" />
 
         <TextView
@@ -541,7 +601,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="215/55R17" />
 
     </LinearLayout>
@@ -561,6 +622,8 @@
             android:id="@+id/cw_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             android:text="공차 중량(kg)" />
 
         <TextView
@@ -568,7 +631,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="1,705" />
 
     </LinearLayout>

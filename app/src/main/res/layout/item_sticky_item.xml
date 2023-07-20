@@ -101,13 +101,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/kiabold"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:text="비교할 차량을 \n 선택해주세요" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/kiabold"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:text="비교할 차량을 \n 선택해주세요" />
 
     </LinearLayout>
 

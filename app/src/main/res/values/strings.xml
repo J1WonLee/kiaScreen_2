@@ -123,4 +123,19 @@
     <string name="text_fund_table3_content_1">서울,부산,대구(달성군제외),창원 :\n200만원까지\n그 외 지역 : 150만원까지\n인천 : 전액(2023년 12월 31일까지)</string>
     <string name="text_fund_table3_content_2">서울,부산,대구(달성군제외) :\n250만원까지\n강원, 충남, 충북 : 150만원까지\n그 외 지역 : 전액)</string>
     <string name="text_fund_table3_content_3">서울,인천,부산,대구(달성군제외) :\n250만원까지\n충남 : 150만원까지\n그 외 지역 : 전액</string>
+
+    <string name="text_fund_title_1">공채 안내</string>
+    <string name="text_fund_content_1">자동차 등록 시 매입 해야 하는 지방채로 지자체별 채권의 종류, 매입액 등이 상이</string>
+    <string name="text_fund_content_2">채권은 차량 등록지에 따라 도시철도 채권 이나 지역개발채권으로 구분 매입</string>
+    <string name="text_fund_content_3">채권 매입금액은 등록할 차량의 차종과 해당 지역 공채매입 요율에 의해서 채권 매입액 산출</string>
+    <string name="text_fund_content_4">자동차 구입 초기 비용 부담을 덜기 위해 채권 매입 후 금융사에 일정 할인율 적용해서 즉시 매도하는 것으로, 차량등록사업소 내 은행 출장소에서 할인비용만 지급하여 처리 가능</string>
+    <string name="text_fund_content_5">할인비용=공채 매입금액 x 할인율(채권별로 매일 변동되며 등록지역 차량등록사업소에서 확인 가능)</string>
+
+    <string name="text_insurance_grade_title_1">자동차 보험 등급 안내</string>
+    <string name="text_insurance_grade_content_1">자동차 모델등급은 보험개발원내 자동차기술연구소에서 충돌 Test와 손상성·수리성 평가를 통해 등급을 결정합니다.</string>
+    <string name="text_insurance_grade_content_2">손상성·수리성 평가등급은 1등급~26등급(26단계)으로 구분되며, 높을 수록(26등급에\n가까울수록) 차량의 저속 충돌시 손상성·수리성이 손상성·수리성이 우수함을\n 의미합니다 기타 자세한 정보는 www.kidi.or.kr 을 참조해주시길 바랍니다.</string>
+
+    <string name="text_kncap_title">자동차 안전도 평가</string>
+    <string name="text_kncap_content">도교통부는 매년 국내에 많이 판매되는 국산차 및 외산차 10여개\n차종을 대상으로 안전도 평가를 실시합니다. 자도차 충돌사항 등을\n통해 차의 안전성을 평가하여, 소비자에게 결과를 제공하고\n제작사로 하여금 보다 안전한 자동차를 제작하도록 유도하기 위해\n1999년 부터 시행해 왔습니다. 최근의 자동차 안전도 평가는 충돌\n안전, 보행자 안전, 사고예방 안전등 3개 분야로 나누어 각 차종의 안전도를 평가합니다.</string>
+
 </resources>

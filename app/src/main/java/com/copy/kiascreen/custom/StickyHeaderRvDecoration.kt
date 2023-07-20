@@ -2,7 +2,6 @@ package com.copy.kiascreen.custom
 
 import android.content.res.Resources
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.view.View
@@ -10,10 +9,8 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-const val COLOR_ACTIVE = 0xFF000000
-const val COLOR_INACTIVE = 0xFFFFFFFF
+class StickyHeaderRvDecoration : RecyclerView.ItemDecoration() {
 
-class LinePagerIndicatorDecoration() : RecyclerView.ItemDecoration() {
     private val mPaint = Paint()
     private val mStrokePaint = Paint()
     private val dp = Resources.getSystem().displayMetrics.density
@@ -23,7 +20,7 @@ class LinePagerIndicatorDecoration() : RecyclerView.ItemDecoration() {
     private val mIndicatorHeight = (dp * 32).toInt()
 
     private val mIndicatorItemLength = dp * 16
-    private val mIndicatorItemPadding = dp * 4
+    private val mIndicatorItemPadding = dp * 12
 
     init {
         mPaint.apply {
@@ -43,7 +40,7 @@ class LinePagerIndicatorDecoration() : RecyclerView.ItemDecoration() {
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
 
-        var itemCount = parent.adapter?.itemCount
+        var itemCount = (parent.adapter?.itemCount)!!
 
         var totalLength = mIndicatorItemLength * itemCount!!
         var paddingBetweenItems = Math.max(0, itemCount - 1) * mIndicatorItemPadding
@@ -70,7 +67,7 @@ class LinePagerIndicatorDecoration() : RecyclerView.ItemDecoration() {
     }
 
     private fun drawInactiveIndicators(c: Canvas, indicatorStartX: Float, indicatorPosY: Float, itemCount: Int) {
-        mPaint.color = Color.WHITE
+        mPaint.color = COLOR_INACTIVE.toInt()
 
         val itemWidth = mIndicatorItemLength + mIndicatorItemPadding
 
@@ -83,7 +80,7 @@ class LinePagerIndicatorDecoration() : RecyclerView.ItemDecoration() {
     }
 
     private fun drawHighlights(c: Canvas, indicatorStartX: Float, indicatorPosY: Float, highlightPosition: Int, progress: Float, itemCount: Int) {
-        mPaint.color = Color.BLACK
+        mPaint.color = COLOR_ACTIVE.toInt()
 
         val itemWidth = mIndicatorItemLength + mIndicatorItemPadding
 

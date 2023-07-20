@@ -17,17 +17,15 @@ import androidx.viewpager2.widget.ViewPager2
 import com.copy.kiascreen.*
 import com.copy.kiascreen.comparison.adapter.*
 import com.copy.kiascreen.comparison.adapter.compAdapter.*
+import com.copy.kiascreen.comparison.extension.*
 import com.copy.kiascreen.comparison.snapplistener.BounceEdgeEffectFactory
 
 import com.copy.kiascreen.menu.FragmentMainMenu
 import com.copy.kiascreen.menu.FragmentSearch
-import com.copy.kiascreen.comparison.extension.addItem
-import com.copy.kiascreen.comparison.extension.onDelBtnClicked
-import com.copy.kiascreen.comparison.extension.reset
-import com.copy.kiascreen.comparison.extension.setRecImg
 import com.copy.kiascreen.comparison.vo.CompListItems
 import com.copy.kiascreen.comparison.vo.SelectedOption
 import com.copy.kiascreen.custom.LinePagerIndicatorDecoration
+import com.copy.kiascreen.custom.StickyHeaderRvDecoration
 import com.copy.kiascreen.custom.StickyScrollView
 import com.copy.kiascreen.databinding.ActivityBuildCmpBinding
 import com.copy.kiascreen.menu.FragmentActivityBridge
@@ -52,12 +50,24 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     private lateinit var adapter : ComparisonAdapter
     private lateinit var stickyHeaderRecyclerView: RecyclerView
 
+
     private lateinit var performViewPager2: ViewPager2
     private lateinit var econViewPager2: ViewPager2
     private lateinit var safetyViewPager2: ViewPager2
     private lateinit var extraPriceViewPager2: ViewPager2
 
-    private var resetItem = BrandItems.resetList
+
+
+    /*
+    // 7/20 하단 목록을 vp2 -> rv로 변경. scrollListener도 rv에 맞게 변경함.
+    // 7/20 하단 목록을 rv로 -> vp2 변경
+    private lateinit var performRv: RecyclerView
+    private lateinit var econRv: RecyclerView
+    private lateinit var safetyRv: RecyclerView
+    private lateinit var extraPriceRv: RecyclerView
+
+     */
+
     private val scrollListener = ScrollListener(this)
 
     private val headerAdapter : HeaderRecyclerAdapter by lazy {
@@ -65,7 +75,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     }
 
     private val performAdapter : CompPerformanceAdapter by lazy {
-        CompPerformanceAdapter()
+        CompPerformanceAdapter(this)
     }
 
     private val econAdapter : CompEconAdapter by lazy {
@@ -73,7 +83,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     }
 
     private val safetyAdapter : CompSafetyAdapter by lazy {
-        CompSafetyAdapter()
+        CompSafetyAdapter(this)
     }
 
     private val extraPriceAdapter : CompExtraPriceAdapter by lazy {
@@ -90,6 +100,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         initToolbar()
         initCompRecycler()
         setSpinnerAdapter()
+
     }
 
     override fun getDataFromIntent() {
@@ -117,14 +128,14 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
         scrollView.run {
             header = stickyHeaderRecyclerView
-
             stickListener = { _ ->
-                Log.d("LOGGER_TAG", "stickListener")
+                Log.d("StickyHeader", "stickListener")
             }
             freeListener = { _ ->
-                Log.d("LOGGER_TAG", "freeListener")
+                Log.d("StickyHeader", "freeListener")
             }
         }
+
 
         performViewPager2 = binding.compDetailVp1
         econViewPager2 = binding.compDetailVp2
@@ -156,6 +167,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         return super.onCreateOptionsMenu(menu)
     }
 
+    // 메뉴 프래그먼트 실행
     private fun inflateFragment() {
         binding.mainBottomSheet.visibility = View.GONE
         val fragmentManager = supportFragmentManager
@@ -163,10 +175,12 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         fragmentManager.beginTransaction().replace(R.id.menu_fragment_holder, FragmentMainMenu.newInstance(user)).commit()
     }
 
+    // 검색 창을 dialogFragment형태로 보여준다.
     private fun initSearchDialog() {
         FragmentSearch().show(supportFragmentManager, null)
     }
 
+    // 차량 선택 리사이클러 설정
     private fun initCompRecycler() {
         adapter = ComparisonAdapter(this, BrandItems.spinnerList)
         comparsionRecycler.addItemDecoration(LinePagerIndicatorDecoration())
@@ -183,11 +197,12 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     }
 
     // 모델 비교 버튼 클릭 이벤트
+    // 모델 비교 버튼 클릭 시 vp들을 설정 + stickyHeaderRv를 설정
     private fun setBottomNaviClickListener() {
         binding.modelCompareBtn.setOnClickListener {
             binding.modelCompDetailWrapper.visibility = View.VISIBLE
 
-            var selectedLists = adapter.getSelectedCar()
+            var selectedLists = adapter.getSelectedCar()        // 선택한 항목 갯수만큼 아이템을 추가해 줘야 한다.
             Log.d("headerAdapterTest", "selectedList size onmain = ${selectedLists.size}")
             setStickyRecycler(selectedLists)
 
@@ -203,16 +218,44 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
             setScrollListener2()
             binding.mainBottomSheet.visibility = View.GONE
+            setCompVpClose()
+            setSwitchListener()
         }
     }
 
+    // 하단 pager2 어뎁터 설정
     private fun initPerformanceVp2() {
+
         performViewPager2.adapter = performAdapter
         econViewPager2.adapter = econAdapter
         safetyViewPager2.adapter = safetyAdapter
         extraPriceViewPager2.adapter = extraPriceAdapter
+
+
+        /*
+        performRv.apply {
+            adapter = performAdapter
+            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        econRv.apply {
+            adapter = econAdapter
+            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        safetyRv.apply {
+            adapter = safetyAdapter
+            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        extraPriceRv.apply {
+            adapter = extraPriceAdapter
+            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+        */
     }
 
+    // 초기화 버튼 클릭 시 pager2들의 데이터들을 초기화 시켜준다.
     private fun setDataAfterReset() {
         performAdapter.setPerfromDataAfterReset()
         econAdapter.setEconDataAfterReset()
@@ -220,6 +263,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         extraPriceAdapter.setExtraPriceDataAfterReset()
     }
 
+    // comparisonAdapter에서 아이템 추가 시, 이전 spinner들 다 선택했는지 stage로 보내줌.
     override fun onAddBtnClick(stage : Int) {
         // alert
         var msg = ""
@@ -241,7 +285,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
                 return
             }
         }
-
+        // spinner 선택 안한거 있으면 alert으로 선택하라고 알려 준다
         if (msg.isNotEmpty()) {
             AlertUtil.makeAlertDialog(this, msg)
         }
@@ -278,6 +322,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
          */
     }
 
+    // 비교 차량 이미지 설정
     override fun setRecCarImg() {
 
         comparsionRecycler.setRecImg(adapter)
@@ -432,7 +477,11 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
             adapter.reset(comparsionRecycler)
 
             binding.modelCompDetailWrapper.visibility = View.GONE
-            stickyHeaderRecyclerView.adapter = null
+            stickyHeaderRecyclerView.apply {
+                adapter = null
+            }
+            // reset 버튼 클릭시, flag를 조정하여, 아이템이 없을 시에는 스크롤 내려도 안보여주게 한다.
+            scrollView.isModelCompareClicked = false
 
             binding.mainBottomSheet.visibility = View.VISIBLE
             binding.modelCompareBtn.apply {
@@ -446,17 +495,17 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         }
     }
 
-    // stickyHeader 리사이클러 설정
+    // stickyHeader 리사이클러 설정, 선택한 항목들에 대한 정보들을 stickyHeader의 item으로 사용 함.
     private fun setStickyRecycler(itemList : MutableList<SelectedOption>) {
         Log.d("headerAdapterTest", "setStickyRecycler, itemSize = ${itemList.size}")
         headerAdapter.setSelectedItem(itemList)
         scrollView.isModelCompareClicked = true
-        val linearLayoutManagerWrapepr = LinearLayoutManagerWrapper(this, LinearLayoutManager.HORIZONTAL, false)
+        val linearLayoutManagerWrapper = LinearLayoutManagerWrapper(this, LinearLayoutManager.HORIZONTAL, false)
         stickyHeaderRecyclerView.apply {
-            layoutManager = linearLayoutManagerWrapepr
+            layoutManager = linearLayoutManagerWrapper
             adapter = headerAdapter
+            addItemDecoration(StickyHeaderRvDecoration())
         }
-//        stickyHeaderRecyclerView.adapter = headerAdapter
         headerAdapter.setInterface(this)
 
         if (stickyHeaderRecyclerView.onFlingListener == null) {
@@ -467,10 +516,21 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     private fun setScrollListener2() {
         comparsionRecycler.addOnScrollListener(scrollListener.oneListener)
         stickyHeaderRecyclerView.addOnScrollListener(scrollListener.stickyHeaderListener)
+
+        /*
+        performRv.addOnScrollListener(scrollListener.performListener)
+        econRv.addOnScrollListener(scrollListener.performListener)
+        safetyRv.addOnScrollListener(scrollListener.performListener)
+        extraPriceRv.addOnScrollListener(scrollListener.performListener)
+
+         */
+
         performViewPager2.registerOnPageChangeCallback(scrollListener.pagerCallBack)
         econViewPager2.registerOnPageChangeCallback(scrollListener.pgaerCallBack2)
         safetyViewPager2.registerOnPageChangeCallback(scrollListener.pgaerCallBack2)
         extraPriceViewPager2.registerOnPageChangeCallback(scrollListener.pgaerCallBack2)
+
+
         comparsionRecycler.scrollToPosition(0)
     }
 
@@ -489,6 +549,27 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
         binding.snsSpinner.setSpinnerAdapter(snsSpinnerAdapter)
         binding.familySiteSpinner.setSpinnerAdapter(familySpinnerAdapter)
+    }
+
+    private fun setCompVpClose() {
+        Log.d("vpToggleTest", "setCompVpClose called")
+
+        binding.compTitleExpandImg.toggleVp(performViewPager2)
+        binding.compTitle2ExpandImg.toggleVp(econViewPager2)
+        binding.compTitle3ExpandImg.toggleVp(safetyViewPager2)
+        binding.compTitle4ExpandImg.toggleVp(extraPriceViewPager2)
+
+        /*
+        binding.compTitleExpandImg.toggleRv(performRv)
+        binding.compTitle2ExpandImg.toggleRv(econRv)
+        binding.compTitle3ExpandImg.toggleRv(safetyRv)
+        binding.compTitle4ExpandImg.toggleRv(extraPriceRv)
+
+         */
+    }
+
+    private fun setSwitchListener() {
+        binding.modelCompareSwitch.toggleDiffFields(performAdapter, econAdapter, safetyAdapter)
     }
 
     override fun onResume() {
@@ -513,20 +594,35 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     // recyclerView postiion 이동
     override fun moveViewPosition(targetPosition: Int) {
         stickyHeaderRecyclerView.scrollToPosition(targetPosition)
+
         // vp2 포지션 이동
         performViewPager2.setCurrentItem(targetPosition, true)
         econViewPager2.setCurrentItem(targetPosition, true)
         safetyViewPager2.setCurrentItem(targetPosition, true)
         extraPriceViewPager2.setCurrentItem(targetPosition, true)
+
+        /*
+        performRv.scrollToPosition(targetPosition)
+        safetyRv.scrollToPosition(targetPosition)
+        econRv.scrollToPosition(targetPosition)
+        extraPriceRv.scrollToPosition(targetPosition)
+        */
     }
 
     override fun movePagerPosition(targetPosition: Int) {
         comparsionRecycler.scrollToPosition(targetPosition)
         stickyHeaderRecyclerView.smoothScrollToPosition(targetPosition)
+//        performRv.scrollToPosition(targetPosition)
+//        safetyRv.scrollToPosition(targetPosition)
+//        econRv.scrollToPosition(targetPosition)
+//        extraPriceRv.scrollToPosition(targetPosition)
 
-        safetyViewPager2.setCurrentItem(targetPosition)
-        econViewPager2.setCurrentItem(targetPosition)
-        extraPriceViewPager2.setCurrentItem(targetPosition)
+
+        safetyViewPager2.currentItem = targetPosition
+        econViewPager2.currentItem = targetPosition
+        extraPriceViewPager2.currentItem = targetPosition
+
+
     }
 
     override fun movePerformPagerPosition(targetPosition: Int) {

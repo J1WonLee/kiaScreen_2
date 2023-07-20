@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
-        android:padding="10dp"
+        android:padding="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -20,23 +21,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="종합 등급(충돌 안전)"
+            android:textSize="14sp"
+            android:fontFamily="@font/kialight"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/total_grade_img"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
             android:src="@drawable/icon_info_outline"
+            android:layout_marginLeft="@dimen/comp_guide_icon_marginLeft"
             app:layout_constraintTop_toTopOf="@+id/total_grade_title_tv"
-            app:layout_constraintLeft_toRightOf="@+id/total_grade_title_tv" />
+            app:layout_constraintLeft_toRightOf="@+id/total_grade_title_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/total_grade_title_tv"/>
 
         <TextView
             android:id="@+id/total_grade_content_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="1등급"
             app:layout_constraintTop_toBottomOf="@+id/total_grade_title_tv"
             app:layout_constraintLeft_toLeftOf="@+id/total_grade_title_tv"/>
@@ -49,7 +56,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
-        android:padding="10dp"
+        android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@+id/item_comp_total_grade_constraint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -58,6 +65,8 @@
             android:id="@+id/test_year_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/kialight"
+            android:textSize="14sp"
             android:text="평가 년도" />
 
         <TextView
@@ -65,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="2022년" />
 
     </LinearLayout>
@@ -76,7 +86,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
-        android:padding="10dp"
+        android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@+id/item_comp_year_linear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -85,6 +95,8 @@
             android:id="@+id/grade_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/kialight"
+            android:textSize="14sp"
             android:text="점수" />
 
         <TextView
@@ -92,7 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="90.00점" />
 
     </LinearLayout>
@@ -112,6 +125,8 @@
             android:id="@+id/crash_safety_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/kialight"
+            android:textSize="14sp"
             android:text="충돌 안전" />
 
         <TextView
@@ -119,7 +134,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="57.359점" />
 
     </LinearLayout>
@@ -130,7 +146,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
-        android:padding="10dp"
+        android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@+id/item_comp_crash_safety_linear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -139,6 +155,8 @@
             android:id="@+id/ped_safety_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/kialight"
+            android:textSize="14sp"
             android:text="보행자 안전" />
 
         <TextView
@@ -146,7 +164,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="17.421점" />
 
     </LinearLayout>
@@ -157,7 +176,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
-        android:padding="10dp"
+        android:padding="8dp"
         app:layout_constraintTop_toBottomOf="@+id/item_comp_ped_safety_linear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -166,6 +185,8 @@
             android:id="@+id/prevent_safety_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/kialight"
+            android:textSize="14sp"
             android:text="사고예방안전" />
 
         <TextView
@@ -173,7 +194,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="15.200점" />
 
     </LinearLayout>

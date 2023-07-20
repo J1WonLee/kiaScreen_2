@@ -17,7 +17,7 @@ class HeaderRecyclerAdapter(val context: Context) : RecyclerView.Adapter<HeaderR
 
     fun getItemSize() = selectedItem.size
 
-
+    // stickyHeader이 그려지는건 항상 3개임, 선택된 아이템이 2개여도 아이템은 3개를 보여주고 마지막 아이템에 추가해달라는 것을 보여줘야 한다.
     fun setSelectedItem(itemList : MutableList<SelectedOption>) {
         this.selectedItem = itemList.toMutableList()
         notifyDataSetChanged()
@@ -75,6 +75,7 @@ class HeaderRecyclerAdapter(val context: Context) : RecyclerView.Adapter<HeaderR
             holder.bind(selectedItem[holder.adapterPosition], holder.adapterPosition)
         }
         else {
+            // 선택된 항목들의 갯수가 3보다 적을경우, 마지막 항목에 추가해달라고 표시를 해줘야 함
             holder.bindLastItem()
         }
 
@@ -107,6 +108,7 @@ class HeaderRecyclerAdapter(val context: Context) : RecyclerView.Adapter<HeaderR
 
     }
 
+    // 모델 변경 클릭시 , 모델 추가 클릭시 상단으로 이동
     fun setModelChangeClick(binding : ItemStickyItemBinding) {
         binding.stickyItemChangeBrandTv.setOnClickListener {
             mInterface?.scrollToPosition()
@@ -114,7 +116,7 @@ class HeaderRecyclerAdapter(val context: Context) : RecyclerView.Adapter<HeaderR
     }
 
     fun initEmptyData(binding : ItemStickyItemBinding) {
-        // 마지막 항목이 비어있는 경우
+        // 마지막 항목이 비어있는 경우 -> 추가하라는 뷰를 보여준다
         binding.stickyNoItemLinear.visibility = View.VISIBLE
         binding.stickyItemChangeBrandTv.visibility = View.GONE
 

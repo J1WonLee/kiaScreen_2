@@ -3,18 +3,26 @@ package com.copy.kiascreen.comparison.extension
 import android.util.Log
 import android.view.View
 import android.widget.Spinner
+import android.widget.Switch
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.copy.kiascreen.R
 import com.copy.kiascreen.comparison.adapter.ComparRecImgAdapter
 import com.copy.kiascreen.comparison.adapter.ComparisonAdapter
+import com.copy.kiascreen.comparison.adapter.compAdapter.CompEconAdapter
+import com.copy.kiascreen.comparison.adapter.compAdapter.CompExtraPriceAdapter
+import com.copy.kiascreen.comparison.adapter.compAdapter.CompPerformanceAdapter
+import com.copy.kiascreen.comparison.adapter.compAdapter.CompSafetyAdapter
 import com.copy.kiascreen.comparison.vo.Brand
 import com.copy.kiascreen.roomVo.BrandItems
 import com.copy.kiascreen.smoothSnapToPosition
 
-// 아이템 제거시, 해당 목록 아이템리스트에서 지우고, holder Map에 이동할 위치에 있는 holder가 있을 경우 (포커스를 받지 못해서 view update가 불가능한 경우) 해당 holder에 접근해서 visibility 관리
+// 아이템 제거시, 해당 목록 아이템리스트에서 삭제.
+// holder Map에 이동할 위치에 있는 holder가 있을 경우 (포커스를 받지 못해서 view update가 불가능한 경우) 해당 holder에 접근해서 visibility 관리
 fun ComparisonAdapter.onDelBtnClicked(position : Int, compRecycler : RecyclerView) {
     var mPosition = position
 
@@ -24,16 +32,19 @@ fun ComparisonAdapter.onDelBtnClicked(position : Int, compRecycler : RecyclerVie
         this.notifyItemRangeRemoved(position, this.mitems.size - position)
     }
 
+    // 제익 마지막 항목을 삭제 했을 경우에는, 이전 항목으로 scroll 시켜 줘야 함.
     if (position == this.mitems.size) {
         --mPosition
     }
 
+    // 만약 해당 위치에 있는 홀더가 detached된게 아니라면, 추가 버튼을 보이게 하고 해당 위치로 스크롤 시켜준다. 주로 마지막 항목을 지웟을 경우임.
     compRecycler.findViewHolderForAdapterPosition(mPosition)?.let {
         Log.d("adapterTest", "findViewHolderPosition and count = ${this.mitems.size} mPosition = $mPosition")
         it.itemView.findViewById<ConstraintLayout>(R.id.add_wrapper_constraint).visibility = View.VISIBLE
         compRecycler.smoothSnapToPosition(mPosition)
     }
 
+    // 아이템 추가 버튼을 보여준다. (viewHolder가 detached됬을 경우를 위해서, holderMap에서 꺼내 쓴다.) 해당 경우는 주로 3개의 항목 중 2번째 항목을 삭제 했을 경우임.
     this.holderMap[mPosition]?.let {
         Log.d("adapterTest", "holderMap not null")
         it.itemView.findViewById<ConstraintLayout>(R.id.add_wrapper_constraint).visibility = View.VISIBLE
@@ -41,11 +52,10 @@ fun ComparisonAdapter.onDelBtnClicked(position : Int, compRecycler : RecyclerVie
 }
 
 // 아이템 추가.
+// 실제로는 retrofit2를 통해서 아이템을 가져와야 함으로, 매개변수로 해당 아이템 하나를 받아와야 한다.
 fun ComparisonAdapter.addItem(compRecycler : RecyclerView) {
-    this.addSpinnerItem(BrandItems.brandItems2)
-
+    this.addSpinnerItem(BrandItems.brandItems2)     // refactor 필요
     this.notifyItemInserted(this.mitems.size - 1)
-
     compRecycler.smoothSnapToPosition(this.mitems.size - 1)
 
 }
@@ -122,7 +132,40 @@ fun ComparisonAdapter.reset(compRecycler: RecyclerView) {
         Log.d("adapterTest", "holderMap not null")
         holder.itemView.findViewById<ConstraintLayout>(R.id.add_wrapper_constraint).visibility = View.VISIBLE
     }
+}
 
+// vp2 title img ( close and open toggle 이미지 클릭 리스너)
+fun AppCompatImageView.toggleVp(pager: ViewPager2) {
+    this.setOnClickListener {
+        if (pager.visibility != View.GONE) {
+            pager.visibility = View.GONE
+            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_add_24))
+        }
+        else {
+            pager.visibility = View.VISIBLE
+            this.setImageDrawable(resources.getDrawable(R.drawable.straight_line))
+        }
+    }
+}
 
+fun AppCompatImageView.toggleRv(pager: RecyclerView) {
+    this.setOnClickListener {
+        if (pager.visibility != View.GONE) {
+            pager.visibility = View.GONE
+            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_add_24))
+        }
+        else {
+            pager.visibility = View.VISIBLE
+            this.setImageDrawable(resources.getDrawable(R.drawable.straight_line))
+        }
+    }
+}
+
+fun SwitchCompat.toggleDiffFields(performanceAdapter: CompPerformanceAdapter, econAdapter: CompEconAdapter, safetyAdapter: CompSafetyAdapter) {
+    this.setOnCheckedChangeListener { _, isChecked ->
+        performanceAdapter.toggleDiffItems(isChecked)
+        econAdapter.toggleDiffItems(isChecked)
+        safetyAdapter.toggleDiffItems(isChecked)
+    }
 }
 

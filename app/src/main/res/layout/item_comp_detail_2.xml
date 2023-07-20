@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -27,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="5.3km/kWh" />
 
     </LinearLayout>
@@ -54,7 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="4.3km/kWh" />
 
     </LinearLayout>
@@ -81,7 +84,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="4.8km/kWh" />
 
     </LinearLayout>
@@ -108,7 +112,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="전기차" />
 
     </LinearLayout>
@@ -124,18 +129,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/insurance_title_tv"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="차량 보험 등급" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/insurance_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="차량 보험 등급" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/insurance_guide_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/comp_guide_icon_marginLeft"
+                android:src="@drawable/icon_info_outline"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/insurance_content_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:hint="17" />
 
     </LinearLayout>
@@ -162,7 +184,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="0" />
 
     </LinearLayout>
@@ -193,7 +216,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/comp_item_text_marginTop"
             android:layout_marginLeft="10dp"
-            android:textStyle="bold"
+            android:textSize="16dp"
+            android:fontFamily="@font/kiamedium"
             android:text="1,000,000 원" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -201,6 +225,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/white">
 
             <TextView
@@ -224,6 +249,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="운행 거리"
+                android:textSize="14sp"
+                android:fontFamily="@font/kialight"
                 android:layout_marginTop="@dimen/comp_item_linear_marginTop"
                 app:layout_constraintTop_toBottomOf="@+id/used_period_spinner"
                 app:layout_constraintLeft_toLeftOf="parent" />
@@ -240,6 +267,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="자동차세"
+                android:textSize="14sp"
+                android:fontFamily="@font/kialight"
                 android:layout_marginTop="@dimen/comp_item_text_marginTop"
                 app:layout_constraintTop_toBottomOf="@+id/driving_distance_spinner"
                 app:layout_constraintLeft_toLeftOf="parent" />
@@ -249,58 +278,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="390,000원"
-                app:layout_constraintTop_toTopOf="@+id/car_tax_title_tv"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textSize="16dp"
+                android:fontFamily="@font/kiamedium"
+                app:layout_constraintTop_toBottomOf="@+id/car_tax_title_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/car_tax_title_tv" />
 
             <TextView
                 android:id="@+id/car_insurance_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="보험료"
+                android:textSize="14sp"
+                android:fontFamily="@font/kialight"
                 android:layout_marginTop="@dimen/comp_item_text_marginTop"
-                app:layout_constraintTop_toBottomOf="@+id/car_tax_title_tv"
+                app:layout_constraintTop_toBottomOf="@+id/car_tax_content_tv"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/insurance_img"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/icon_info_outline"
                 app:layout_constraintTop_toTopOf="@+id/car_insurance_tv"
-                app:layout_constraintLeft_toRightOf="@+id/car_insurance_tv" />
+                app:layout_constraintLeft_toRightOf="@+id/car_insurance_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/car_insurance_tv"/>
 
             <TextView
                 android:id="@+id/car_insurance_content_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="390,000원"
-                app:layout_constraintTop_toTopOf="@+id/car_insurance_tv"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textSize="16dp"
+                android:fontFamily="@font/kiamedium"
+                app:layout_constraintTop_toBottomOf="@+id/car_insurance_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/car_insurance_tv"  />
 
             <TextView
                 android:id="@+id/car_fuel_cost_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="유류비"
+                android:textSize="14sp"
+                android:fontFamily="@font/kialight"
                 android:layout_marginTop="@dimen/comp_item_text_marginTop"
-                app:layout_constraintTop_toBottomOf="@+id/car_insurance_tv"
+                app:layout_constraintTop_toBottomOf="@+id/car_insurance_content_tv"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/fuel_cost_img"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/icon_info_outline"
+                android:layout_marginLeft="@dimen/comp_guide_icon_marginLeft"
                 app:layout_constraintTop_toTopOf="@+id/car_fuel_cost_tv"
-                app:layout_constraintLeft_toRightOf="@+id/car_fuel_cost_tv" />
+                app:layout_constraintLeft_toRightOf="@+id/car_fuel_cost_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/car_fuel_cost_tv"/>
 
             <TextView
                 android:id="@+id/car_fuel_cost_content_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="390,000원"
-                app:layout_constraintTop_toTopOf="@+id/car_fuel_cost_tv"
-                app:layout_constraintRight_toRightOf="parent" />
+                android:textSize="16dp"
+                android:fontFamily="@font/kiamedium"
+                app:layout_constraintTop_toBottomOf="@+id/car_fuel_cost_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/car_fuel_cost_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

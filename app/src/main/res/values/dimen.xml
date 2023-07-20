@@ -68,4 +68,10 @@
 
     <dimen name="comp_dialog_subtext_marinLeft">55dp</dimen>
     <dimen name="comp_dialog_subtext_marinTop">10dp</dimen>
+
+    <dimen name="comp_guide_icon_marginLeft">10dp</dimen>
+
+    <dimen name="kncap_margin_top">20dp</dimen>
+    <dimen name="kncap_content_margin_top">15dp</dimen>
+    <dimen name="kncap_padding">20dp</dimen>
 </resources>

@@ -20,6 +20,10 @@ class StickyScrollView : NestedScrollView, ViewTreeObserver.OnGlobalLayoutListen
     }
 
     var isAnimated = false
+    var hasItem = true
+        set(value) {
+            field = value
+        }
 
     var header: View? = null
         set(value) {
@@ -41,7 +45,7 @@ class StickyScrollView : NestedScrollView, ViewTreeObserver.OnGlobalLayoutListen
 
     private var mHeaderInitPosition = 0f
 
-    var isModelCompareClicked = false
+    var isModelCompareClicked = false       // 모델 비교 버튼을 클릭 시에만 상단에 타겟뷰(rv)를 고정시켜 줘야 함.
 
     override fun onGlobalLayout() {
         mHeaderInitPosition = header?.top?.toFloat() ?: 0f
@@ -65,6 +69,8 @@ class StickyScrollView : NestedScrollView, ViewTreeObserver.OnGlobalLayoutListen
     private fun stickHeader(position: Float) {
         header?.translationY = position
         header?.alpha = 1.0f
+        callStickListener()
+
         Log.d("stickyHeaderTest", "start stickyheader position = $position")
 //        if(!isAnimated) {
 //            header?.animate()?.translationY(position)?.let {
@@ -81,7 +87,7 @@ class StickyScrollView : NestedScrollView, ViewTreeObserver.OnGlobalLayoutListen
 //                it.translationY = position
 //            }
 //        }
-        callStickListener()
+
     }
 
     private fun callStickListener() {

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -10,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="합계"
-        android:textSize="16sp"
-        android:fontFamily="@font/kiamedium"
+        android:textSize="14sp"
+        android:fontFamily="@font/kialight"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -20,8 +21,8 @@
         android:id="@+id/comp_total_content_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="16dp"
         android:fontFamily="@font/kiamedium"
-        android:textSize="16sp"
         android:hint="2,000,000원"
         android:layout_marginTop="@dimen/comp_item_text_marginTop"
         app:layout_constraintTop_toBottomOf="@+id/comp_total_title_tv"
@@ -33,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
         android:text="취득세"
-        android:textSize="16sp"
-        android:fontFamily="@font/kiamedium"
+        android:textSize="14sp"
+        android:fontFamily="@font/kialight"
         app:layout_constraintTop_toBottomOf="@+id/comp_total_content_tv"
         app:layout_constraintLeft_toLeftOf="@+id/comp_total_content_tv" />
 
@@ -43,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_info_outline"
-        android:layout_marginLeft="@dimen/comp_detail_4_marginTop"
+        android:layout_marginLeft="@dimen/comp_guide_icon_marginLeft"
         app:layout_constraintTop_toTopOf="@+id/acquisition_tax_title_tv"
         app:layout_constraintLeft_toRightOf="@+id/acquisition_tax_title_tv"
         app:layout_constraintBottom_toBottomOf="@+id/acquisition_tax_title_tv"/>
@@ -84,8 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="공채금액(할인)"
-        android:textSize="16sp"
-        android:fontFamily="@font/kiamedium"
+        android:textSize="14sp"
+        android:fontFamily="@font/kialight"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
         app:layout_constraintTop_toBottomOf="@+id/register_cond_spinner"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -95,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_info_outline"
-        android:layout_marginLeft="@dimen/comp_detail_4_marginTop"
+        android:layout_marginLeft="@dimen/comp_guide_icon_marginLeft"
         app:layout_constraintTop_toTopOf="@+id/fond_title_tv"
         app:layout_constraintLeft_toRightOf="@+id/fond_title_tv"
         app:layout_constraintBottom_toBottomOf="@+id/fond_title_tv"/>
@@ -115,9 +116,9 @@
         android:id="@+id/register_place_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/kiamedium"
+        android:textSize="14sp"
+        android:fontFamily="@font/kialight"
         android:text="등록 지역"
-        android:textSize="16sp"
         android:layout_marginTop="@dimen/comp_item_linear_marginTop"
         app:layout_constraintTop_toBottomOf="@+id/fond_content_tv"
         app:layout_constraintLeft_toLeftOf="parent" />

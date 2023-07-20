@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/menu_wrapper"
+    android:padding="@dimen/kncap_padding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/kncap_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/loco_kncap"
+        android:layout_marginTop="@dimen/kncap_margin_top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/kncap_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_kncap_title"
+        android:fontFamily="@font/kiab"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/kncap_img"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/kncap_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_kncap_content"
+        android:textSize="13sp"
+        android:fontFamily="@font/kialight"
+        android:layout_marginTop="@dimen/kncap_content_margin_top"
+        app:layout_constraintTop_toBottomOf="@+id/kncap_title_tv"
+        app:layout_constraintLeft_toLeftOf="@+id/kncap_title_tv"
+        app:layout_constraintRight_toRightOf="@+id/kncap_title_tv" />
+
+    <TextView
+        android:id="@+id/kncap_link_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/kiamedium"
+        android:text="교통안전공단 바로가기 >"
+        android:layout_marginTop="@dimen/kncap_content_margin_top"
+        app:layout_constraintTop_toBottomOf="@+id/kncap_content_tv"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

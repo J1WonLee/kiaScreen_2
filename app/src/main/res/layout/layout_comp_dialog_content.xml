@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/kiamedium"
         android:textColor="@color/gray_txt"
+        android:gravity="center_vertical"
         android:layout_marginLeft="@dimen/comp_dialog_padding"
         android:hint="@string/text_insurance_guide_1" />
 

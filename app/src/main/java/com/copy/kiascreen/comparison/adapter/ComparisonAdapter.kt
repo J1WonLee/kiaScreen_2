@@ -31,8 +31,8 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
     // 선택한 옵션 목록
     var selectedCarList = mutableListOf<SelectedOption>()
 
-    private var basePrice = 0
-    private var isLastItemDeleted = false
+    private var basePrice = 0   // 첫번째 (기준이 되는) 아이템 트림 선택까지 했을 경우 발생하는 총 비용을 담는 변수
+    private var isLastItemDeleted = false       // 마지막 아이템이 삭제 된 경우에는, 마지막에 선택한 아이템에 대한 정보들을 이전 항목으로 이전을 시켜줘야함 , true로 설정되는 경우는 -> 아이템이 3개인 경우에서 두번째 항목 삭제 했을 때
     private var lastSelectedItem  = LastSelectedItem()
     private var delClicked = false
 
@@ -69,6 +69,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             }
         }
 
+        // 아이템 추가 전에 이전 아이템을 다 선택했는지 파악한 후, 안했을 경우 해당 항목을 선택하라고 보여준다.
         fun onAddBtnClick() {
             binding.addCarImg.setOnClickListener {
                 var stage = if(binding.brandSpinner.selectedItemPosition == binding.brandSpinner.adapter.count && adapterPosition >= 1) {
@@ -83,20 +84,19 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
                     binding.addWrapperConstraint.visibility = View.GONE
                     4
                 }
-
                 Log.d("adapterTest", "carSpinnerSelected Item = ${binding.carSpinner.selectedItemPosition} , totalCount = ${binding.carSpinner.adapter.count}")
-
                 mInterface?.onAddBtnClick(stage)
 
             }
         }
 
+        // 아이템 삭제
         fun onDelBtnClick(position: Int) {
             binding.comparItemDelImg.setOnClickListener {
                 Log.d("adapterTest", "====onDelBtnCLink, position = $position")
-                beforeSize = mitems.size
+                beforeSize = mitems.size        // 아이템을 3개까지 선택 한 후 두번째 항목 삭제할 경우 갱신 않되는 문제를 처리 하기 위한 변수
                 mitems.removeAt(position)
-                mInterface?.onDelBtnClick(position)
+                mInterface?.onDelBtnClick(position) // 아이템 삭제 시, stickyHeader , vp2에 해당 위치의 아이템이 삭제됬음을 알려줘야 한다
 
                 // 선택된 목록을 지워준다.
                 if (selectedCarList.size > position){
@@ -117,7 +117,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
 
         fun onLastItemDeleted() {
-            if (isLastItemDeleted) {
+            if (isLastItemDeleted) {        // 아이템을 3개 고른 상태에서, 두번째 아이템을 삭제한 경우 동작하는 함수
                 // spinner 다시 재선택 해준다
                 isLastItemDeleted = false
                 setSpinnerItem(binding)
@@ -126,7 +126,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
 
         override fun onImgClick(basePrice : Int, totalPrice : Int) {
             Log.d("imgAdapterTest", "===click event===")
-            setSpinnerSelection(binding)
+            setSpinnerSelection(binding)        // 추천 차량 이미지 클릭 시 해당에 맞는 목록 활성화 해준다
         }
     }
 
@@ -147,6 +147,10 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         holder.onLastItemDeleted()
     }
 
+    /*
+        아이템 크기가, 화면 하나에 거의 꽉찰정도여서 화면 밖으로 스크롤 됬을경우(포커스를 받지 못할 경우 viewholder에서 갱신 작업이 이루어지지 않는 문제가 있음
+        해당 아이템이 화면 밖으로 나갔을 경우(포커스 받지 못할 경우) 임시적으로 저장, 반대로 포커스를 받은 경우에는 삭제
+     */
     override fun onViewAttachedToWindow(holder: ComparisonHolder) {
         Log.d("holderTest", "attach view, remove holderMap ${holder.adapterPosition}")
         holderMap.remove(holder.adapterPosition)
@@ -159,6 +163,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         super.onViewDetachedFromWindow(holder)
     }
 
+    // spinner 아이템 목록 설정 , 브랜드 엔진 컬러 트림 순으로 세팅된다.
     private fun setBrandSpinnerAdapter(binding : ItemComparisonBinding, adapterPosition : Int) {
         Log.d("spinnerTest", "setBrandSpinnerAdapter adapterPosition == ${adapterPosition}")
         val spinnerAdapter = if (adapterPosition == 0) {
@@ -168,7 +173,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             getSpinnerAdapter(brandItems.toMutableList(), "기아")
         }
         else {
-            // 아이템 2개 고르고 리셋했을 경우에,
+            // 아이템 2개 고르고 리셋했을 경우에, 보여야 하는 뷰가 안보이는 경우가 존재해서 추가 함
             binding.brandSpinner.setBackgroundDrawable(context.resources.getDrawable(R.drawable.spinner_background))
             binding.brandSpinner.isEnabled = true
             binding.carSpinner.isEnabled = false
@@ -223,13 +228,6 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
 
         val spinnerAdapter = getSpinnerAdapter(carList, "차량 선택")
 
-        /*
-        확장 함수로 대체
-        binding.carSpinner.adapter = spinnerAdapter
-        binding.carSpinner.setSelection(spinnerAdapter.count)
-        binding.carSpinner.dropDownVerticalOffset = dpToPix(45f).toInt()
-        */
-
         binding.carSpinner.setSpinnerAdapter(spinnerAdapter)
 
         binding.carSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -261,6 +259,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
                         }
                     }
                 }
+
                 setEngineSpinnerAdapter(childItems, binding, carPrice, adapterPosition)
                 binding.purchaseConsultBtn.blockClick(binding.buildBtn)
                 saveLastSelectedSpinnerItem(adapterPosition, position, 1)
@@ -406,9 +405,14 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             // 아이템을 2개 이상 선택 했음, 메인뷰 바텀시트 버튼 활성화 시켜줘야 함.
             binding.recCarWrapperConstraint.visibility = View.GONE
             binding.buildBtn.visibility = View.VISIBLE
-            binding.purchaseConsultBtn.visibility = View.VISIBLE
+            binding.purchaseConsultBtn.visibility = View.INVISIBLE
+            binding.buildBtn.visibility = View.INVISIBLE
             setComparePrice(binding, trimPrice)
             mInterface?.setCompareBtnEnable()
+        }
+        else if (adapterPosition == 0) {
+            binding.purchaseConsultBtn.visibility = View.VISIBLE
+            binding.buildBtn.visibility = View.VISIBLE
         }
 
         var afterPrice = (trimPrice + (trimPrice * 0.1).toInt())
@@ -418,25 +422,26 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         binding.afterPriceTv.text = afterPrice.toString()
         binding.purchaseConsultBtn.enableClick(binding.buildBtn)
 
+
+        // 첫번째 항목(기준)을 다 선택하면, 추천 차량 이미지들을 나머지 항목들에게 보여줘야 한다
         if (adapterPosition == 0) {
             mInterface?.setRecCarImg()
             basePrice = trimPrice + (trimPrice * 0.1).toInt()
         }
+
         Log.d("updateTest", "===calculatePrice test ==== ")
         setSelectedItemList(binding, adapterPosition, afterPrice)
     }
 
+    // 차량 이미지 설정
     private fun setCarImg(binding: ItemComparisonBinding, adapterPosition: Int) {
         if (adapterPosition == 0) {
             // 엔진 트림 선택 되었을 때 이미지 보여줌
             if (binding.carSpinner.selectedItemPosition == binding.carSpinner.adapter.count || binding.engineSpinner.selectedItemPosition == binding.engineSpinner.adapter.count
                 || binding.trimSpinner.selectedItemPosition == binding.trimSpinner.adapter.count) {
-
                 binding.blankCarImg.changeToBlankImg()
-
             }
             else {
-
                 binding.blankCarImg.changeToCarImg(carImgLink[0])
             }
         }
@@ -444,10 +449,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             // 브랜드 엔지 트림 선택 되었을 때 이미지 보여줌
             if ( binding.brandSpinner.selectedItemPosition == binding.brandSpinner.adapter.count || binding.carSpinner.selectedItemPosition == binding.carSpinner.adapter.count
                 || binding.engineSpinner.selectedItemPosition == binding.engineSpinner.adapter.count || binding.trimSpinner.selectedItemPosition == binding.trimSpinner.adapter.count) {
-
-
                 binding.blankCarImg.changeToBlankImg()
-
             }
             else {
                 binding.blankCarImg.changeToCarImg(carImgLink[1])
@@ -455,11 +457,13 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
     }
 
+    // 엔진까지 선택됬을 때, 추천 차량 이미지들을 보여준다.
+    // 추천 차량 이미지를 보여주는 경우는 2가지. 1. 첫번째 아이템을 다 골랐을 때 -> 나머지 아이템들에게 추천 차량 이미지를 보여준다 / 2. 첫번째 아이템 이외의 아이템의 엔진을 선택했을 경우 -> 해당 선택한 엔진에 따른 추천 차량 이미지를 보여준다
     private fun showRecCarImg(binding : ItemComparisonBinding, adapterPosition: Int) {
         // comparRecImg의 item 다시 설정해 준 뒤, 보여줌
 
         if (adapterPosition >= 1 && binding.engineSpinner.selectedItemPosition != binding.engineSpinner.adapter.count) {
-            // 가격 및 구매 상담, 견적 버튼을 가리고, vp , tab은 보여준다
+            // 가격 및 구매 상담, 견적 버튼을 가리고, 추천 차량 이미지 vp , tab은 보여준다
             binding.recCarWrapperConstraint.visibility = View.VISIBLE
             binding.priceWrapper.visibility = View.GONE
             binding.purchaseConsultBtn.visibility = View.GONE
@@ -472,6 +476,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
     }
 
+    // 트림 선택 까지 다 했을 경우, 첫번째 아이템과 가격을 비교하여 표시해 준다.
     private fun setComparePrice(binding: ItemComparisonBinding, comPrice : Int) {
         if (basePrice < comPrice) {
             // 글자색 붉은색
@@ -501,6 +506,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
     }
 
+    // 추천 차량 pager을 설정해준다
     private fun setCarImgPager(binding : ItemComparisonBinding, position: Int) {
         if (position >= 1) {
             binding.buildBtn.visibility = View.GONE
@@ -514,6 +520,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
 
             TabLayoutMediator(binding.recCarImgTab, binding.recCarImgVp) {_,_ -> }.attach()
 
+            // 수평 스크롤을 중첩시킬 수 없어서 indicator를 클릭해서 이동하는 식으로 구현함
             binding.recCarImgTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     var des = tab?.position
@@ -524,11 +531,13 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
         }
+        // 첫번째 항목은 추천차량이 존재해선 안됨
         else {
             binding.comparItemDelImg.visibility = View.GONE
         }
     }
 
+    //마지막 아이템일 경우에는 임시로 저장을 해줘야 함(이전 아이템 삭제 시 마지막에 고른 아이템들에 대한 정보를 표기해 줘야 함)
     private fun saveLastSelectedSpinnerItem(adapterPosition: Int, selectedPosition : Int, stage : Int) {
         if (adapterPosition == 2) {
             when(stage) {
@@ -540,6 +549,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
     }
 
+    // 이전에 선택한 항목들에 따라서 spinner 선택해줌., delay 안주면 선택이 안됨(이전 아이템 선택 안됬을 경우에 다음 아이템이 클릭 되는걸 막아놔서 그럼)
     private fun setSpinnerItem(binding: ItemComparisonBinding) {
         binding.brandSpinner.setSelection(lastSelectedItem.brand)
 
@@ -556,7 +566,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         },400)
     }
 
-
+    // 추천 차량 클릭 시 해당 정보에 맞는 항목들을 클릭 시켜 준다
     private fun setSpinnerItem(binding: ItemComparisonBinding, selectedItem : LastSelectedItem) {
         binding.brandSpinner.setSelection(lastSelectedItem.brand)
 
@@ -578,10 +588,9 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         setSpinnerItem(binding, LastSelectedItem(1,2,3,1))
     }
 
+    // 트림 선택 완료 시, 리스트에 추가해줌. 단, 이미 존재한 경우에는 교체 해줌
     private fun setSelectedItemList(binding: ItemComparisonBinding, adapterPosition: Int, totalPrice : Int){
-        // 트림 선택 완료 시, 리스트에 추가해줌. 단, 이미 존재한 경우에는 교체 해줌
         Log.d("adaterTest", "===setSelectedItemList test ==== adapterPosition   ${adapterPosition}}")
-
         Log.d("updateTest", "===setSelectedItemList test ==== adapterPosition   ${adapterPosition}}")
         var brand : Brand = if (adapterPosition == 0) {
             mitems[adapterPosition].first()
@@ -642,3 +651,5 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
     }
 
 }
+
+

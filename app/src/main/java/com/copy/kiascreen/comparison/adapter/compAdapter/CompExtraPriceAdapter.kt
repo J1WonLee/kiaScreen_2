@@ -1,6 +1,7 @@
 package com.copy.kiascreen.comparison.adapter.compAdapter
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.copy.kiascreen.R
+import com.copy.kiascreen.comparison.BuildCompActivity
+import com.copy.kiascreen.comparison.dialogfragment.AcquistionFragment
+import com.copy.kiascreen.comparison.dialogfragment.FundFragment
 import com.copy.kiascreen.comparison.vo.CompItem
 import com.copy.kiascreen.comparison.vo.CompListItems
 import com.copy.kiascreen.databinding.ItemCompDetail4Binding
@@ -58,6 +62,31 @@ class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompEx
         fun bind(){
             initData(binding)
         }
+
+        fun setClickListener() {
+            binding.acquisitionTaxImg.setOnClickListener {
+                try {
+                    val activity = context as BuildCompActivity
+                    activity?.let {
+                        AcquistionFragment().show(it.supportFragmentManager, null)
+                    }
+                } catch (e : Exception) {
+                    Log.d("DialogTest", "ExtraPriceAdapter acquisitionDialog Exception = ${e.message}")
+                }
+
+            }
+
+            binding.fondImg.setOnClickListener {
+                try {
+                    val activity = context as BuildCompActivity
+                    activity?.let {
+                        FundFragment().show(it.supportFragmentManager, null)
+                    }
+                } catch (e : Exception) {
+                    Log.d("DialogTest", "ExtraPriceAdapter fondDialog Exception = ${e.message}")
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExtraPriceHolder {
@@ -69,6 +98,7 @@ class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompEx
 
     override fun onBindViewHolder(holder: ExtraPriceHolder, position: Int) {
         holder.bind()
+        holder.setClickListener()
     }
 
     private fun initData(binding: ItemCompDetail4Binding) {
@@ -116,13 +146,15 @@ class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompEx
     private fun setAcquSpinnerListener(binding : ItemCompDetail4Binding) {
         binding.registerPlaceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (clickCount >= 1) {
-                    setChildSpinner(binding, position)
-                }
-                clickCount++
+                Log.d("extraPriceSPinnerTest", "onItemSelected position = $position clickCount = $clickCount")
+
+                setChildSpinner(binding, position)
+
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                Log.d("extraPriceSPinnerTest", "onNothingSelected  clickCount = $clickCount")
+            }
 
         }
     }
@@ -134,8 +166,6 @@ class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompEx
         else {
             binding.registerPlaceChildSpinner.adapter = ArrayAdapter(context, R.layout.item_spinner, kyonggiString)
         }
-
-
         binding.registerPlaceChildSpinner.visibility = View.VISIBLE
 
         setChildSpinnerListener(binding)

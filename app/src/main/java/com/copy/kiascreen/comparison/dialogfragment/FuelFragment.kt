@@ -1,11 +1,14 @@
 package com.copy.kiascreen.comparison.dialogfragment
 
+import android.content.Context
 import android.graphics.Color
+import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.copy.kiascreen.R
 import com.copy.kiascreen.custom.layout.LayoutDialogContent
@@ -23,11 +26,29 @@ class FuelFragment : BaseDialogFragmentNoVM<DialogFuelGuideBinding>() {
     private lateinit var layout8 : LayoutDialogContent
 
     override fun setWindowParams() {
+
+        val size = Point()
+        val windowManager = requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = windowManager.defaultDisplay
+
+        display.getSize(size)
+        val deviceWidth = size.x
+
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val params: ViewGroup.LayoutParams? = dialog?.window?.attributes
+        params?.width = (deviceWidth * 0.9).toInt()
+        params?.height = (size.y * 0.9).toInt()
+
+        dialog?.window?.attributes = params as WindowManager.LayoutParams
+
+        /*
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog?.window?.setLayout(
             ConstraintLayout.LayoutParams.WRAP_CONTENT,
             ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
+
+         */
     }
 
     override fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?) = DialogFuelGuideBinding.inflate(inflater, container, false)
@@ -36,6 +57,7 @@ class FuelFragment : BaseDialogFragmentNoVM<DialogFuelGuideBinding>() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         setText()
+        closeDialog()
     }
 
     private fun initView() {
@@ -58,5 +80,11 @@ class FuelFragment : BaseDialogFragmentNoVM<DialogFuelGuideBinding>() {
         layout6.setLayoutText(R.string.text_fuel_guide_8)
         layout7.setLayoutText(R.string.text_fuel_guide_9)
         layout8.setLayoutText(R.string.text_fuel_guide_10)
+    }
+
+    private fun closeDialog() {
+        binding.dialogCloseImg.setOnClickListener {
+            this.dismiss()
+        }
     }
 }

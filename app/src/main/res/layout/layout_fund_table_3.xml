@@ -218,7 +218,7 @@
         android:layout_height="150dp"
         android:background="@drawable/border_left_bottom_trans"
         app:layout_constraintTop_toBottomOf="@+id/aq_third_column_view"
-        app:layout_constraintLeft_toLefttOf="@+id/aq_third_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_third_column_view"
         app:layout_constraintRight_toRightOf="@+id/aq_third_column_view"/>
 
     <TextView
@@ -238,7 +238,7 @@
         android:layout_height="150dp"
         android:background="@drawable/border_left_bottom_trans"
         app:layout_constraintTop_toBottomOf="@+id/aq_sixth_column_view"
-        app:layout_constraintLeft_toLefttOf="@+id/aq_sixth_column_view"
+        app:layout_constraintLeft_toLeftOf="@+id/aq_sixth_column_view"
         app:layout_constraintRight_toRightOf="@+id/aq_sixth_column_view"/>
 
     <TextView
