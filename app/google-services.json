@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036284074203",
+    "project_id": "kiamodelcomp",
+    "storage_bucket": "kiamodelcomp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036284074203:android:556172bf758e4f04d8d4fe",
+        "android_client_info": {
+          "package_name": "com.copy.kiascreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036284074203-9qsa99rvlp77e6tl6e243blju2vrbdfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAydPWMNFJMxmt-ZzRwm8aDmeUyQ5w5oAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036284074203-9qsa99rvlp77e6tl6e243blju2vrbdfm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

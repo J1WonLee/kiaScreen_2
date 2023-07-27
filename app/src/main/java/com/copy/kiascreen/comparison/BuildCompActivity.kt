@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,9 +33,13 @@ import com.copy.kiascreen.menu.FragmentActivityBridge
 import com.copy.kiascreen.roomVo.BrandItems
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.util.AlertUtil
+import com.copy.kiascreen.util.OnBackPressedListener
 import com.copy.kiascreen.util.activity.BaseActivity
 import com.copy.kiascreen.util.activity.TransitionMode
+import com.copy.kiascreen.util.textlink.TextLink
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.inappmessaging.FirebaseInAppMessaging
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -90,12 +95,17 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         CompExtraPriceAdapter(this)
     }
 
+    private val kncapTv : TextView by lazy {
+        binding.layoutKcnap.kncapLinkTv
+    }
+
     private var isResetClicked = false
 
     override fun inflateLayout(layoutInflater: LayoutInflater) = ActivityBuildCmpBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         initToolbar()
         initCompRecycler()
@@ -141,6 +151,10 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         econViewPager2 = binding.compDetailVp2
         safetyViewPager2 = binding.compDetailVp3
         extraPriceViewPager2 = binding.compDetailVp4
+
+        TextLink(kncapTv).apply {
+            setLinkify("교통안전공단 바로가기")
+        }
     }
 
 
@@ -231,28 +245,6 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         safetyViewPager2.adapter = safetyAdapter
         extraPriceViewPager2.adapter = extraPriceAdapter
 
-
-        /*
-        performRv.apply {
-            adapter = performAdapter
-            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
-        }
-
-        econRv.apply {
-            adapter = econAdapter
-            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
-        }
-
-        safetyRv.apply {
-            adapter = safetyAdapter
-            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
-        }
-
-        extraPriceRv.apply {
-            adapter = extraPriceAdapter
-            layoutManager = LinearLayoutManagerWrapper(this@BuildCompActivity, LinearLayoutManager.HORIZONTAL, false)
-        }
-        */
     }
 
     // 초기화 버튼 클릭 시 pager2들의 데이터들을 초기화 시켜준다.
@@ -556,7 +548,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
         binding.compTitleExpandImg.toggleVp(performViewPager2)
         binding.compTitle2ExpandImg.toggleVp(econViewPager2)
-        binding.compTitle3ExpandImg.toggleVp(safetyViewPager2)
+        binding.compTitle3ExpandImg.toggleVp(safetyViewPager2, binding.layoutKcnap.kncapConstraintWrapper)
         binding.compTitle4ExpandImg.toggleVp(extraPriceViewPager2)
 
         /*
@@ -578,8 +570,22 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
             ?.let { supportFragmentManager.beginTransaction().remove(it).commit() }
         binding.menuFragmentHolder.isClickable = false
         Log.d("LoginTest", "bq onResume Called!")
+
+        FirebaseInAppMessaging.getInstance().triggerEvent("main_activity_ready")
     }
 
+    override fun onBackPressed() {
+        val fragments = supportFragmentManager.fragments
+        if (fragments.size > 0) {
+            for (fragment in fragments) {
+                if (fragment is OnBackPressedListener) {
+                    (fragment as OnBackPressedListener).onBackPressed()
+                    return
+                }
+            }
+        }
+        super.onBackPressed()
+    }
 
     override fun setLogout(flag: Boolean) {
         if (flag) {

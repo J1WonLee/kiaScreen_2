@@ -19,6 +19,7 @@ import com.copy.kiascreen.comparison.vo.CompItem
 import com.copy.kiascreen.comparison.vo.CompListItems
 import com.copy.kiascreen.comparison.vo.EconItem
 import com.copy.kiascreen.databinding.ItemCompDetail2Binding
+import com.copy.kiascreen.util.StringTypeUtil
 import java.util.*
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.memberProperties
@@ -37,6 +38,7 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
     private var isUpdatedFlag = false
     // true -> 기본 값, 다른 필드들 강조, false -> 다른 필드 강조 x
     private var diffFieldsFlag = true
+    private val stringUtil = StringTypeUtil()
 
     // 첫번째 아이템과 나머지 아이템들의 필드값이 다른 경우, 해당 layout의 배경을 칠해준다
     private val diffAction = {
@@ -225,7 +227,7 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
         binding.fegContentTv.text = item.feGrade
         binding.insuranceContentTv.text = item.insuranceGrade
         binding.co2ContentTv.text = item.co2
-        binding.maintacneContentTv.text = item.maintance
+        binding.maintacneContentTv.text = stringUtil.getMoneyFormat(item.maintance) +" 원"
     }
 
     private fun initSpinner(binding : ItemCompDetail2Binding) {
@@ -248,7 +250,7 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
     private fun setPeriodSpinnerListener(binding: ItemCompDetail2Binding) {
         binding.usedPeriodSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                binding.carTaxContentTv.text = (13000 * (position + 1)).toString()
+                binding.carTaxContentTv.text = stringUtil.getMoneyFormat((3600 * ((position + 1))).toString()) +" 원"
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -259,7 +261,7 @@ class CompEconAdapter(val context : Context) : RecyclerView.Adapter<CompEconAdap
     private fun setDistanceSpinnerListener(binding : ItemCompDetail2Binding) {
         binding.drivingDistanceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                binding.carInsuranceContentTv.text = (100000 * ((position + 1) * 0.1)).toString()
+                binding.carInsuranceContentTv.text = stringUtil.getMoneyFormat((100000 * ((position + 1))).toString()) +" 원"
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

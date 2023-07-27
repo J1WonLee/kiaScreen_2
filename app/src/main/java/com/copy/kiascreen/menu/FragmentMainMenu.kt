@@ -23,10 +23,11 @@ import com.copy.kiascreen.registry.MemberRegisterActivity
 import com.copy.kiascreen.registry.RegisterAgreeActivity
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.setting.SettingActivity
+import com.copy.kiascreen.util.OnBackPressedListener
 import com.google.android.material.appbar.MaterialToolbar
 import java.lang.Math.abs
 
-class FragmentMainMenu : Fragment() {
+class FragmentMainMenu : Fragment(), OnBackPressedListener {
     private lateinit var binding : FragmentOverlayBinding
     private lateinit var menu1 : TextView
     private lateinit var menu1Item : LinearLayout
@@ -384,15 +385,17 @@ class FragmentMainMenu : Fragment() {
         try {
             fragmentBridge = context as FragmentActivityBridge
             // activity에서 onbackpressed super.()해줘야함 안해주면 동작x
+            /*
             onBackPressedCallback = object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     activity?.findViewById<FrameLayout>(R.id.menu_fragment_holder)?.isClickable = false
                     activity?.supportFragmentManager?.beginTransaction()?.remove(this@FragmentMainMenu)?.commit()
                     fragmentBridge?.showBottomNavi()
                 }
-
             }
             requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback!!)
+
+             */
         }catch (e : java.lang.Exception) {
             Log.d("FragmentMainMenu", "onAttach class Type Exception ${e.message}")
         }
@@ -419,6 +422,12 @@ class FragmentMainMenu : Fragment() {
                 arguments = args
             }
         }
+    }
+
+    override fun onBackPressed() {
+        activity?.findViewById<FrameLayout>(R.id.menu_fragment_holder)?.isClickable = false
+        activity?.supportFragmentManager?.beginTransaction()?.remove(this@FragmentMainMenu)?.commit()
+        fragmentBridge?.showBottomNavi()
     }
 
 

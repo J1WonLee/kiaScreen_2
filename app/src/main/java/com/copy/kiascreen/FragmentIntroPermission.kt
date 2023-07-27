@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.lifecycleScope
@@ -33,7 +34,7 @@ class FragmentIntroPermission : DialogFragment() {
     private val requestMultiplePermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()) {
             permissions -> permissions.entries.forEach {
-                Log.d("permissionTest", "${it.key} = ${it.value}")
+                Log.d("introTest", "${it.key} = ${it.value}")
                 if (!it.value) {
                     rejectPermissions += ", ${it.key}"
                 }
@@ -41,6 +42,21 @@ class FragmentIntroPermission : DialogFragment() {
         initFragmentResult()
     }
 
+    /*
+    fun show(fragmentManager: FragmentManager) : Boolean {
+        if (fragmentManager.isStateSaved)   return false
+        show(fragmentManager, null)
+        return true
+    }
+
+     */
+
+    override fun show(manager: FragmentManager, tag: String?) {
+        Log.d("Introtest", "FragmentIntroPermission show ")
+        if (!manager.isDestroyed && !manager.isStateSaved) {
+            super.show(manager, tag)
+        }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -67,7 +83,8 @@ class FragmentIntroPermission : DialogFragment() {
     }
 
     private fun initFragmentResult() {
-        Log.d("permissionTest", "initFragmentResult")
+        Log.d("introTest", "initFragmentResult")
+//        setFragmentResult("requestKey", bundleOf("resultKey" to true))
         dismiss()
         setFragmentResult("requestKey", bundleOf("resultKey" to true))
     }

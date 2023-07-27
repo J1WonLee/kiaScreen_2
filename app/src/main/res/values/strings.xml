@@ -63,8 +63,8 @@
     <string name="text_term">이용약관</string>
 
     <string name="text_location_term">위치기반서비스 이용약관</string>
-    <string name="text_location_term_with_spaces">위치기반 서비스 이용약관</string>
-    <string name="text_service_term_title">서비스 이용약관</string>
+    <string name="text_service_term_title_1">임의의 서비스 이용약관</string>
+    <string name="text_service_term_title_2">임의의 서비스  이용약관</string>
 
     <string name="text_check_permissions_title">고객님의 편리한 \n이용을 위해 아래 \n권한의 허용이 필요합니다</string>
     <string name="text_permission_noti_title">알림(선택)</string>

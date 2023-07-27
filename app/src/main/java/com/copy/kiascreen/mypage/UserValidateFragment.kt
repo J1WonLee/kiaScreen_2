@@ -67,6 +67,7 @@ class UserValidateFragment : DialogFragment() {
             Intent(requireActivity(), UserInfoActivity::class.java).apply {
                 putExtra("user", user)
                 startActivity(this)
+                dismiss()
             }
         }
         else {

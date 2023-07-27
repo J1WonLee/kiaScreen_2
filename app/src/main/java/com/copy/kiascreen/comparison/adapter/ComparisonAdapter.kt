@@ -568,24 +568,26 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
 
     // 추천 차량 클릭 시 해당 정보에 맞는 항목들을 클릭 시켜 준다
     private fun setSpinnerItem(binding: ItemComparisonBinding, selectedItem : LastSelectedItem) {
-        binding.brandSpinner.setSelection(lastSelectedItem.brand)
+        Log.d("imgAdapterTest", "===setSpinnerItem called===")
+        binding.brandSpinner.setSelection(selectedItem.brand)
 
         binding.carSpinner.postDelayed({
-            binding.carSpinner.setSelection(lastSelectedItem.car)
+            binding.carSpinner.setSelection(selectedItem.car)
         }, 200)
 
         binding.engineSpinner.postDelayed({
-            binding.engineSpinner.setSelection(lastSelectedItem.engine)
+            binding.engineSpinner.setSelection(selectedItem.engine)
         }, 300)
 
         binding.trimSpinner.postDelayed({
-            binding.trimSpinner.setSelection(lastSelectedItem.trim)
+            binding.trimSpinner.setSelection(selectedItem.trim)
         },400)
     }
 
     private fun setSpinnerSelection(binding: ItemComparisonBinding) {
         // 추천 차량 이미지 클릭 시 해당에 맞는 목록 활성화 해준다
-        setSpinnerItem(binding, LastSelectedItem(1,2,3,1))
+        Log.d("imgAdapterTest", "===setSpinnerSelection called===")
+        setSpinnerItem(binding, LastSelectedItem(1,2,2,1))
     }
 
     // 트림 선택 완료 시, 리스트에 추가해줌. 단, 이미 존재한 경우에는 교체 해줌

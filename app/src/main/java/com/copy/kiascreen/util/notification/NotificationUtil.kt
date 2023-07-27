@@ -5,37 +5,31 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.copy.kiascreen.login.LoginActivity
 import com.copy.kiascreen.R
+import com.copy.kiascreen.comparison.BuildCompActivity
 import com.copy.kiascreen.setting.SettingActivity
 
 class NotificationUtil {
     companion object {
-        fun makeNotification(context : Context, msg : String, channelId : String) : Boolean  {
+        fun makeNotification(context : Context, msg : String, title : String, target : String, channelId : String) : Boolean  {
             return try {
                 val notificationManager = context.getSystemService(NotificationManager::class.java)
                 makeNotiChannel(channelId, notificationManager)
 
-//                val intent = Intent(context, MainActivity::class.java).apply {
-//                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//                }
-                var message = ""
-                val intent = when(msg) {
-                    "1" -> {
-                        message = "moveMain"
-                        Intent(context, LoginActivity::class.java).apply {
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        }
-
+                Log.d("fcmTest", "makeNotification msg = $msg, title = $title, target = $target")
+                val intent = when(target) {
+                    "comp" -> {
+                        Log.d("fcmTest", "target = comp")
+                        Intent(Intent.ACTION_VIEW, Uri.parse("myapp://sample?target=comp"))
                     }
-                    "2" -> {
-                        message = "moveSetting"
-                        Intent(context, SettingActivity::class.java).apply {
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        }
+                    "setting" -> {
+                        Log.d("fcmTest", "target = setting")
+                        Intent(Intent.ACTION_VIEW, Uri.parse("myapp://sample?target=setting"))
 
                     }
                     else -> {
@@ -45,11 +39,18 @@ class NotificationUtil {
                     }
                 }
 
-                val pendingIntent = PendingIntent.getActivity(context, 0 , intent, 0)
+                val pendingIntent =
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        PendingIntent.getActivity(context, 0 , intent, PendingIntent.FLAG_IMMUTABLE)
+                    }
+                    else {
+                        PendingIntent.getActivity(context, 0 , intent, 0)
+                    }
+
 
                 val builder = NotificationCompat.Builder(context, channelId)
-                    .setContentTitle("kiaSample")
-                    .setContentText(message)
+                    .setContentTitle(title)
+                    .setContentText(msg + String(Character.toChars(0x1F609)))
                     .setSmallIcon(R.drawable.icon_home_1)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setAutoCancel(true)

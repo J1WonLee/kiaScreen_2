@@ -4,6 +4,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -54,6 +55,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+
     // expandable layout
     implementation "com.github.skydoves:expandablelayout:1.0.7"
 
@@ -89,5 +93,13 @@ dependencies {
     // reflection
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.8.0"
 
+    // fcm
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
+    // inappMessaging
+    implementation 'com.google.firebase:firebase-inappmessaging-display-ktx:20.3.2'
+    implementation 'com.google.firebase:firebase-analytics:21.3.0'
+
+    // splash
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 
 }

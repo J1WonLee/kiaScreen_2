@@ -148,6 +148,21 @@ fun AppCompatImageView.toggleVp(pager: ViewPager2) {
     }
 }
 
+fun AppCompatImageView.toggleVp(pager: ViewPager2, wrapper : ConstraintLayout) {
+    this.setOnClickListener {
+        if (pager.visibility != View.GONE) {
+            wrapper.visibility = View.GONE
+            pager.visibility = View.GONE
+            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_add_24))
+        }
+        else {
+            wrapper.visibility = View.VISIBLE
+            pager.visibility = View.VISIBLE
+            this.setImageDrawable(resources.getDrawable(R.drawable.straight_line))
+        }
+    }
+}
+
 fun AppCompatImageView.toggleRv(pager: RecyclerView) {
     this.setOnClickListener {
         if (pager.visibility != View.GONE) {

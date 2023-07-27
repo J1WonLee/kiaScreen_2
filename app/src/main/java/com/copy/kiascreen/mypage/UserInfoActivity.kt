@@ -351,4 +351,8 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
             }
         }
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
 }

@@ -10,6 +10,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import com.copy.kiascreen.R
 import com.copy.kiascreen.application.KiaSampleApplication
+import com.copy.kiascreen.comparison.BuildCompActivity
 import com.copy.kiascreen.databinding.ActivitySettingBinding
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.util.activity.BaseActivity
@@ -102,9 +103,16 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(T
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-
-        finish()
+        if (isTaskRoot) {
+            // main으로 돌려보낸다
+            Intent(this, BuildCompActivity::class.java).apply {
+                startActivity(this)
+                finish()
+            }
+        }
+        else {
+            super.onBackPressed()
+        }
     }
 
     /*

@@ -6,12 +6,15 @@ import android.content.SharedPreferences
 class SharedPreferenceUtil(private val context : Context) {
     private val PREFS_NAME = "prefs"
     private val PREFS_PERMISSIONS ="permissions"
+    private val PREF_LAUNCH = "initialLaunch"
     private val PREFS_PUSH = "push"
     private val PREFS_AUTO = "autoLogin"
     private val PREF_COACH = "coach"
     private val PREF_MAIN_COACH = "mainCoach"
     private val PREF_LOGIN = "logIn"
     private val PREF_LOGIN_ID = "loginId"
+    private val PREF_FB_TOKEN = "fcbToken"
+
     private val prefs : SharedPreferences = context.getSharedPreferences(PREFS_NAME, 0)
 
     var permissions : String
@@ -41,4 +44,12 @@ class SharedPreferenceUtil(private val context : Context) {
     var loginFlag : Boolean
         get() = prefs.getBoolean(PREF_LOGIN, false)
         set(value) = prefs.edit().putBoolean(PREF_LOGIN, value).apply()
+
+    var fcmToken : String?
+        get() = prefs.getString(PREF_FB_TOKEN, "")
+        set(value) = prefs.edit().putString(PREF_FB_TOKEN, value).apply()
+
+    var initialLaunch : Boolean
+        get() = prefs.getBoolean(PREF_LAUNCH, true)
+        set(value) = prefs.edit().putBoolean(PREF_LAUNCH, value).apply()
 }

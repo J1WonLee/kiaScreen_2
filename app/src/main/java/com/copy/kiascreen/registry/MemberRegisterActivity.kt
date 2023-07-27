@@ -24,6 +24,7 @@ import com.copy.kiascreen.room.RoomUtil
 import com.copy.kiascreen.room.successOrNull
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.util.AlertUtil
+import com.copy.kiascreen.util.KeyboardScrollUtil
 import com.copy.kiascreen.util.activity.BaseActivity
 import com.copy.kiascreen.util.activity.TransitionMode
 import com.google.android.material.appbar.MaterialToolbar
@@ -43,13 +44,16 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     private lateinit var dupChkText : TextView
     private lateinit var chkPwdText : TextView
     private lateinit var toolbar : MaterialToolbar
+    private lateinit var mailAddrEditText : AppCompatEditText
+    private lateinit var keyboardUtil : KeyboardScrollUtil
 
     private val inputFilterId by lazy {
         InputFilter { source, start, end, dest, dstart, dend ->
             val ps = Pattern.compile("^[a-z]+$")
             if (!ps.matcher(source).matches()) {
                 return@InputFilter ""
-            } else {
+            }
+            else {
                 return@InputFilter null
             }
         }
@@ -68,11 +72,20 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
 
     private val mailRegx = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
 
-
-
     private val inputFilterMail by lazy {
         InputFilter { source, start, end, dest, dstart, dend ->
             val ps = Pattern.compile("^[a-zA-Z0-9!@#$%^&*.]*$")
+            if (!ps.matcher(source).matches()) {
+                return@InputFilter ""
+            } else {
+                return@InputFilter null
+            }
+        }
+    }
+
+    private val mailDomainFilter by lazy {
+        InputFilter { source, start, end, dest, dstart, dend ->
+            val ps = Pattern.compile("^[a-z.]*$")
             if (!ps.matcher(source).matches()) {
                 return@InputFilter ""
             } else {
@@ -123,6 +136,12 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
         chkPwdText = binding.pwdChkTv
         mailEditText = binding.inputEmailEt
         toolbar = binding.regitToolbar
+        mailAddrEditText = binding.inputEmailDomainEt
+
+        keyboardUtil = KeyboardScrollUtil(window, onShowKeyboard =  { keyboardHeight -> binding.scrollView.run {
+                smoothScrollTo(0, scrollY + keyboardHeight)
+            }
+        })
     }
 
     override fun inflateLayout(layoutInflater: LayoutInflater) = ActivityMemberRegisterBinding.inflate(layoutInflater)
@@ -156,7 +175,6 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     // 비밀번호, 비밀번호 입력 창의 keydown 리스너
     private fun setKeyDownListener() {
         idEditText.filters = arrayOf(inputFilterId)
-        mailEditText.filters = arrayOf(inputFilterId)
 
         pwdChkEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
@@ -202,12 +220,24 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
                     mailEditText.filters = arrayOf(inputFilterId)
                 }
                 else if (count >= 1) {
-                    mailEditText.filters = arrayOf(inputFilterMail)
+                    mailEditText.filters = arrayOf(inputFilterId2)
                 }
             }
 
-            override fun afterTextChanged(s: Editable?) {
+            override fun afterTextChanged(s: Editable?) { }
+
+        })
+
+        mailAddrEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (mailAddrEditText.text!!.isNotEmpty()) {
+                    mailAddrEditText.filters = arrayOf(mailDomainFilter)
+                }
             }
+
+            override fun afterTextChanged(s: Editable?) { }
 
         })
     }
@@ -250,27 +280,28 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
 
         binding.mailSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             var mail = ""
+            var cnt = 0
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 Log.d("spinnerTest", "position = $position")
                 when(position) {
                     0 -> {
-                        mail = "@"
+                        mail = ""
                     }
                     1 -> {
-                        mail = "@naver.com"
+                        mail = "naver.com"
                     }
                     2 -> {
-                        mail = "@nate.com"
+                        mail = "nate.com"
                     }
                     3 -> {
-                        mail = "@goggle.com"
+                        mail = "goggle.com"
                     }
                     4 -> {
-                        mail="@daum.net"
+                        mail="daum.net"
                     }
 
                 }
-
+                /*
                 if (mailEditText.text!!.isNotEmpty() && mail.isNotBlank()) {
                     Log.d("spinnerTest", "mail = $mail mailedittxt = ${mailEditText.text.toString()}")
                     var txt = mailEditText.text.toString().trim()
@@ -287,6 +318,16 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
                         this.requestFocus()
                     }
                 }
+
+                 */
+
+                if (mailEditText!!.text!!.isNotEmpty() && cnt > 0) {
+                    mailAddrEditText.setText(mail)
+                }
+                else if (mailEditText.text!!.isEmpty() && cnt > 0) {
+                    mailEditText.setText(mail)
+                }
+                cnt++
                 mail=""
             }
 
@@ -342,7 +383,7 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     }
 
     private fun isMailChked() : Boolean {
-        var mail = mailEditText.text.toString()
+        var mail = (mailEditText.text.toString()+'@'+ mailAddrEditText.text.toString()).trim()
         val pattern = Pattern.compile(mailRegx)
         return if (mail.isNullOrEmpty() || mail.isNullOrBlank()) {
             false
@@ -408,7 +449,8 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
             if (keyCode == KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
                 Log.d("regitTest", "binding.inputNameEt.setOnKeyListener")
                 if (binding.inputNameEt.text!!.isNotEmpty()) {
-                    chkRegister()
+                    Log.d("regitTest", "binding.inputNameEt.text!!.isNotEmpty()")
+                    mailEditText.isFocusable = true
                     true
                 }
             }
@@ -430,10 +472,12 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     }
 
     override fun onBackPressed() {
-
         // 회원가입 정보가 다 날라간다는걸 명시
-
         AlertUtil.makeAlertDialogIntent(this, "기입한 정보는 유지되지 않습니다 정말 종료하시겠습니까?")
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        keyboardUtil.detachKeyboardListener()
     }
 }

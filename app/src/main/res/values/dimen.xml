@@ -71,7 +71,13 @@
 
     <dimen name="comp_guide_icon_marginLeft">10dp</dimen>
 
-    <dimen name="kncap_margin_top">20dp</dimen>
+    <dimen name="kncap_margin_top">10dp</dimen>
     <dimen name="kncap_content_margin_top">15dp</dimen>
     <dimen name="kncap_padding">20dp</dimen>
+
+    <!-- 회원가입 -->
+    <dimen name="member_register_wrapper_padding">10dp</dimen>
+    <dimen name="member_register_id_margin">10dp</dimen>
+    <dimen name="member_register_id_btn_margin">20dp</dimen>
+    <dimen name="member_register_input_text_width">220dp</dimen>
 </resources>

@@ -25,7 +25,6 @@ class CompExtraPriceAdapter(val context : Context) : RecyclerView.Adapter<CompEx
     private var localString = context.resources.getStringArray(R.array.fond_register_cond_array)
     private var gangwonString = context.resources.getStringArray(R.array.gang_won_array)
     private var kyonggiString = context.resources.getStringArray(R.array.kyonggi_array)
-
     private val stringType = StringTypeUtil()
 
     private var clickCount = 0

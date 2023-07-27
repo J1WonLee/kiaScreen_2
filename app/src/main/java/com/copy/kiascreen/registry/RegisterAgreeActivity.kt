@@ -1,25 +1,24 @@
 package com.copy.kiascreen.registry
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.copy.kiascreen.R
 import com.copy.kiascreen.databinding.ActivityRegisterAgreeBinding
-import com.copy.kiascreen.menu.FragmentSearch
-import com.copy.kiascreen.registry.dialog.FragmentInfoTerm
-import com.copy.kiascreen.registry.dialog.FragmentMarketTerm
+import com.copy.kiascreen.registry.fragment.FragmentInfoServiceTerm
+import com.copy.kiascreen.registry.fragment.FragmentMarketServiceTerm
+import com.copy.kiascreen.util.OnBackPressedListener
 import com.copy.kiascreen.util.activity.BaseActivityWithoutVM
 import com.copy.kiascreen.util.activity.TransitionMode
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.checkbox.MaterialCheckBox
 
 // 회원가입시 약간 동의
-class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding>(TransitionMode.HORIZON) {
+class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding>(TransitionMode.HORIZON), RegisterTerm {
     private lateinit var agreeAll : MaterialCheckBox
     private lateinit var infoService : MaterialCheckBox
     private lateinit var marketingService : MaterialCheckBox
@@ -27,6 +26,7 @@ class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding
     private lateinit var infoFrame : FrameLayout
     private lateinit var marketFrame : FrameLayout
     private lateinit var toolbar : MaterialToolbar
+    private lateinit var fragmentWrapper : FrameLayout
 
     private var isInfoSeen = false
     private var isMarketSeen = false
@@ -52,6 +52,7 @@ class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding
         infoService = binding.cbAgreeInfo
         marketingService = binding.cbAgreeMarketing
         toolbar = binding.toolbar
+        fragmentWrapper = binding.termFrame
     }
 
     private fun initToolbar() {
@@ -83,16 +84,20 @@ class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding
         }
 
         marketFrame.setOnClickListener {
-            // FragmentDialog로 보여주고 chkbox clickable
-            FragmentMarketTerm().show(supportFragmentManager, null)
+            // FragmentDialog로 보여주고 chkbox clickable        dialog -> famelayout에 inflate로 변경
+//            FragmentMarketTerm().show(supportFragmentManager, null)
+            supportFragmentManager.beginTransaction().replace(R.id.term_frame, FragmentMarketServiceTerm()).commit()
             marketingService.isClickable = true
             isInfoSeen = true
+            fragmentWrapper.isClickable = true
         }
 
         infoFrame.setOnClickListener {
-            FragmentInfoTerm().show(supportFragmentManager, null)
+//            FragmentInfoTerm().show(supportFragmentManager, null)
+            supportFragmentManager.beginTransaction().replace(R.id.term_frame, FragmentInfoServiceTerm()).commit()
             infoService.isClickable = true
             isMarketSeen = true
+            fragmentWrapper.isClickable = true
         }
     }
 
@@ -143,5 +148,40 @@ class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding
                 startActivity(this)
             }
         }
+    }
+
+    override fun onAgreeClick(stage : Int) {
+        when(stage) {
+            2 -> {
+                marketingService.isChecked = true
+                marketClicked = true
+                btnClickable(true, infoClicked)
+            }
+            1 -> {
+                infoService.isChecked = true
+                infoClicked = true
+                btnClickable(marketClicked, true)
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        val fragments = supportFragmentManager.fragments
+        for (fragment in fragments) {
+            if (fragment is OnBackPressedListener) {
+                (fragment as OnBackPressedListener).onBackPressed()
+                return
+            }
+        }
+
+        super.onBackPressed()
+    }
+
+    override fun onResume() {
+        Log.d("registerTest", "onresume called")
+        super.onResume()
+        supportFragmentManager.findFragmentById(R.id.term_frame)
+            ?.let { supportFragmentManager.beginTransaction().remove(it).commit() }
+
     }
 }

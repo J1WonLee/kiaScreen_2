@@ -21,6 +21,7 @@
             android:layout_gravity="center"
             android:text="약관이용 동의"
             android:textSize="25sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/kiamedium" />
 
     </com.google.android.material.appbar.MaterialToolbar>
@@ -173,5 +174,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/glEnd"
         app:layout_constraintStart_toStartOf="@id/glStart" />
+
+    <FrameLayout
+        android:id="@+id/term_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

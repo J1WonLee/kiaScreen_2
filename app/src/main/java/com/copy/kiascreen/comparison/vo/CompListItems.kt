@@ -34,7 +34,7 @@ object CompListItems {
         "전기차",
         "17",
         "0",
-        "6,577,033"
+        "6577033"
     )
 
     private val safetyItem = SafetyItem(
@@ -77,7 +77,7 @@ object CompListItems {
         "디젤",
         "27",
         "15",
-        "1,577,033"
+        "1577033"
     )
 
     private val safetyItem2 = SafetyItem(
