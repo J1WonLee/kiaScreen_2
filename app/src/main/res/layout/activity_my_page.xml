@@ -8,31 +8,17 @@
     android:background="@color/formwrapperBackground"
     tools:context=".mypage.MyPageActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/mypage_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/layout_toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" >
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="마이페이지"
-            android:fontFamily="@font/kiamedium"
-            android:layout_gravity="center"
-            android:textSize="25sp" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@+id/mypage_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 

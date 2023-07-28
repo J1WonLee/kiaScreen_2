@@ -2,6 +2,7 @@
 <resources>
     <dimen name="menu_text_size">15sp</dimen>
     <dimen name="menu_item_text_size">10sp</dimen>
+    <dimen name="toolbar_title_size">26sp</dimen>
 
     <dimen name="menu_text_margintop">20dp</dimen>
     <dimen name="overlay_bottom_item_left_margin">15dp</dimen>
@@ -61,7 +62,6 @@
 
     <dimen name="userinfo_marginTop">30dp</dimen>
 
-    <dimen name="toolbar_title_size">25sp</dimen>
 
     <dimen name="comp_dialog_padding">20dp</dimen>
     <dimen name="comp_dialog_margin">15dp</dimen>

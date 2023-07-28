@@ -27,12 +27,14 @@ import com.copy.kiascreen.util.AlertUtil
 import com.copy.kiascreen.util.KeyboardScrollUtil
 import com.copy.kiascreen.util.activity.BaseActivity
 import com.copy.kiascreen.util.activity.TransitionMode
+import com.copy.kiascreen.util.textwatcher.TextWatcherHelper
+import com.copy.kiascreen.util.textwatcher.TextWatcherInterface
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 
 @AndroidEntryPoint
-class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, RegisterViewModel>(TransitionMode.HORIZON) {
+class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, RegisterViewModel>(TransitionMode.HORIZON), TextWatcherInterface {
     override val viewModel : RegisterViewModel by viewModels()
 
     private lateinit var idEditText: AppCompatEditText
@@ -46,6 +48,33 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     private lateinit var toolbar : MaterialToolbar
     private lateinit var mailAddrEditText : AppCompatEditText
     private lateinit var keyboardUtil : KeyboardScrollUtil
+
+
+
+    private val mailRegx = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+
+    /*
+    private val inputFilterMail by lazy {
+        InputFilter { source, start, end, dest, dstart, dend ->
+            val ps = Pattern.compile("^[a-zA-Z0-9!@#$%^&*.]*$")
+            if (!ps.matcher(source).matches()) {
+                return@InputFilter ""
+            } else {
+                return@InputFilter null
+            }
+        }
+    }
+
+    private val mailDomainFilter by lazy {
+        InputFilter { source, start, end, dest, dstart, dend ->
+            val ps = Pattern.compile("^[a-z.]*$")
+            if (!ps.matcher(source).matches()) {
+                return@InputFilter ""
+            } else {
+                return@InputFilter null
+            }
+        }
+    }
 
     private val inputFilterId by lazy {
         InputFilter { source, start, end, dest, dstart, dend ->
@@ -70,29 +99,7 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
         }
     }
 
-    private val mailRegx = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
-
-    private val inputFilterMail by lazy {
-        InputFilter { source, start, end, dest, dstart, dend ->
-            val ps = Pattern.compile("^[a-zA-Z0-9!@#$%^&*.]*$")
-            if (!ps.matcher(source).matches()) {
-                return@InputFilter ""
-            } else {
-                return@InputFilter null
-            }
-        }
-    }
-
-    private val mailDomainFilter by lazy {
-        InputFilter { source, start, end, dest, dstart, dend ->
-            val ps = Pattern.compile("^[a-z.]*$")
-            if (!ps.matcher(source).matches()) {
-                return@InputFilter ""
-            } else {
-                return@InputFilter null
-            }
-        }
-    }
+     */
 
     private var isSignEnabled = false
     private var isDuplicatedId = true
@@ -100,10 +107,9 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(binding.root)
-        initView()
         initToolbar()
-        setKeyDownListener()
+//        setKeyDownListener()
+        setKeyDownWatcher()
         setPwdInputFilter()
         setSpinnerAdapter()
         setOnKeyListener()
@@ -173,6 +179,16 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
     }
 
     // 비밀번호, 비밀번호 입력 창의 keydown 리스너
+    private fun setKeyDownWatcher() {
+        val helper = TextWatcherHelper(this)
+
+        helper.setIdWatcher(idEditText)
+        helper.setPwdWatcher(pwdChkEditText)
+        helper.setMailIdWatcher(mailEditText)
+        helper.setMailAddrWatcher(mailAddrEditText)
+    }
+
+    /*
     private fun setKeyDownListener() {
         idEditText.filters = arrayOf(inputFilterId)
 
@@ -242,7 +258,9 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
         })
     }
 
-    private fun chkPwd() {
+     */
+
+    override fun chkPwd() {
         if (pwdEditText.text.toString().equals(pwdChkEditText.text.toString())) {
             chkPwdText.text = "비밀번호가 일치합니다"
             chkPwdText.setTextColor(resources.getColor(R.color.blue))
@@ -252,6 +270,14 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
             chkPwdText.text = "비밀번호가 일치하지 않습니다"
             chkPwdText.setTextColor(resources.getColor(R.color.red))
             isSignEnabled = false
+        }
+    }
+
+    override fun chkDupId() {
+        if (!isDuplicatedId)  {
+            isDuplicatedId = true
+            binding.dupChkTv.text = "아이디 중복 확인을 해주세요"
+            binding.dupChkTv.setTextColor(resources.getColor(R.color.blue))
         }
     }
 
@@ -384,7 +410,8 @@ class MemberRegisterActivity : BaseActivity<ActivityMemberRegisterBinding, Regis
 
     private fun isMailChked() : Boolean {
         var mail = (mailEditText.text.toString()+'@'+ mailAddrEditText.text.toString()).trim()
-        val pattern = Pattern.compile(mailRegx)
+//        val pattern = Pattern.compile(mailRegx)
+        val pattern = android.util.Patterns.EMAIL_ADDRESS
         return if (mail.isNullOrEmpty() || mail.isNullOrBlank()) {
             false
         } else {

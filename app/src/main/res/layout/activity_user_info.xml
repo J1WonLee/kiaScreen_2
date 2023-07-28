@@ -7,221 +7,195 @@
     android:background="@color/formwrapperBackground"
     tools:context=".mypage.UserInfoActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/userInfo_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/gohome_menu"
-        android:background="@color/white"
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/layout_toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" >
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원 정보"
-            android:fontFamily="@font/kiamedium"
-            android:layout_gravity="center"
-            android:textSize="25sp" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/userInfo_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         app:layout_constraintLeft_toLeftOf="parent"
         android:fillViewport="true" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/nested_section"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:paddingBottom="15dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/simple_section_constraint"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
+                android:text="이름"
+                android:textSize="15sp"
+                android:fontFamily="@font/kiamedium"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" >
+                app:layout_constraintLeft_toLeftOf="parent" />
 
-                <TextView
-                    android:id="@+id/name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="이름"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/kiamedium"
-                    android:textColor="@color/black"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+            <TextView
+                android:id="@+id/name_et"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="이름"
+                android:textSize="18sp"
+                android:fontFamily="@font/kiamedium"
+                android:layout_marginLeft="@dimen/userinfo_marginTop"
+                app:layout_constraintLeft_toRightOf="@+id/name_tv"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/name_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/name_tv" />
 
-                <TextView
-                    android:id="@+id/name_et"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:hint="이름"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/kiamedium"
-                    android:layout_marginLeft="@dimen/userinfo_marginTop"
-                    app:layout_constraintLeft_toRightOf="@+id/name_tv"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/name_tv"
-                    app:layout_constraintBottom_toBottomOf="@+id/name_tv" />
+            <TextView
+                android:id="@+id/id_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아이디"
+                android:textSize="15sp"
+                android:fontFamily="@font/kiamedium"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/name_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/name_tv" />
 
-                <TextView
-                    android:id="@+id/id_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="아이디"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/kiamedium"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/name_tv"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_tv" />
+            <TextView
+                android:id="@+id/id_et"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="아이디"
+                android:background="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/kiamedium"
+                app:layout_constraintLeft_toLeftOf="@+id/name_et"
+                app:layout_constraintTop_toTopOf="@+id/id_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/id_tv" />
 
-                <TextView
-                    android:id="@+id/id_et"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:hint="아이디"
-                    android:background="@color/white"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/kiamedium"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_et"
-                    app:layout_constraintTop_toTopOf="@+id/id_tv"
-                    app:layout_constraintBottom_toBottomOf="@+id/id_tv" />
+            <TextView
+                android:id="@+id/pwd_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="비밀번호"
+                android:fontFamily="@font/kiamedium"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/userinfo_marginTop"
+                app:layout_constraintTop_toBottomOf="@+id/id_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/id_tv" />
 
-                <TextView
-                    android:id="@+id/pwd_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="비밀번호"
-                    android:fontFamily="@font/kiamedium"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/userinfo_marginTop"
-                    app:layout_constraintTop_toBottomOf="@+id/id_tv"
-                    app:layout_constraintLeft_toLeftOf="@+id/id_tv" />
+            <EditText
+                android:id="@+id/pwd_et"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edit_text"
+                android:inputType="textPassword"
+                android:nextFocusDown="@id/pwd_chk_et"
+                app:layout_constraintLeft_toLeftOf="@+id/name_et"
+                app:layout_constraintTop_toTopOf="@+id/pwd_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/pwd_tv" />
 
-                <EditText
-                    android:id="@+id/pwd_et"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/register_edit_text"
-                    android:inputType="textPassword"
-                    android:nextFocusDown="@id/pwd_chk_et"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_et"
-                    app:layout_constraintTop_toTopOf="@+id/pwd_tv"
-                    app:layout_constraintBottom_toBottomOf="@+id/pwd_tv" />
+            <TextView
+                android:id="@+id/pwd_chk_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="비밀번호확인"
+                android:fontFamily="@font/kiamedium"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/userinfo_marginTop"
+                app:layout_constraintTop_toBottomOf="@+id/pwd_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/pwd_tv" />
 
-                <TextView
-                    android:id="@+id/pwd_chk_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:text="비밀번호확인"
-                    android:fontFamily="@font/kiamedium"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/userinfo_marginTop"
-                    app:layout_constraintTop_toBottomOf="@+id/pwd_tv"
-                    app:layout_constraintLeft_toLeftOf="@+id/pwd_tv" />
+            <EditText
+                android:id="@+id/pwd_chk_et"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edit_text"
+                android:inputType="textPassword"
+                app:layout_constraintLeft_toLeftOf="@+id/name_et"
+                app:layout_constraintTop_toTopOf="@+id/pwd_chk_tv"
+                app:layout_constraintBottom_toBottomOf="@+id/pwd_chk_tv" />
 
-                <EditText
-                    android:id="@+id/pwd_chk_et"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/register_edit_text"
-                    android:inputType="textPassword"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_et"
-                    app:layout_constraintTop_toTopOf="@+id/pwd_chk_tv"
-                    app:layout_constraintBottom_toBottomOf="@+id/pwd_chk_tv" />
+            <TextView
+                android:id="@+id/pwd_chk_hint_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호가 일치하지 않습니다"
+                android:textColor="@color/red"
+                app:layout_constraintTop_toBottomOf="@+id/pwd_chk_et"
+                app:layout_constraintLeft_toLeftOf="@+id/pwd_chk_et" />
 
-                <TextView
-                    android:id="@+id/pwd_chk_hint_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="비밀번호가 일치하지 않습니다"
-                    android:textColor="@color/red"
-                    app:layout_constraintTop_toBottomOf="@+id/pwd_chk_et"
-                    app:layout_constraintLeft_toLeftOf="@+id/pwd_chk_et" />
+            <TextView
+                android:id="@+id/email_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="이메일"
+                android:fontFamily="@font/kiamedium"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/userinfo_marginTop"
+                app:layout_constraintTop_toBottomOf="@+id/pwd_chk_et"
+                app:layout_constraintLeft_toLeftOf="@+id/pwd_tv" />
 
-                <TextView
-                    android:id="@+id/email_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="이메일"
-                    android:fontFamily="@font/kiamedium"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="@dimen/userinfo_marginTop"
-                    app:layout_constraintTop_toBottomOf="@+id/pwd_chk_et"
-                    app:layout_constraintLeft_toLeftOf="@+id/pwd_tv" />
+            <EditText
+                android:id="@+id/email_id_ed"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edit_text"
+                android:maxLines="1"
+                app:layout_constraintTop_toTopOf="@+id/email_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/name_et" />
 
-                <EditText
-                    android:id="@+id/email_id_ed"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/register_edit_text"
-                    android:maxLines="1"
-                    app:layout_constraintTop_toTopOf="@+id/email_tv"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_et" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\u0040"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintTop_toTopOf="@+id/email_id_ed"
+                app:layout_constraintBottom_toBottomOf="@+id/email_id_ed"
+                app:layout_constraintLeft_toRightOf="@+id/email_id_ed" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="\u0040"
-                    app:layout_constraintTop_toTopOf="@+id/email_id_ed"
-                    app:layout_constraintBottom_toBottomOf="@+id/email_id_ed"
-                    app:layout_constraintLeft_toRightOf="@+id/email_id_ed" />
+            <EditText
+                android:id="@+id/email_ed"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                android:maxLines="1"
+                app:layout_constraintLeft_toLeftOf="@+id/name_et"
+                app:layout_constraintTop_toBottomOf="@+id/email_id_ed"
+                android:background="@drawable/register_edit_text" />
 
-                <EditText
-                    android:id="@+id/email_ed"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_et"
-                    app:layout_constraintTop_toBottomOf="@+id/email_id_ed"
-                    android:background="@drawable/register_edit_text" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/mail_spinner"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/spinner_background_2"
+                app:layout_constraintLeft_toLeftOf="@+id/name_et"
+                app:layout_constraintTop_toBottomOf="@+id/email_ed" />
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/mail_spinner"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/spinner_background_2"
-                    app:layout_constraintLeft_toLeftOf="@+id/name_et"
-                    app:layout_constraintTop_toBottomOf="@+id/email_ed" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/edit_btn"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:text="완료"
-                    android:textColor="@color/white"
-                    android:background="@drawable/dialog_btn_background"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/mail_spinner"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/edit_btn"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="완료"
+                android:textColor="@color/white"
+                android:background="@drawable/dialog_btn_background"
+                android:layout_marginTop="10dp"
+                android:stateListAnimator="@null"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/mail_spinner"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,7 @@
                 android:fontFamily="@font/kiabold"
                 android:text="@string/text_fund_title_1"
                 android:textSize="20sp"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/dialog_close_img"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>

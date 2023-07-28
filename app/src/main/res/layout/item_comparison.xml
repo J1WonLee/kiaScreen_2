@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:spinnerMode="dropdown"
-            android:background="@drawable/spinner_background"
+            android:background="@drawable/spinner_background_3"
             android:layout_marginTop="@dimen/spinner_top_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="@dimen/spinner_top_margin"
-            android:background="@drawable/spinner_background"
+            android:background="@drawable/spinner_background_3"
             app:layout_constraintTop_toBottomOf="@+id/brand_spinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="@dimen/spinner_top_margin"
-            android:background="@drawable/spinner_background"
+            android:background="@drawable/spinner_background_3"
             app:layout_constraintTop_toBottomOf="@+id/car_spinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="@dimen/spinner_top_margin"
-            android:background="@drawable/spinner_background"
+            android:background="@drawable/spinner_background_3"
             app:layout_constraintTop_toBottomOf="@+id/engine_spinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

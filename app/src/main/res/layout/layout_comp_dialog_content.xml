@@ -8,8 +8,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/dialog_dot"
-        android:layout_width="13dp"
-        android:layout_height="13dp"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
         android:layout_gravity="center_vertical"
         android:src="@drawable/tab_default_dot" />
 
@@ -22,6 +22,5 @@
         android:gravity="center_vertical"
         android:layout_marginLeft="@dimen/comp_dialog_padding"
         android:hint="@string/text_insurance_guide_1" />
-
-
+    
 </LinearLayout>

@@ -539,8 +539,8 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         val familyString = resources.getStringArray(R.array.sitemap_spinner_array)
         val familySpinnerAdapter = familyString.setStringArray(this)
 
-        binding.snsSpinner.setSpinnerAdapter(snsSpinnerAdapter)
-        binding.familySiteSpinner.setSpinnerAdapter(familySpinnerAdapter)
+        binding.compBottomLayout.snsSpinner.setSpinnerAdapter(snsSpinnerAdapter)
+        binding.compBottomLayout.familySiteSpinner.setSpinnerAdapter(familySpinnerAdapter)
     }
 
     private fun setCompVpClose() {

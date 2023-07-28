@@ -51,7 +51,7 @@ class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding
         agreeAll = binding.cbAgreeAll
         infoService = binding.cbAgreeInfo
         marketingService = binding.cbAgreeMarketing
-        toolbar = binding.toolbar
+        toolbar = binding.toolbarLayout.toolbar
         fragmentWrapper = binding.termFrame
     }
 
@@ -59,9 +59,10 @@ class RegisterAgreeActivity : BaseActivityWithoutVM<ActivityRegisterAgreeBinding
         setSupportActionBar(toolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
-            it.setDisplayShowTitleEnabled(false)
+            it.setDisplayShowTitleEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
         }
+        toolbar.title = resources.getString(R.string.toolbar_title_service_term)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

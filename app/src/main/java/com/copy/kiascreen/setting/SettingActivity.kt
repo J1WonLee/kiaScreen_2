@@ -12,6 +12,7 @@ import com.copy.kiascreen.R
 import com.copy.kiascreen.application.KiaSampleApplication
 import com.copy.kiascreen.comparison.BuildCompActivity
 import com.copy.kiascreen.databinding.ActivitySettingBinding
+import com.copy.kiascreen.databinding.LayoutToolbarBinding
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.util.activity.BaseActivity
 import com.copy.kiascreen.util.activity.TransitionMode
@@ -19,9 +20,9 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(TransitionMode.HORIZON) {
-    private lateinit var toolbar: MaterialToolbar
     private lateinit var pushSwitch : SwitchMaterial
     private lateinit var autoLoginSwitch : SwitchMaterial
+    private lateinit var toolbar : MaterialToolbar
 //    private var user : User? = null
 
     override val viewModel: SettingViewModel by viewModels()
@@ -34,7 +35,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(T
     }
 
     override fun initView() {
-        toolbar = binding.settingToolbar
+        toolbar = binding.layoutToolbar.toolbar
         pushSwitch = binding.pushSwitch
         autoLoginSwitch = binding.autoLoginSwitch
 
@@ -44,9 +45,11 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(T
         setSupportActionBar(toolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
-            it.setDisplayShowTitleEnabled(false)
+            it.setDisplayShowTitleEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
         }
+
+        toolbar.title = resources.getString(R.string.toolbar_title_setting)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -51,7 +51,7 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding, MyPageViewModel>(Tran
     override fun initView() {
         userName = binding.mypageMemberNameTv
         inquire = binding.mypageInquireTv
-        toolbar = binding.mypageToolbar
+        toolbar = binding.toolbarLayout.toolbar
         userInfo = binding.memberInfo
     }
 
@@ -62,6 +62,8 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding, MyPageViewModel>(Tran
             it.setDisplayShowTitleEnabled(false)
             it.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
         }
+
+        toolbar.title = resources.getString(R.string.toolbar_title_mypage)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

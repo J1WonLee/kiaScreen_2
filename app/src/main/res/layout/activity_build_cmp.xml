@@ -99,7 +99,7 @@
                 tools:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/comp_recycler"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/main_notice_tv">
+                app:layout_constraintBottom_toTopOf="@+id/comp_bottom_layout">
 
                 <TextView
                     android:id="@+id/model_compare_extra_desc_tv"
@@ -334,6 +334,8 @@
                     -->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--
 
             <TextView
                 android:id="@+id/main_notice_tv"
@@ -673,6 +675,15 @@
                     app:layout_constraintRight_toRightOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            -->
+
+            <include
+                android:id="@+id/comp_bottom_layout"
+                layout="@layout/layout_build_comp_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/model_comp_detail_wrapper"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comp_sticky_recycler"
@@ -689,7 +700,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.copy.kiascreen.custom.StickyScrollView>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_sheet"

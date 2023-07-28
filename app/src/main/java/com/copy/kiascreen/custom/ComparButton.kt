@@ -9,6 +9,10 @@ import com.copy.kiascreen.R
 class ComparButton  @JvmOverloads constructor(context : Context, attr : AttributeSet? = null) : androidx.appcompat.widget.AppCompatButton(context, attr) {
     private var isChanged = false
 
+    init {
+        this.stateListAnimator = null
+    }
+
     // 트림 선택까지 완료 후 이전의 항목들을 수정할 경우에 클릭을 막아준다
     fun blockClick(btn : ComparButton ) {
         if (isChanged) {

@@ -21,14 +21,17 @@ import com.copy.kiascreen.room.RoomUtil
 import com.copy.kiascreen.room.successOrNull
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.util.AlertUtil
+import com.copy.kiascreen.util.KeyboardScrollUtil
 import com.copy.kiascreen.util.activity.BaseActivity
 import com.copy.kiascreen.util.activity.TransitionMode
+import com.copy.kiascreen.util.textwatcher.TextWatcherHelper
+import com.copy.kiascreen.util.textwatcher.TextWatcherInterface
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 
 // 사용자 정보 열람 및 수정
 @AndroidEntryPoint
-class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel>(TransitionMode.HORIZON) {
+class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel>(TransitionMode.HORIZON), TextWatcherInterface {
 
     private lateinit var mailEditText : EditText
     private lateinit var mailIdEditText : EditText
@@ -36,9 +39,11 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
     private lateinit var pwdEditText : EditText
     private lateinit var pwdChkEditText : EditText
     private lateinit var pwdChkText : TextView
+    private lateinit var keyboardScrollUtil : KeyboardScrollUtil
 
     override val viewModel : UserInfoViewModel by viewModels()
 
+    /*
     // 메일 첫글자 영문만
     private val mailIdFilter by lazy {
         InputFilter { source, start, end, dest, dstart, dend ->
@@ -74,6 +79,8 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
         }
     }
 
+     */
+
     // 수정 완료시 메일 검증 정규식
     private val mailRegx = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$"
 
@@ -87,7 +94,8 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
         super.onCreate(savedInstanceState)
         writeUserInfo()
         setPwdInputFilter()
-        setKeyDownListener()
+        setKeyDownWatcher()
+//        setKeyDownListener()
         setSpinnerAdapter()
 
         setRegisterBtn()
@@ -118,6 +126,8 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
         pwdEditText = binding.pwdEt
         pwdChkEditText = binding.pwdChkEt
         pwdChkText = binding.pwdChkHintTv
+
+        keyboardScrollUtil = KeyboardScrollUtil(window, onShowKeyboard = { keyboardHeight -> binding.scrollView.scrollTo(0, keyboardHeight) })
     }
 
 
@@ -150,7 +160,7 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
             InputFilter { src, start, end, dst, dstart, dend ->
                 //val ps = Pattern.compile("^[a-zA-Z0-9ㄱ-ㅎ가-흐]+$") //영문 숫자 한글
                 //영문 숫자 한글 천지인 middle dot[ᆞ]
-                val ps = Pattern.compile("^[a-zA-Z0-9!@#$%^&*]*$");
+                val ps = Pattern.compile("^[a-zA-Z0-9!@#$%^&*]+$");
                 if (!ps.matcher(src).matches()) {
                     return@InputFilter ""
                 } else {
@@ -160,7 +170,7 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
         )
     }
 
-    private fun chkPwd() {
+    override fun chkPwd() {
         if (pwdEditText.text.toString().equals(pwdChkEditText.text.toString())) {
             pwdChkText.text = "비밀번호가 일치합니다"
             pwdChkText.setTextColor(resources.getColor(R.color.blue))
@@ -173,7 +183,18 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
         }
     }
 
+    override fun chkDupId() { }
+
     // 비밀번호, 메일 keydown 리스너
+    private fun setKeyDownWatcher() {
+        val helper = TextWatcherHelper(this)
+
+        helper.setPwdWatcher(pwdChkEditText)
+        helper.setMailIdWatcher(mailIdEditText)
+        helper.setMailAddrWatcher(mailEditText)
+    }
+
+    /*
     private fun setKeyDownListener() {
         mailIdEditText.filters = arrayOf(mailIdFilter)
 
@@ -219,6 +240,8 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
 
         })
     }
+
+     */
 
     // 스피너 어뎁터
     private fun setSpinnerAdapter() {
@@ -295,11 +318,13 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
     }
 
     private fun isMailChked() : Boolean {
-        var mail =mailIdEditText.text.toString()+"@"+mailEditText.text.toString()
-        val pattern = Pattern.compile(mailRegx)
-        return if (mail.isNullOrEmpty() || mail.isNullOrBlank()) {
+        var mail = mailIdEditText.text.toString()+"@"+mailEditText.text.toString()
+//        val pattern = Pattern.compile(mailRegx)
+        val pattern = android.util.Patterns.EMAIL_ADDRESS
+        return if (mail.isEmpty() || mail.isBlank()) {
             false
-        } else {
+        }
+        else {
             val matcher = pattern.matcher(mail)
             Log.d("regitTest", "${matcher.matches()}")
             matcher.matches()
@@ -337,7 +362,6 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
                     var result = result.data as Int
 
                     if (result == 1) {
-//                        AlertUtil.makeAlertDialogLoginIntent(this, "회원 정보가 수정되었습니다" )
                         AlertUtil.makeAlertDialogLoginIntent(this, "회원정보가 수정되었습니다", LoginActivity::class.java)
                     }
 
@@ -350,6 +374,10 @@ class UserInfoActivity : BaseActivity<ActivityUserInfoBinding, UserInfoViewModel
                 AlertUtil.makeAlertDialog(this, "회원 정보 수정에 실패하였습니다")
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     override fun onBackPressed() {

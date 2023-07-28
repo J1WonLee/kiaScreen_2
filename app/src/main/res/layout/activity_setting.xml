@@ -6,11 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/setting_nv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar"
         app:layout_constraintStart_toStartOf="parent" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,31 +27,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/setting_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" >
-
-                <TextView
-                    android:id="@+id/toolbar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="설정"
-                    android:fontFamily="@font/kiamedium"
-                    android:layout_gravity="center"
-                    android:textSize="26sp" />
-
-            </com.google.android.material.appbar.MaterialToolbar>
-
             <TextView
                 android:id="@+id/push_setting_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setting_push_text"
                 android:layout_marginLeft="@dimen/setting_tv_margin_left"
-                app:layout_constraintTop_toBottomOf="@+id/setting_toolbar"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
             <TextView

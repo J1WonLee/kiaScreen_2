@@ -15,6 +15,16 @@
         <item name="tabStyle">@style/AppTheme.TabLayout</item>
     </style>
 
+    <style name="titleToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@style/My_toolbar_textAppearance</item>
+    </style>
+
+    <style name="My_toolbar_textAppearance" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/kiamedium</item>
+        <item name="android:fontFamily">@font/kiamedium</item>
+        <item name="android:textSize">@dimen/toolbar_title_size</item>
+    </style>
+
     <style name="AppTheme.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabSelectedTextColor">@android:color/black</item>
         <item name="tabTextColor">@android:color/darker_gray</item>

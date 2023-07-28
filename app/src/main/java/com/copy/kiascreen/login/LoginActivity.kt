@@ -52,16 +52,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(Transit
     override fun initView() {
         idInputEdit = binding.loginIdEditText
         pwdInputEdit = binding.loginPwdEditText
-        toolbar = binding.loginToolbar
+        toolbar = binding.toolbarLayout.toolbar
     }
 
     private fun initToolbar () {
         setSupportActionBar(toolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
-            it.setDisplayShowTitleEnabled(false)
+            it.setDisplayShowTitleEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
         }
+
+        toolbar.title = resources.getString(R.string.toolbar_title_login)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

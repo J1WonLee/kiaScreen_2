@@ -174,7 +174,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         }
         else {
             // 아이템 2개 고르고 리셋했을 경우에, 보여야 하는 뷰가 안보이는 경우가 존재해서 추가 함
-            binding.brandSpinner.setBackgroundDrawable(context.resources.getDrawable(R.drawable.spinner_background))
+            binding.brandSpinner.setBackgroundDrawable(context.resources.getDrawable(R.drawable.spinner_background_3))
             binding.brandSpinner.isEnabled = true
             binding.carSpinner.isEnabled = false
             getSpinnerAdapter(brandItems.toMutableList(), "제조사 선택")
