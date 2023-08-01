@@ -104,7 +104,9 @@ object CompListItems {
     fun getUpdatedItem() = updatedItem
 
     fun resetCompItemList() {
-        compItemList = mutableListOf(compItem)
+        compItemList.clear()
+        compItemList.add(compItem)
+
         Log.d("compItemTest", "after reset size = ${compItemList.size}")
     }
 

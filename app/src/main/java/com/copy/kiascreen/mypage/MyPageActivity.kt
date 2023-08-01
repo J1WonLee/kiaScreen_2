@@ -11,10 +11,13 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.copy.kiascreen.comparison.BuildCompActivity
 import com.copy.kiascreen.R
 import com.copy.kiascreen.databinding.ActivityMyPageBinding
 import com.copy.kiascreen.mypage.adapter.MyPageAdapter
+import com.copy.kiascreen.mypage.adapter.SnapPagerAdapter
+import com.copy.kiascreen.mypage.fragment.UserValidateFragment
 import com.copy.kiascreen.mypage.samplevo.MenuItems
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.util.activity.BaseActivity
@@ -31,6 +34,7 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding, MyPageViewModel>(Tran
     private lateinit var userInfo : TextView
     private lateinit var payInfo : TextView
     private lateinit var notice : TextView
+    private lateinit var snapViewPager : ViewPager2
     private lateinit var toolbar : MaterialToolbar
     private lateinit var recyclerView : RecyclerView
 
@@ -40,10 +44,9 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding, MyPageViewModel>(Tran
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        initView()
-        setUserName()
         initToolbar()
+        setUserName()
+        setSnapPager()
         setRecyclerView()
         setClickListener()
     }
@@ -53,6 +56,7 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding, MyPageViewModel>(Tran
         inquire = binding.mypageInquireTv
         toolbar = binding.toolbarLayout.toolbar
         userInfo = binding.memberInfo
+        snapViewPager = binding.snapPager
     }
 
     private fun initToolbar() {
@@ -114,7 +118,11 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding, MyPageViewModel>(Tran
                 )
             }
         }
+    }
 
+    private fun setSnapPager() {
+        val snapAdapter = SnapPagerAdapter(this, MenuItems.snapItems)
+        snapViewPager.adapter = snapAdapter
     }
 
     override fun getDataFromIntent() {

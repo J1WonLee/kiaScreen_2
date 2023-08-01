@@ -1,11 +1,10 @@
-package com.copy.kiasample.coach
+package com.copy.kiascreen.coach
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.copy.kiascreen.R
 import com.copy.kiascreen.application.KiaSampleApplication
 import com.copy.kiascreen.comparison.BuildCompActivity
 import com.copy.kiascreen.databinding.CoachPager3Binding

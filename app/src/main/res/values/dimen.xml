@@ -1,56 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="toolbar_title_size">26sp</dimen>
+    <!-- overlay menu fragment -->
     <dimen name="menu_text_size">15sp</dimen>
     <dimen name="menu_item_text_size">10sp</dimen>
-    <dimen name="toolbar_title_size">26sp</dimen>
-
     <dimen name="menu_text_margintop">20dp</dimen>
     <dimen name="overlay_bottom_item_left_margin">15dp</dimen>
-
     <dimen name="menu_item_wrapper_padding">10dp</dimen>
     <dimen name="menu_item_padding">10dp</dimen>
-
-
     <dimen name="menu_expand_toggle_size">40dp</dimen>
     <dimen name="menu_expand_toggle_margin">20dp</dimen>
+    <dimen name="menu_child_img_size">30dp</dimen>
 
+    <!-- spinner -->
     <dimen name="spinner_top_margin">50dp</dimen>
 
+    <!-- rv padding -->
     <dimen name="recycler_padding">15dp</dimen>
-
-    <dimen name="img_margin">30dp</dimen>
-
-    <dimen name="dialog_padding">30dp</dimen>
-
-    <dimen name="main_comp_txt_margin">20dp</dimen>
-    <dimen name="rv_margin_top">30dp</dimen>
-
-    <dimen name="comp_item_linear_marginTop">30dp</dimen>
-    <dimen name="comp_item_text_marginTop">20dp</dimen>
-
-    <dimen name="notice_title_marginTop">15dp</dimen>
-    <dimen name="notice_text_marginTop">10dp</dimen>
-
-    <dimen name="main_bottom_text_marginTop">35dp</dimen>
-    <dimen name="main_img_margin_right">15dp</dimen>
-    <dimen name="main_arrow_margin_right">20dp</dimen>
-    <dimen name="main_bottom_text_marginRight">20dp</dimen>
-
     <dimen name="spinner_wrapper_padding">20dp</dimen>
-    <dimen name="bottom_text_Margintop">30dp</dimen>
 
-    <dimen name="mypage_text_size">15sp</dimen>
-    <dimen name="mypage_horline_marginTop">5dp</dimen>
-    <dimen name="mypage_arrow_marginRight">10dp</dimen>
-
-    <dimen name="comp_detail_4_marginTop">15dp</dimen>
-
-    <dimen name="intro_app_title_size">70sp</dimen>
-
-
+    <!-- dialog_padding -->
+    <dimen name="dialog_padding">30dp</dimen>
     <dimen name="dialog_btn_margin_right">20dp</dimen>
     <dimen name="dialog_text_margin_top">10dp</dimen>
 
+
+    <dimen name="img_margin">30dp</dimen>
+
+
+    <!-- 모델 비교 바텀  -->
+    <dimen name="notice_title_marginTop">15dp</dimen>
+    <dimen name="notice_text_marginTop">10dp</dimen>
+    <dimen name="main_bottom_text_marginTop">35dp</dimen>
+    <dimen name="main_arrow_margin_right">20dp</dimen>
+    <dimen name="main_bottom_text_marginRight">20dp</dimen>
+    <dimen name="bottom_text_Margintop">30dp</dimen>
+
+    <!-- 모델 비교  -->
+    <dimen name="reset_img_size">25dp</dimen>
+    <dimen name="main_comp_txt_margin">15dp</dimen>
+    <dimen name="rv_margin_top">30dp</dimen>
+    <dimen name="comp_item_linear_marginTop">30dp</dimen>
+    <dimen name="comp_item_text_marginTop">20dp</dimen>
+    <dimen name="main_img_margin_right">15dp</dimen>
+    <dimen name="comp_bottom_text_marginLeft">15dp</dimen>
+    <dimen name="comp_detail_4_marginTop">15dp</dimen>
+
+    <!-- 마이페이지 -->
+    <dimen name="mypage_section_marginTop">15dp</dimen>
+    <dimen name="mypage_text_size">15sp</dimen>
+    <dimen name="mypage_horline_marginTop">5dp</dimen>
+    <dimen name="mypage_arrow_marginRight">10dp</dimen>
+    <dimen name="mypage_img_size">25dp</dimen>
+    <dimen name="mypage_title_size">20sp</dimen>
+
+    <dimen name="intro_app_title_size">70sp</dimen>
+
+    <!-- 세팅 엑티비티 -->
     <dimen name="setting_tv_margin_right">30dp</dimen>
     <dimen name="setting_tv_margin_top">30dp</dimen>
     <dimen name="setting_tv_margin_left">30dp</dimen>
@@ -62,15 +68,12 @@
 
     <dimen name="userinfo_marginTop">30dp</dimen>
 
-
+    <!-- 모델비교 vp 다이얼로그 -->
     <dimen name="comp_dialog_padding">20dp</dimen>
     <dimen name="comp_dialog_margin">15dp</dimen>
-
     <dimen name="comp_dialog_subtext_marinLeft">55dp</dimen>
     <dimen name="comp_dialog_subtext_marinTop">10dp</dimen>
-
     <dimen name="comp_guide_icon_marginLeft">10dp</dimen>
-
     <dimen name="kncap_margin_top">10dp</dimen>
     <dimen name="kncap_content_margin_top">15dp</dimen>
     <dimen name="kncap_padding">20dp</dimen>
@@ -80,4 +83,11 @@
     <dimen name="member_register_id_margin">10dp</dimen>
     <dimen name="member_register_id_btn_margin">20dp</dimen>
     <dimen name="member_register_input_text_width">220dp</dimen>
+
+    <!-- editTxt paddingStart -->
+    <dimen name="edit_text_paddingStart">10dp</dimen>
+    <!-- 닫기 이미지 -->
+    <dimen name="close_img_margin">15dp</dimen>
+
+
 </resources>

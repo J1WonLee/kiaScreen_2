@@ -54,10 +54,9 @@ fun ComparisonAdapter.onDelBtnClicked(position : Int, compRecycler : RecyclerVie
 // 아이템 추가.
 // 실제로는 retrofit2를 통해서 아이템을 가져와야 함으로, 매개변수로 해당 아이템 하나를 받아와야 한다.
 fun ComparisonAdapter.addItem(compRecycler : RecyclerView) {
-    this.addSpinnerItem(BrandItems.brandItems2)     // refactor 필요
+    this.addSpinnerItem(BrandItems.brandItems2)     // 실제로 데이터 받아올 때는 해당 데이터를 넘겨줘야 함
     this.notifyItemInserted(this.mitems.size - 1)
     compRecycler.smoothSnapToPosition(this.mitems.size - 1)
-
 }
 
 // 추천 이미지 vp로 설정
@@ -97,6 +96,7 @@ fun RecyclerView.setRecImg(compAdapter : ComparisonAdapter) {
     }
 }
 
+// compRv 의 이미지 pager 설정
 fun RecyclerView.ViewHolder.setCompPagerRecImg() {
     var spinner = this.itemView.findViewById<Spinner>(R.id.trim_spinner)
 
@@ -115,13 +115,14 @@ fun RecyclerView.ViewHolder.setCompPagerRecImg() {
     }
 }
 
+// compRv 아이템 초기화, selected item list 초기화
 fun ComparisonAdapter.reset(compRecycler: RecyclerView) {
     var size = this.itemCount
 
     this.notifyItemRangeRemoved(0, size)
     this.notifyItemRangeChanged(0, size)
-
     this.resetItem(listOf(Brand("기아", BrandItems.kiaCars)))
+    this.resetSelectedItem()
 
     compRecycler.findViewHolderForAdapterPosition(0)?.let { holder ->
         Log.d("adapterTest", "findViewHolderPosition")
@@ -148,6 +149,7 @@ fun AppCompatImageView.toggleVp(pager: ViewPager2) {
     }
 }
 
+// vp2 title img ( close and open toggle 이미지 클릭 리스너) , vp말고도 constraintWrapper 같이 붙어있는경우 (kncap 때문에 만듬)
 fun AppCompatImageView.toggleVp(pager: ViewPager2, wrapper : ConstraintLayout) {
     this.setOnClickListener {
         if (pager.visibility != View.GONE) {
@@ -176,6 +178,7 @@ fun AppCompatImageView.toggleRv(pager: RecyclerView) {
     }
 }
 
+// 서로 다른 항목 switch
 fun SwitchCompat.toggleDiffFields(performanceAdapter: CompPerformanceAdapter, econAdapter: CompEconAdapter, safetyAdapter: CompSafetyAdapter) {
     this.setOnCheckedChangeListener { _, isChecked ->
         performanceAdapter.toggleDiffItems(isChecked)

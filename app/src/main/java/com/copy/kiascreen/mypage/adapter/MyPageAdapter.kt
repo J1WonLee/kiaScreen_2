@@ -9,7 +9,6 @@ import com.copy.kiascreen.mypage.samplevo.QuickMenu
 
 // 마이페이지 상단에 보이는, rv adapter , 각 항목 클릭시 해당 페이지로 이동
 class MyPageAdapter(val list : List<QuickMenu>) : RecyclerView.Adapter<MyPageAdapter.MyPageHolder>() {
-
     var menuList = mutableListOf<QuickMenu>()
     var mInterface : MyPageAdapterInterface? = null
 

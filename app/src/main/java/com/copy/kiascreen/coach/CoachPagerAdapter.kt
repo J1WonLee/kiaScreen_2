@@ -3,6 +3,9 @@ package com.copy.kiasample.coach
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.copy.kiascreen.coach.CoachFragment01
+import com.copy.kiascreen.coach.CoachFragment02
+import com.copy.kiascreen.coach.CoachFragment03
 import com.copy.kiascreen.roomVo.User
 
 class CoachPagerAdapter(fragmentActivity: FragmentActivity, user : User?) : FragmentStateAdapter(fragmentActivity) {

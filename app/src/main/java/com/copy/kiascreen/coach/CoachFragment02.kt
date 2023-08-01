@@ -1,4 +1,4 @@
-package com.copy.kiasample.coach
+package com.copy.kiascreen.coach
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

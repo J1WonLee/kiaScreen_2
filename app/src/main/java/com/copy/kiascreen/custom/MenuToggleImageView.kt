@@ -14,32 +14,34 @@ class MenuToggleImageView @JvmOverloads constructor(context : Context, attr : At
     }
 
     fun toggleEvent(child : LinearLayout) : Boolean {
+        this.animate().rotationBy(180f).setDuration(300).start()
         return if (isExpanded) {
             // 하위 메뉴 안보여줌
             child.visibility = GONE
-            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_more_24))
+//            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_more_24))
             this.isExpanded = !isExpanded
             false
         } else {
             // 하위 메뉴 보여줌
             child.visibility = VISIBLE
-            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_less_24))
+//            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_less_24))
             this.isExpanded = !isExpanded
             true
         }
     }
 
     fun toggleCustomEvent(child : LayoutMenuChild) : Boolean {
+        this.animate().rotationBy(180f).setDuration(300).start()
         return if (isExpanded) {
             // 하위 메뉴 안보여줌
             child.visibility = GONE
-            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_more_24))
+//            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_more_24))
             this.isExpanded = !isExpanded
             false
         } else {
             // 하위 메뉴 보여줌
             child.visibility = VISIBLE
-            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_less_24))
+//            this.setImageDrawable(resources.getDrawable(R.drawable.baseline_expand_less_24))
             this.isExpanded = !isExpanded
             true
         }

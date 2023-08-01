@@ -102,6 +102,7 @@ class HeaderRecyclerAdapter(val context: Context) : RecyclerView.Adapter<HeaderR
             }
         }
         binding.stickyItemChangeBrandTv.visibility = View.VISIBLE
+        binding.stickyPriceWrapper.visibility = View.VISIBLE
         binding.stickyItemBrandTv.text = item.brandName
         binding.stickyItemCarName.text = item.carName
         binding.stickyItemPriceTv.text = item.price.toString()
@@ -119,6 +120,7 @@ class HeaderRecyclerAdapter(val context: Context) : RecyclerView.Adapter<HeaderR
         // 마지막 항목이 비어있는 경우 -> 추가하라는 뷰를 보여준다
         binding.stickyNoItemLinear.visibility = View.VISIBLE
         binding.stickyItemChangeBrandTv.visibility = View.GONE
+        binding.stickyPriceWrapper.visibility = View.INVISIBLE
 
         binding.stickyNoItemLinear.setOnClickListener {
             mInterface?.scrollToPosition()

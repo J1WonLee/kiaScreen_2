@@ -6,6 +6,7 @@ import com.copy.kiascreen.room.RoomRepository
 import com.copy.kiascreen.room.RoomUtil
 import com.copy.kiascreen.roomVo.User
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -33,5 +34,9 @@ class RegisterViewModel @Inject constructor(private val roomRepository  : RoomRe
                 _userSharedFlow.emit(it)
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
     }
 }

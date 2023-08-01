@@ -7,7 +7,7 @@ import android.widget.EditText
 import com.copy.kiascreen.databinding.ActivityMemberRegisterBinding
 import java.util.regex.Pattern
 
-// registerMember textWatcher factory class
+// 회원가입, 회원수정, 검색창  textWatcher 제공 class
 // id, pwd, mail textWatcher
 class TextWatcherHelper (textInterface : TextWatcherInterface) {
     private var mInterface = textInterface
@@ -155,6 +155,22 @@ class TextWatcherHelper (textInterface : TextWatcherInterface) {
             }
 
             override fun afterTextChanged(s: Editable?) { }
+        })
+    }
+
+    // 검색 editText textWatcher
+    fun setSearchWatcher(target : EditText) {
+        target.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                TODO("Not yet implemented")
+            }
+
         })
     }
 }

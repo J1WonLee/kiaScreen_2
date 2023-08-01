@@ -45,6 +45,10 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
         mitems.add(items.toMutableList())
     }
 
+    fun resetSelectedItem() {
+        selectedCarList.clear()
+    }
+
     inner class ComparisonHolder(val binding : ItemComparisonBinding) : RecyclerView.ViewHolder(binding.root), RecImgInterface {
         fun bind(position : Int) {
             Log.d("spinnerTest", "position == ${position}")
@@ -626,6 +630,7 @@ class ComparisonAdapter(val context: Context, item : MutableList<MutableList<Bra
             mInterface?.addHeaderRecycler(selectedCar, adapterPosition)
             mInterface?.setCompPager2Item(adapterPosition)
         }
+        // 마지막 아이템을 삭제 후에, 두번 째 항목을 추가 및 갱신하는 경우에도 동작하도록 한다
         else if (!delClicked) {
             mInterface?.addHeaderRecycler(selectedCar, adapterPosition)
             mInterface?.setCompPager2Item(adapterPosition)

@@ -5,6 +5,7 @@
     android:layout_height="45dp"
     android:paddingStart="15dp"
     android:textSize="15sp"
+    android:hint="sns_spinner"
     android:gravity="center_vertical"
     android:textColor="@color/gray_txt"
     android:id="@+id/tvItemSpinner" />

@@ -1,6 +1,8 @@
 package com.copy.kiascreen.comparison
 
 import android.content.Intent
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +16,8 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.copy.kiascreen.*
 import com.copy.kiascreen.comparison.adapter.*
@@ -38,30 +42,24 @@ import com.copy.kiascreen.util.activity.BaseActivity
 import com.copy.kiascreen.util.activity.TransitionMode
 import com.copy.kiascreen.util.textlink.TextLink
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.inappmessaging.FirebaseInAppMessaging
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(TransitionMode.HORIZON), SearchRecyclerAddInterface, HeaderInterface,
     FragmentActivityBridge, ScrollListener.ScrollListenerBridge {
-
     override val viewModel: CompViewModel by viewModels()
 
-//    private lateinit var scrollView : NestedScrollView
     private lateinit var scrollView : StickyScrollView
     private lateinit var toolbar : MaterialToolbar
     private lateinit var comparsionRecycler : RecyclerView
     private lateinit var adapter : ComparisonAdapter
     private lateinit var stickyHeaderRecyclerView: RecyclerView
 
-
     private lateinit var performViewPager2: ViewPager2
     private lateinit var econViewPager2: ViewPager2
     private lateinit var safetyViewPager2: ViewPager2
     private lateinit var extraPriceViewPager2: ViewPager2
-
-
 
     /*
     // 7/20 하단 목록을 vp2 -> rv로 변경. scrollListener도 rv에 맞게 변경함.
@@ -105,12 +103,9 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         initToolbar()
         initCompRecycler()
         setSpinnerAdapter()
-
     }
 
     override fun getDataFromIntent() {
@@ -125,14 +120,9 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         Log.d("loginTest", "${user?.id}")
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-    }
-
     override fun initView() {
         toolbar = binding.toolbar
         scrollView = binding.mainScrollView
-
         comparsionRecycler = binding.compRecycler
         stickyHeaderRecyclerView = binding.compStickyRecycler
 
@@ -145,8 +135,6 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
                 Log.d("StickyHeader", "freeListener")
             }
         }
-
-
         performViewPager2 = binding.compDetailVp1
         econViewPager2 = binding.compDetailVp2
         safetyViewPager2 = binding.compDetailVp3
@@ -156,7 +144,6 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
             setLinkify("교통안전공단 바로가기")
         }
     }
-
 
     private fun initToolbar() {
         setSupportActionBar(toolbar)
@@ -170,7 +157,9 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             android.R.id.home -> { Toast.makeText(this, "home", Toast.LENGTH_SHORT).show() }
-            R.id.main_menu_extend_menu -> { inflateFragment() }
+            R.id.main_menu_extend_menu -> {
+                initAnimate(R.id.main_menu_extend_menu)
+            }
             R.id.main_menu_search_engine -> {  initSearchDialog() }
         }
         return super.onOptionsItemSelected(item)
@@ -179,6 +168,27 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun initAnimate(id : Int) {
+        try {
+            val item = toolbar.menu.findItem(id)
+            item?.let {
+                var animDrawable = AnimatedVectorDrawableCompat.create(this, R.drawable.avd_drawer_open)
+                animDrawable?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+                    override fun onAnimationEnd(drawable: Drawable?) {
+                        inflateFragment()
+                    }
+                })
+                item.icon = animDrawable
+                val animatable = item.icon
+                if (animatable is Animatable) {
+                    animatable.start()
+                }
+            }
+        } catch (e : Exception) {
+            Log.d("toolbarTest", "initANimate error msg = ${e.message}")
+        }
     }
 
     // 메뉴 프래그먼트 실행
@@ -205,8 +215,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
             edgeEffectFactory = BounceEdgeEffectFactory()
         }
 
-        setRecycelrResetBtnClick()
-
+        setResetBtnClick()
         PagerSnapHelper().attachToRecyclerView(comparsionRecycler)
     }
 
@@ -224,6 +233,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
                 CompListItems.addCompItem()
             }
 
+            // 리셋 버튼의 클릭 유무에 따라서 vp2 데이터 처리 방법이 상이함
             if (!isResetClicked) {
                 initPerformanceVp2()
             } else {
@@ -237,9 +247,8 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         }
     }
 
-    // 하단 pager2 어뎁터 설정
+    // 하단 pager2 어뎁터 설정, 초기화 버튼 클릭된적 없음
     private fun initPerformanceVp2() {
-
         performViewPager2.adapter = performAdapter
         econViewPager2.adapter = econAdapter
         safetyViewPager2.adapter = safetyAdapter
@@ -284,7 +293,6 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     }
 
     override fun onDelBtnClick(position: Int) {
-
         adapter.onDelBtnClicked(position, comparsionRecycler)
 
         /*
@@ -316,7 +324,6 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
     // 비교 차량 이미지 설정
     override fun setRecCarImg() {
-
         comparsionRecycler.setRecImg(adapter)
 
         /*
@@ -378,6 +385,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
     // 모델 변경 및 삭제 추가 시 , 하단의 비교 상세보기 페이저에 반영해준다
     override fun setCompPager2Item(adapterPosition : Int) {
+        // 모델 비교 버튼을 클릭 했을 때에만, 하단 페이저에 갱신 내역을 반영해줘야 함
         if (binding.mainBottomSheet.visibility == View.GONE) {
             Log.d("compTest", "== setCompPager2Item ==  adapter.getSelectedCar().size : ${adapter.getSelectedCar().size}")
             Log.d("updateTest", "===setCompPager2Item test ==== adapter.getSelectedCar().size :  ${adapter.getSelectedCar().size}")
@@ -419,7 +427,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
         }
     }
 
-    // sticky recycler에 아이템 추가
+    // sticky recycler에 아이템 추가 , 갱신
     override fun addHeaderRecycler(item: SelectedOption, position: Int) {
         if (binding.mainBottomSheet.visibility == View.GONE) {
             if (headerAdapter.getItemSize() != adapter.selectedCarList.size) {
@@ -441,7 +449,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     }
 
     // 모델 선택 초기화 버튼
-    private fun setRecycelrResetBtnClick(){
+    private fun setResetBtnClick(){
         binding.resetImg.setOnClickListener {
             /*
             comparsionRecycler.adapter?.let {
@@ -472,7 +480,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
             stickyHeaderRecyclerView.apply {
                 adapter = null
             }
-            // reset 버튼 클릭시, flag를 조정하여, 아이템이 없을 시에는 스크롤 내려도 안보여주게 한다.
+            // reset 버튼 클릭시, flag를 조정하여, 아이템이 없을 시에는 스크롤 내려도 sticky rv를 안보이게 한다.
             scrollView.isModelCompareClicked = false
 
             binding.mainBottomSheet.visibility = View.VISIBLE
@@ -481,7 +489,8 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
                 isEnabled = false
                 setBackgroundColor(resources.getColor(R.color.btn_gray))
             }
-            CompListItems.resetCompItemList()
+
+            CompListItems.resetCompItemList()       // Object Class 아이템 초기화
             isResetClicked = true
 
         }
@@ -491,20 +500,35 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     private fun setStickyRecycler(itemList : MutableList<SelectedOption>) {
         Log.d("headerAdapterTest", "setStickyRecycler, itemSize = ${itemList.size}")
         headerAdapter.setSelectedItem(itemList)
-        scrollView.isModelCompareClicked = true
-        val linearLayoutManagerWrapper = LinearLayoutManagerWrapper(this, LinearLayoutManager.HORIZONTAL, false)
-        stickyHeaderRecyclerView.apply {
-            layoutManager = linearLayoutManagerWrapper
-            adapter = headerAdapter
-            addItemDecoration(StickyHeaderRvDecoration())
-        }
         headerAdapter.setInterface(this)
+        scrollView.isModelCompareClicked = true
 
-        if (stickyHeaderRecyclerView.onFlingListener == null) {
-            PagerSnapHelper().attachToRecyclerView(stickyHeaderRecyclerView)
+        // 처음 만들어짐
+        if (!isResetClicked) {
+            val linearLayoutManagerWrapper = LinearLayoutManagerWrapper(this, LinearLayoutManager.HORIZONTAL, false)
+            stickyHeaderRecyclerView.apply {
+                layoutManager = linearLayoutManagerWrapper
+                adapter = headerAdapter
+                addItemDecoration(StickyHeaderRvDecoration())
+            }
+
+            if (stickyHeaderRecyclerView.onFlingListener == null) {
+                PagerSnapHelper().attachToRecyclerView(stickyHeaderRecyclerView)
+            }
         }
-    }
+        // 리셋한번 돌림
+        else {
+            val linearLayoutManagerWrapper = LinearLayoutManagerWrapper(this, LinearLayoutManager.HORIZONTAL, false)
+            stickyHeaderRecyclerView.apply {
+                layoutManager = linearLayoutManagerWrapper
+                adapter = headerAdapter
+            }
 
+        }
+
+
+
+    }
     private fun setScrollListener2() {
         comparsionRecycler.addOnScrollListener(scrollListener.oneListener)
         stickyHeaderRecyclerView.addOnScrollListener(scrollListener.stickyHeaderListener)
@@ -560,6 +584,7 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
          */
     }
 
+    // 서로 다른 항목 switch
     private fun setSwitchListener() {
         binding.modelCompareSwitch.toggleDiffFields(performAdapter, econAdapter, safetyAdapter)
     }

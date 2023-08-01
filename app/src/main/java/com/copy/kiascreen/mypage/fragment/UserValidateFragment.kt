@@ -1,4 +1,4 @@
-package com.copy.kiascreen.mypage
+package com.copy.kiascreen.mypage.fragment
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import com.copy.kiascreen.databinding.FragmentUserValidationBinding
+import com.copy.kiascreen.mypage.UserInfoActivity
 import com.copy.kiascreen.roomVo.User
 
 // 개인 정보 수정 페이지 들어가기전에 유저 비밀번호 확인
@@ -33,8 +34,8 @@ class UserValidateFragment : DialogFragment() {
         dialog?.let {
             it.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             it.window?.setLayout(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams.MATCH_PARENT
             )
         }
 

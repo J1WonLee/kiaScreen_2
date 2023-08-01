@@ -2,6 +2,8 @@ package com.copy.kiascreen.menu
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -10,6 +12,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.copy.kiascreen.*
 import com.copy.kiascreen.application.KiaSampleApplication
 import com.copy.kiascreen.custom.MenuToggleImageView
@@ -314,12 +318,31 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
         toolbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.overlay_exit -> {
-                    activity?.findViewById<FrameLayout>(R.id.menu_fragment_holder)?.isClickable = false
-                    activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
-                    fragmentBridge?.showBottomNavi()
+                    initAnimate(R.id.overlay_exit)
+//                    activity?.findViewById<FrameLayout>(R.id.menu_fragment_holder)?.isClickable = false
+//                    activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+//                    fragmentBridge?.showBottomNavi()
                     true
                 }else -> false
             }
+        }
+    }
+
+    private fun initAnimate(itemId : Int) {
+        val item = toolbar.menu.findItem(itemId)
+
+        val animDrawable = AnimatedVectorDrawableCompat.create(requireContext(), R.drawable.avd_drawer_close)
+        animDrawable?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+            override fun onAnimationEnd(drawable: Drawable?) {
+                activity?.findViewById<FrameLayout>(R.id.menu_fragment_holder)?.isClickable = false
+                activity?.supportFragmentManager?.beginTransaction()?.remove(this@FragmentMainMenu)?.commit()
+                fragmentBridge?.showBottomNavi()
+            }
+        })
+        item.icon = animDrawable
+        val animatable = item.icon
+        if (animatable is Animatable) {
+            animatable.start()
         }
     }
 

@@ -37,8 +37,8 @@ class FindIdFragment : DialogFragment() {
         dialog?.let {
             it.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             it.window?.setLayout(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams.MATCH_PARENT
             )
         }
 
@@ -58,7 +58,7 @@ class FindIdFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setOnFindBtnClick()
+        setClickListener()
         repeatOnStarted {
             viewModel.findIdSharedFlow.collect {
                 handleFindIdResult(it)
@@ -67,11 +67,15 @@ class FindIdFragment : DialogFragment() {
         setOnKeyListener()
     }
 
-    private fun setOnFindBtnClick() {
+    private fun setClickListener() {
         binding.idFindBtn.setOnClickListener {
             if (binding.mailInputEditText.text!!.isNotEmpty()) {
                 viewModel.findId(binding.mailInputEditText.text.toString())
             }
+        }
+
+        binding.dialogCloseImg.setOnClickListener {
+            dismiss()
         }
     }
 

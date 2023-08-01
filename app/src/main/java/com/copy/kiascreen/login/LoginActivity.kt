@@ -12,6 +12,7 @@ import com.copy.kiascreen.R
 import com.copy.kiascreen.application.KiaSampleApplication
 import com.copy.kiascreen.databinding.ActivityLoginBinding
 import com.copy.kiascreen.comparison.BuildCompActivity
+import com.copy.kiascreen.registry.RegisterAgreeActivity
 import com.copy.kiascreen.repeatOnStarted
 import com.copy.kiascreen.room.RoomUtil
 import com.copy.kiascreen.room.successOrNull
@@ -89,7 +90,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(Transit
         }
 
         binding.registerTv.setOnClickListener {
-            Intent(this, MemberRegisterActivity::class.java).apply {
+            Intent(this, RegisterAgreeActivity::class.java).apply {
                 startActivity(this)
             }
 
@@ -164,13 +165,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(Transit
     override fun onBackPressed() {
         if (isTaskRoot) {
             // main으로 돌려보낸다
-            Intent(this@LoginActivity, BuildCompActivity::class.java).apply {
-                startActivity(this)
-                finish()
-            }
+//            Intent(this@LoginActivity, BuildCompActivity::class.java).apply {
+//                startActivity(this)
+//                finish()
+//            }
+            finish()
         }
         else {
-            super.onBackPressed()
+            finish()
         }
     }
 }

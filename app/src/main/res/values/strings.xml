@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="main_model_comparison_desc_txt">원하시는 기아의 차량을 국내 판매 중인 차량과 빠르게 비교하실 수 있습니다 \n (최대 3개까지 선택 가능)</string>
+    <string name="main_model_comparison_desc_txt">원하시는 기아의 차량을 국내 판매 중인 차량과 비교하실 수 있습니다 \n (최대 3개까지 선택 가능)</string>
     <string name="main_model_comparison_reset_txt">선택 초기화</string>
     <string name="main_model_comparison_extra_txt">엔진 및 트림은 기본 가격 기준으로 선택되고 각 항목에서 변경 가능합니다</string>
 
@@ -34,13 +34,10 @@
 
     <string name="setting_push_text">PUSH 알림</string>
     <string name="setting_push_content">이벤트, 행사에 대한 알림을 받습니다</string>
-
     <string name="setting_auto_login_text">자동 로그인</string>
     <string name="setting_auto_login_content">자동로그인을 사용할 경우 타인에게 고객의 정보가\n노출될 위험이 있습니다</string>
-
     <string name="setting_cur_version_text">현재 버전</string>
     <string name="setting_cur_version_content">현재 %1$s 버전이 최신버전입니다</string>
-
     <string name="setting_customer_support_title">고객지원센터</string>
     <string name="setting_customer_support_desc_call">(발신자 부담)</string>
     <string name="setting_customer_support_number">1234-1234</string>
@@ -52,7 +49,6 @@
     <string name="privacy_pop_title">개인정보 위탁에 관한 동의</string>
     <string name="opensrc_license_title">오픈소스 라이센스</string>
 
-
     <string name="text_confirm">확인</string>
     <string name="term_agreement_title">환영합니다!\n아래 약관에 동의하시면\n시작됩니다</string>
     <string name="text_agree_all">전체동의</string>
@@ -61,24 +57,19 @@
     <string name="text_agree_marketing_push">마케팅 정보 동의 (선택)</string>
     <string name="text_start">시작하기</string>
     <string name="text_term">이용약관</string>
-
     <string name="text_location_term">위치기반서비스 이용약관</string>
     <string name="text_service_term_title_1">임의의 서비스 이용약관</string>
     <string name="text_service_term_title_2">임의의 서비스  이용약관</string>
-
     <string name="text_check_permissions_title">고객님의 편리한 \n이용을 위해 아래 \n권한의 허용이 필요합니다</string>
     <string name="text_permission_noti_title">알림(선택)</string>
     <string name="text_permission_noti_description">푸시 알림 수신</string>
-
-    <string name="text_permission_overall_description">위 접근건한은 고객님께 더 나은 서비스를 제공하기 위해 사용됩니다. 허용에 동의하지 않으셔도 이용하실 수 있습니</string>
+    <string name="text_permission_overall_description">위 접근건한은 고객님께 더 나은 서비스를 제공하기 위해 사용됩니다. 허용에 동의하지 않으셔도 이용하실 수 있습니다</string>
 
     <string name="text_permission_storage_title">저장 공간</string>
     <string name="text_permission_storage_description">저장 공간 접근 허용</string>
 
     <string name="text_service_term_1">제 1조 (목적)\n 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.\n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.</string>
-
     <string name="text_service_term_2">제 2조 (용어의 정의)\n 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.\n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.</string>
-
     <string name="text_service_term_3">제 3조 (용어의 정의)\n 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.\n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다. \n  약관 관련 내용입니다. 약관 관련 내용입니다. 약관 관련 내용입니다.</string>
 
     <!-- 보험료 안내 문구 -->

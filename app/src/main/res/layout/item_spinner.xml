@@ -5,6 +5,7 @@
     android:layout_height="45dp"
     android:paddingStart="15dp"
     android:textSize="15sp"
+    android:hint="spinner_item"
     android:textColor="@color/gray_txt"
     android:fontFamily="@font/kiamedium"
     android:gravity="center_vertical"

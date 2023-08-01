@@ -17,11 +17,14 @@ import com.copy.kiascreen.databinding.FragmentSearchBinding
 import com.copy.kiascreen.menu.adapter.SearchAdapter
 import com.copy.kiascreen.menu.vm.SearchViewModel
 import com.copy.kiascreen.menu.vo.MenuSearchItem
+import com.copy.kiascreen.repeatOnStarted
 import com.copy.kiascreen.toggleVisibility
 import com.copy.kiascreen.util.fragment.BaseDialogFragment
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel>() {
     override val viewModel: SearchViewModel by viewModels()
 
@@ -33,11 +36,10 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
     private lateinit var searchRecyclerView: RecyclerView
 
     private var selectedTab = 0
-    var searchAdapter : SearchAdapter? = null
-
+    private var searchAdapter : SearchAdapter? = null
+    private var searchResultAdapter : SearchAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onStart() {
@@ -70,7 +72,13 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
         setTabListener()
         setClickListener()
         setKeyDownListener()
-        abc()
+        addTextListener()
+
+        repeatOnStarted {
+            viewModel.searchSharedFlow.collect {
+                handleRegisterResult(it)
+            }
+        }
     }
 
     private fun initView() {
@@ -96,7 +104,7 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
             MenuSearchItem.SearchItem("니로 EV", true),
             MenuSearchItem.SearchItem("니로 플러스", false)
         )
-        var searchResultAdapter = SearchAdapter(resultData)
+        searchResultAdapter = SearchAdapter(resultData)
         searchRecyclerView.adapter = searchResultAdapter
     }
 
@@ -191,7 +199,7 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
         }
     }
 
-    private fun abc() {
+    private fun addTextListener() {
         editTExt.addTextChangedListener(object : TextWatcher {
             private var timer = Timer()
             private val DELAY = 1000L
@@ -202,8 +210,12 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
                 // 입력한 문자 s를 vm에 보내서 실시간 검색 돌려야 함
                 if (editTExt.text!!.isNotEmpty())  {
                     Log.d("searchTest", "TextChangedListener!! not empty")
-                    searchResultWrapper.visibility = View.VISIBLE
-                    recWrapper.visibility = View.GONE
+//                    searchResultWrapper.visibility = View.VISIBLE
+//                    recWrapper.visibility = View.GONE
+                    if (searchResultWrapper.visibility != View.VISIBLE) {
+                        searchResultWrapper.visibility = View.VISIBLE
+                        recWrapper.visibility = View.GONE
+                    }
                 }
             }
 
@@ -218,7 +230,8 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
                     override fun run() {
                         // vm 작업 시작
                         if (editTExt.text!!.isNotEmpty()) {
-
+                            Log.d("searchTest", "afterTextChanged!! not empty")
+                            viewModel.getSearchResults()
                         }
                         else {
                             // 추천 검색어 목록을 보여준다
@@ -227,8 +240,18 @@ class FragmentSearch : BaseDialogFragment<FragmentSearchBinding, SearchViewModel
 
                 }, DELAY)
             }
-
         })
+    }
+
+    private fun handleRegisterResult(results : kotlin.collections.List<MenuSearchItem.SearchItem>) {
+        // 일치하는 검색 결과 없을 때
+        // 일치하는 검색 결과 있을 때
+        searchResultAdapter?.let {
+            if (results.isNotEmpty()) {
+                it.data = results.toMutableList()
+                it.notifyDataSetChanged()
+            }
+        }
     }
 
     companion object {

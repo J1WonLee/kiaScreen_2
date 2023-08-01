@@ -15,13 +15,11 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.copy.kiascreen.application.KiaSampleApplication
 
 import com.copy.kiascreen.databinding.FragmentFindPwdfragmentBinding
 import com.copy.kiascreen.repeatOnStarted
 import com.copy.kiascreen.room.RoomUtil
 import com.copy.kiascreen.room.successOrNull
-import com.copy.kiascreen.roomVo.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,8 +41,8 @@ class FindPwdFragment : DialogFragment() {
         dialog?.let {
             it.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             it.window?.setLayout(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams.MATCH_PARENT
             )
         }
 
@@ -54,7 +52,7 @@ class FindPwdFragment : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setFindPwdBtnClick()
+        setClickListener()
         setPwdEnableCopy()
         repeatOnStarted {
             viewModel.resetPwdSharedFlow.collect {
@@ -64,12 +62,16 @@ class FindPwdFragment : DialogFragment() {
         setOnKeyListener()
     }
 
-    private fun setFindPwdBtnClick() {
+    private fun setClickListener() {
         binding.idFindBtn.setOnClickListener {
             if (binding.mailInputEditText.text!!.isNotEmpty() && binding.idInputText.text!!.isNotEmpty()) {
                 Log.d("pwdTest", "findPwd!! started")
                 viewModel.findPwd( binding.idInputText.text.toString().trim() , binding.mailInputEditText.text.toString().trim())
             }
+        }
+
+        binding.dialogCloseImg.setOnClickListener {
+            dismiss()
         }
 
     }

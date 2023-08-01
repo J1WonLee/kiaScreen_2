@@ -175,7 +175,8 @@
             android:textColor="@color/gray_txt"
             android:layout_marginLeft="@dimen/main_img_margin_right"
             app:layout_constraintLeft_toRightOf="@+id/home_img"
-            app:layout_constraintTop_toTopOf="@+id/home_img" />
+            app:layout_constraintTop_toTopOf="@+id/home_img"
+            app:layout_constraintBottom_toBottomOf="@+id/home_img"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/arrow_1_img"
@@ -184,7 +185,8 @@
             android:src="@drawable/icon_arrow_right_1"
             android:layout_marginLeft="@dimen/main_bottom_text_marginRight"
             app:layout_constraintTop_toTopOf="@+id/home_tv"
-            app:layout_constraintLeft_toRightOf="@+id/home_tv" />
+            app:layout_constraintLeft_toRightOf="@+id/home_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/home_tv"/>
 
         <TextView
             android:id="@+id/car_tv"
@@ -193,8 +195,10 @@
             android:text="차량"
             android:fontFamily="@font/kia_medium"
             android:textColor="@color/gray_txt"
+            android:layout_marginLeft="@dimen/comp_bottom_text_marginLeft"
             app:layout_constraintLeft_toRightOf="@+id/arrow_1_img"
-            app:layout_constraintTop_toTopOf="@+id/arrow_1_img" />
+            app:layout_constraintTop_toTopOf="@+id/arrow_1_img"
+            app:layout_constraintBottom_toBottomOf="@+id/arrow_1_img"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/arrow_2_img"
@@ -214,7 +218,8 @@
             android:textColor="@color/white"
             android:layout_marginLeft="@dimen/main_arrow_margin_right"
             app:layout_constraintLeft_toRightOf="@+id/arrow_2_img"
-            app:layout_constraintTop_toTopOf="@+id/arrow_2_img" />
+            app:layout_constraintTop_toTopOf="@+id/arrow_2_img"
+            app:layout_constraintBottom_toBottomOf="@+id/arrow_2_img"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sns_spinner_constraint"
