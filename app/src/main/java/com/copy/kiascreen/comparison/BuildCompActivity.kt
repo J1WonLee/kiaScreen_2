@@ -256,8 +256,15 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
     }
 
-    // 초기화 버튼 클릭 시 pager2들의 데이터들을 초기화 시켜준다.
+    // 초기화 버튼 클릭 시 pager2들의 데이터들을 초기화 시켜준다. + 모델 비교를 클릭 전에 차량만 리셋한 경우에는 어뎁터가 장착되어 있지 않음.
     private fun setDataAfterReset() {
+        if (performViewPager2.adapter == null) {
+            performViewPager2.adapter = performAdapter
+            econViewPager2.adapter = econAdapter
+            safetyViewPager2.adapter = safetyAdapter
+            extraPriceViewPager2.adapter = extraPriceAdapter
+        }
+
         performAdapter.setPerfromDataAfterReset()
         econAdapter.setEconDataAfterReset()
         safetyAdapter.setSafetyDataAfterReset()
@@ -492,7 +499,6 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
 
             CompListItems.resetCompItemList()       // Object Class 아이템 초기화
             isResetClicked = true
-
         }
     }
 
@@ -522,12 +528,12 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
             stickyHeaderRecyclerView.apply {
                 layoutManager = linearLayoutManagerWrapper
                 adapter = headerAdapter
+                addItemDecoration(StickyHeaderRvDecoration())
             }
-
+            if (stickyHeaderRecyclerView.onFlingListener == null) {
+                PagerSnapHelper().attachToRecyclerView(stickyHeaderRecyclerView)
+            }
         }
-
-
-
     }
     private fun setScrollListener2() {
         comparsionRecycler.addOnScrollListener(scrollListener.oneListener)
@@ -570,10 +576,18 @@ class BuildCompActivity : BaseActivity<ActivityBuildCmpBinding, CompViewModel>(T
     private fun setCompVpClose() {
         Log.d("vpToggleTest", "setCompVpClose called")
 
+        /*
         binding.compTitleExpandImg.toggleVp(performViewPager2)
         binding.compTitle2ExpandImg.toggleVp(econViewPager2)
         binding.compTitle3ExpandImg.toggleVp(safetyViewPager2, binding.layoutKcnap.kncapConstraintWrapper)
         binding.compTitle4ExpandImg.toggleVp(extraPriceViewPager2)
+
+         */
+
+        binding.compTitleExpandImg.toggleVpAvd(performViewPager2)
+        binding.compTitle2ExpandImg.toggleVpAvd(econViewPager2)
+        binding.compTitle3ExpandImg.toggleVpAvd(safetyViewPager2, binding.layoutKcnap.kncapConstraintWrapper)
+        binding.compTitle4ExpandImg.toggleVpAvd(extraPriceViewPager2)
 
         /*
         binding.compTitleExpandImg.toggleRv(performRv)

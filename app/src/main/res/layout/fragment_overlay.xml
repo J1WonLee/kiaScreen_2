@@ -3,10 +3,10 @@
     android:id="@+id/overlay_constraint"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/overlay_toolbar"
@@ -63,7 +63,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/purchase"
                 app:layout_constraintTop_toTopOf="@+id/purchase" />
 
-            <com.copy.kiascreen.custom.MenuWrapperLinearLayout
+            <com.copy.kiascreen.custom.MenuWrapperLayout
                 android:id="@+id/purchase_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,65 +75,73 @@
                 app:layout_constraintTop_toBottomOf="@+id/purchase">
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/purchase_item_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     android:text="견적 내기 " />
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/purchase_item_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/purchase_item_1"
+                    app:layout_constraintLeft_toLeftOf="@+id/purchase_item_1"
                     android:text="할부 계산기 " />
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/purchase_item_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/purchase_item_2"
+                    app:layout_constraintLeft_toLeftOf="@+id/purchase_item_2"
                     android:text="견적 내기 " />
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/purchase_item_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="이 달의 구매 혜택 " />
+                    android:text="이 달의 구매 혜택 "
+                    app:layout_constraintTop_toBottomOf="@+id/purchase_item_3"
+                    app:layout_constraintLeft_toLeftOf="@+id/purchase_item_3"/>
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/purchase_item_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="구매 상담 신청" />
+                    android:text="구매 상담 신청"
+                    app:layout_constraintTop_toBottomOf="@+id/purchase_item_4"
+                    app:layout_constraintLeft_toLeftOf="@+id/purchase_item_4" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rent_car_wrapper"
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/rent_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="렌터카"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/purchase_item_5" />
+
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/rent_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/rent_car"
+                    app:layout_constraintLeft_toRightOf="@+id/rent_car"
+                    app:layout_constraintTop_toTopOf="@+id/rent_car" />
+
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild
+                    android:id="@+id/rent_car_item_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rent_car" />
 
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/rent_car"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="렌터카"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/rent_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/rent_car"
-                        app:layout_constraintLeft_toRightOf="@+id/rent_car"
-                        app:layout_constraintTop_toTopOf="@+id/rent_car" />
-
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild
-                        android:id="@+id/rent_car_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rent_car" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+            </com.copy.kiascreen.custom.MenuWrapperLayout>
 
             <com.copy.kiascreen.custom.MenuText
                 android:id="@+id/trial"
@@ -154,7 +162,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/trial"
                 app:layout_constraintTop_toTopOf="@+id/trial" />
 
-            <com.copy.kiascreen.custom.MenuWrapperLinearLayout
+            <com.copy.kiascreen.custom.MenuWrapperLayout
                 android:id="@+id/trial_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,50 +174,49 @@
                 app:layout_constraintTop_toBottomOf="@+id/trial">
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/trial_item_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="시승 신청" />
+                    android:text="시승 신청"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/trial_item_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="판매 네트워크" />
+                    android:text="판매 네트워크"
+                    app:layout_constraintTop_toBottomOf="@+id/trial_item_1"
+                    app:layout_constraintLeft_toLeftOf="@+id/trial_item_1" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/trial_place_wrapper"
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/kia_trial_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kia 체험 거점"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/trial_item_2" />
+
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/trial_place_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/kia_trial_place"
+                    app:layout_constraintLeft_toRightOf="@+id/kia_trial_place"
+                    app:layout_constraintTop_toTopOf="@+id/kia_trial_place" />
+
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild5
+                    android:id="@+id/trial_place_item_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/kia_trial_place" />
 
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/kia_trial_place"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kia 체험 거점"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/trial_place_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/kia_trial_place"
-                        app:layout_constraintLeft_toRightOf="@+id/kia_trial_place"
-                        app:layout_constraintTop_toTopOf="@+id/kia_trial_place" />
-
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild5
-                        android:id="@+id/trial_place_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/kia_trial_place" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+            </com.copy.kiascreen.custom.MenuWrapperLayout>
 
             <com.copy.kiascreen.custom.MenuText
                 android:id="@+id/event"
@@ -230,7 +237,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/event"
                 app:layout_constraintTop_toTopOf="@+id/event" />
 
-            <com.copy.kiascreen.custom.MenuWrapperLinearLayout
+            <com.copy.kiascreen.custom.MenuWrapperLayout
                 android:id="@+id/event_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -242,21 +249,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/event">
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/event_item_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="진행 중인 이벤트" />
+                    android:text="진행 중인 이벤트"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/event_item_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="종료된 이벤트" />
+                    android:text="종료된 이벤트"
+                    app:layout_constraintTop_toBottomOf="@+id/event_item_1"
+                    app:layout_constraintLeft_toLeftOf="@+id/event_item_1"/>
 
                 <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/event_item_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="당첨자 발표" />
+                    android:text="당첨자 발표"
+                    app:layout_constraintTop_toBottomOf="@+id/event_item_2"
+                    app:layout_constraintLeft_toLeftOf="@+id/event_item_2"/>
 
-            </com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+            </com.copy.kiascreen.custom.MenuWrapperLayout>
 
             <com.copy.kiascreen.custom.MenuText
                 android:id="@+id/cs"
@@ -278,7 +294,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/cs"
                 app:layout_constraintTop_toTopOf="@+id/cs" />
 
-            <com.copy.kiascreen.custom.MenuWrapperLinearLayout
+            <com.copy.kiascreen.custom.MenuWrapperLayout
                 android:id="@+id/cs_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -286,114 +302,96 @@
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:visibility="gone"
+                tools:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cs">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cs_maintance_wrapper"
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/maintance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="유지 관리"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/maintance_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/maintance"
+                    app:layout_constraintLeft_toRightOf="@+id/maintance"
+                    app:layout_constraintTop_toTopOf="@+id/maintance" />
+
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild
+                    android:id="@+id/maintance_item_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/maintance" />
 
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/maintance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="유지 관리"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="고객 센터"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/maintance_item_wrapper" />
 
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/maintance_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/maintance"
-                        app:layout_constraintLeft_toRightOf="@+id/maintance"
-                        app:layout_constraintTop_toTopOf="@+id/maintance" />
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/center_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/center"
+                    app:layout_constraintLeft_toRightOf="@+id/center"
+                    app:layout_constraintTop_toTopOf="@+id/center" />
 
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild
-                        android:id="@+id/maintance_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/maintance" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cs_center_wrapper"
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild5
+                    android:id="@+id/center_item_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/center" />
 
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="고객 센터"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/guide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="구매 가이드"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/center_item_wrapper" />
 
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/center_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/center"
-                        app:layout_constraintLeft_toRightOf="@+id/center"
-                        app:layout_constraintTop_toTopOf="@+id/center" />
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/guide_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide"
+                    app:layout_constraintLeft_toRightOf="@+id/guide"
+                    app:layout_constraintTop_toTopOf="@+id/guide" />
 
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild5
-                        android:id="@+id/center_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/center" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cs_guide_wrapper"
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild5
+                    android:id="@+id/guide_item_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/guide"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="구매 가이드"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/guide_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/guide"
-                        app:layout_constraintLeft_toRightOf="@+id/guide"
-                        app:layout_constraintTop_toTopOf="@+id/guide" />
-
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild5
-                        android:id="@+id/guide_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/guide" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guide" />
 
                 <com.copy.kiascreen.custom.MenuItemText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="공지 사항" />
+                    android:text="공지 사항"
+                    app:layout_constraintTop_toBottomOf="@+id/guide_item_wrapper"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
-            </com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+            </com.copy.kiascreen.custom.MenuWrapperLayout>
 
             <com.copy.kiascreen.custom.MenuText
                 android:id="@+id/discover_kia"
@@ -414,7 +412,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/discover_kia"
                 app:layout_constraintTop_toTopOf="@+id/discover_kia" />
 
-            <com.copy.kiascreen.custom.MenuWrapperLinearLayout
+            <com.copy.kiascreen.custom.MenuWrapperLayout
                 android:id="@+id/discover_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -422,92 +420,89 @@
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:visibility="gone"
+                tools:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/discover_kia">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/new_kia_wrapper"
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/new_kia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Kia"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/new_kia_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/new_kia"
+                    app:layout_constraintLeft_toRightOf="@+id/new_kia"
+                    app:layout_constraintTop_toTopOf="@+id/new_kia" />
+
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild
+                    android:id="@+id/new_kia_item_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/new_kia" />
 
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/new_kia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="New Kia"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/new_kia_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/new_kia"
-                        app:layout_constraintLeft_toRightOf="@+id/new_kia"
-                        app:layout_constraintTop_toTopOf="@+id/new_kia" />
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/discover_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="뉴스"
+                    app:layout_constraintTop_toBottomOf="@+id/new_kia_item_wrapper"
+                    app:layout_constraintLeft_toLeftOf="@+id/new_kia"/>
 
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild
-                        android:id="@+id/new_kia_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/new_kia" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/sustain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지속 가능 경영"
+                    app:layout_constraintTop_toBottomOf="@+id/discover_news"
+                    app:layout_constraintLeft_toLeftOf="@+id/discover_news" />
+
+                <com.copy.kiascreen.custom.MenuToggleImageView
+                    android:id="@+id/sustain_toggle"
+                    android:layout_width="@dimen/menu_child_img_size"
+                    android:layout_height="@dimen/menu_child_img_size"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/baseline_expand_more_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/sustain"
+                    app:layout_constraintLeft_toRightOf="@+id/sustain"
+                    app:layout_constraintTop_toTopOf="@+id/sustain" />
+
+                <com.copy.kiascreen.custom.layout.LayoutMenuChild
+                    android:id="@+id/sustain_item_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sustain" />
+
+                <com.copy.kiascreen.custom.MenuItemText
+                    android:id="@+id/discover_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="사업장 안내"
+                    app:layout_constraintTop_toBottomOf="@+id/sustain_item_wrapper"
+                    app:layout_constraintLeft_toLeftOf="@+id/sustain"/>
 
                 <com.copy.kiascreen.custom.MenuItemText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="뉴스" />
+                    android:text="AutoLand 견학"
+                    app:layout_constraintTop_toBottomOf="@+id/discover_info"
+                    app:layout_constraintLeft_toLeftOf="@+id/discover_info"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/sustain_wrapper"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.copy.kiascreen.custom.MenuItemText
-                        android:id="@+id/sustain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="지속 가능 경영"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.copy.kiascreen.custom.MenuToggleImageView
-                        android:id="@+id/sustain_toggle"
-                        android:layout_width="@dimen/menu_child_img_size"
-                        android:layout_height="@dimen/menu_child_img_size"
-                        android:layout_marginLeft="15dp"
-                        android:src="@drawable/baseline_expand_more_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/sustain"
-                        app:layout_constraintLeft_toRightOf="@+id/sustain"
-                        app:layout_constraintTop_toTopOf="@+id/sustain" />
-
-                    <com.copy.kiascreen.custom.layout.LayoutMenuChild
-                        android:id="@+id/sustain_item_wrapper"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sustain" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <com.copy.kiascreen.custom.MenuItemText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="사업장 안내" />
-
-                <com.copy.kiascreen.custom.MenuItemText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AutoLand 견학" />
-
-            </com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+            </com.copy.kiascreen.custom.MenuWrapperLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/bottom_grid"

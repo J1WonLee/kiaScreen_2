@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.copy.kiascreen.custom.MenuWrapperLinearLayout
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/child_item_wrapper"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:orientation="vertical"
-
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/rent_car">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
 
     <TextView
         android:id="@+id/first_menu"
@@ -17,7 +14,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/kialight"
         android:text="- 기아렌터카 "
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"/>
 
     <TextView
         android:id="@+id/second_menu"
@@ -26,7 +25,9 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/kialight"
         android:text="- 기아플렉스 "
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/first_menu"
+        app:layout_constraintLeft_toLeftOf="@+id/first_menu"/>
 
     <TextView
         android:id="@+id/third_menu"
@@ -35,6 +36,8 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/kialight"
         android:text="- 위블 비즈 "
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/second_menu"
+        app:layout_constraintLeft_toLeftOf="@+id/second_menu"/>
 
-</com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+</LinearLayout>

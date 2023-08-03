@@ -17,24 +17,22 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.copy.kiascreen.*
 import com.copy.kiascreen.application.KiaSampleApplication
 import com.copy.kiascreen.custom.MenuToggleImageView
-import com.copy.kiascreen.custom.MenuWrapperLinearLayout
+import com.copy.kiascreen.custom.MenuWrapperLayout
 import com.copy.kiascreen.custom.layout.LayoutMenuChild
 import com.copy.kiascreen.custom.layout.LayoutMenuChild5
 import com.copy.kiascreen.databinding.FragmentOverlayBinding
 import com.copy.kiascreen.login.LoginActivity
 import com.copy.kiascreen.mypage.MyPageActivity
-import com.copy.kiascreen.registry.MemberRegisterActivity
 import com.copy.kiascreen.registry.RegisterAgreeActivity
 import com.copy.kiascreen.roomVo.User
 import com.copy.kiascreen.setting.SettingActivity
 import com.copy.kiascreen.util.OnBackPressedListener
 import com.google.android.material.appbar.MaterialToolbar
-import java.lang.Math.abs
 
 class FragmentMainMenu : Fragment(), OnBackPressedListener {
     private lateinit var binding : FragmentOverlayBinding
     private lateinit var menu1 : TextView
-    private lateinit var menu1Item : LinearLayout
+    private lateinit var menu1Item : MenuWrapperLayout
     private lateinit var toolbar: MaterialToolbar
     private lateinit var purchaseToggle : MenuToggleImageView
     private lateinit var trialToggle : MenuToggleImageView
@@ -60,7 +58,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
     private lateinit var trialPlaceChildMenu : LayoutMenuChild5
 
     private var mOpenMenu : MenuToggleImageView? = null
-    private var mOpenWrapper : MenuWrapperLinearLayout? = null
+    private var mOpenWrapper : MenuWrapperLayout? = null
     private var loginUser : User? = null
     private var fragmentBridge : FragmentActivityBridge? = null
     private var onBackPressedCallback : OnBackPressedCallback? = null
@@ -151,7 +149,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
             //            purchaseToggle.toggleEvent(binding.purchaseWrapper)
             closeOpenMenu(purchaseToggle)
             // 열림
-            if (purchaseToggle.toggleEvent(binding.purchaseWrapper)) {
+            if (purchaseToggle.toggleWrapper(binding.purchaseWrapper)) {
 
                 setOpenMenu(purchaseToggle, binding.purchaseWrapper)
             }
@@ -167,7 +165,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
         val trialListener = View.OnClickListener {
             closeOpenMenu(trialToggle)
 
-            if (trialToggle.toggleEvent(binding.trialWrapper)) {
+            if (trialToggle.toggleWrapper(binding.trialWrapper)) {
                 setOpenMenu(trialToggle, binding.trialWrapper)
             }
             else {
@@ -181,7 +179,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
         val eventListener = View.OnClickListener {
             closeOpenMenu(eventToggle)
 
-            if (eventToggle.toggleEvent(binding.eventWrapper)) {
+            if (eventToggle.toggleWrapper(binding.eventWrapper)) {
                 setOpenMenu(eventToggle, binding.eventWrapper)
             }
         }
@@ -193,7 +191,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
             csToggle.setOnClickListener {
                 closeOpenMenu(csToggle)
 
-                if (csToggle.toggleEvent(binding.csWrapper)) {
+                if (csToggle.toggleWrapper(binding.csWrapper)) {
                     setOpenMenu(csToggle, binding.csWrapper)
                 }
                 else {
@@ -211,7 +209,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
         val discoverListener = View.OnClickListener {
             closeOpenMenu(discoverToggle)
 
-            if (discoverToggle.toggleEvent(binding.discoverWrapper)) {
+            if (discoverToggle.toggleWrapper(binding.discoverWrapper)) {
                 setOpenMenu(discoverToggle, binding.discoverWrapper)
             }
             else {
@@ -264,7 +262,7 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
 
     }
 
-    private fun setOpenMenu(toggleImageView: MenuToggleImageView, wrapperLinearLayout: MenuWrapperLinearLayout) {
+    private fun setOpenMenu(toggleImageView: MenuToggleImageView, wrapperLinearLayout: MenuWrapperLayout) {
         mOpenMenu = toggleImageView
         mOpenWrapper = wrapperLinearLayout
     }
@@ -281,20 +279,25 @@ class FragmentMainMenu : Fragment(), OnBackPressedListener {
     }
 
     private fun closeChildMenu() {
+        Log.d("menuTest", "closeChildMenu called")
         mOpenMenu?.let {
             when (it) {
                 purchaseToggle -> {
+                    Log.d("menuTest", "closeChildMenu called - purchaseToggle")
                     rentToggle.hideCustomMenu(rentChildMenu)
                 }
                 trialToggle -> {
+                    Log.d("menuTest", "closeChildMenu called - trialToggle")
                     trialPlaceToggle.hideMenu(binding.trialPlaceItemWrapper)
                 }
                 csToggle -> {
+                    Log.d("menuTest", "closeChildMenu called - csToggle")
                     maintanceToggle.hideMenu(binding.maintanceItemWrapper)
                     purGuideToggle.hideMenu(binding.guideItemWrapper)
                     centerToggle.hideMenu(binding.centerItemWrapper)
                 }
                 discoverToggle -> {
+                    Log.d("menuTest", "closeChildMenu called - discoverToggle")
                     newKiaToggle.hideCustomMenu(newKiaChildMenu)
                     sustainToggle.hideMenu(binding.sustainItemWrapper)
                 }

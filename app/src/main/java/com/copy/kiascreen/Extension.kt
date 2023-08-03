@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.res.Resources.getSystem
 import android.util.DisplayMetrics
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -21,16 +20,16 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.copy.kiascreen.custom.MenuToggleImageView
-import com.copy.kiascreen.custom.MenuWrapperLinearLayout
+import com.copy.kiascreen.custom.MenuWrapperLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-fun MenuToggleImageView.toggleMenu(child : MenuWrapperLinearLayout) : Boolean {
-    return this.toggleEvent(child)
+fun MenuToggleImageView.toggleMenu(child : MenuWrapperLayout) : Boolean {
+    return this.toggleWrapper(child)
 }
 
-fun MenuToggleImageView.closeMenu(child : MenuWrapperLinearLayout) {
-    this.hideMenu(child)
+fun MenuToggleImageView.closeMenu(child : MenuWrapperLayout) {
+    this.hideMenuWrapper(child)
 }
 
 fun ConstraintLayout.toggleVisibility() {

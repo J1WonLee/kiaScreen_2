@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.copy.kiascreen.custom.MenuWrapperLinearLayout
+<com.copy.kiascreen.custom.MenuWrapperLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,4 +42,4 @@
         android:text="- Driving Experience "
         android:textSize="15sp" />
 
-</com.copy.kiascreen.custom.MenuWrapperLinearLayout>
+</com.copy.kiascreen.custom.MenuWrapperLayout>

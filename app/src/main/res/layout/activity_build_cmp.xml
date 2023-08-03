@@ -150,7 +150,7 @@
                     android:id="@+id/comp_title_expand_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/straight_line"
+                    android:src="@drawable/drawable_vector_minus"
                     android:clickable="true"
                     android:focusable="true"
                     android:layout_marginRight="@dimen/comp_dialog_margin"
@@ -200,7 +200,7 @@
                     android:id="@+id/comp_title_2_expand_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/straight_line"
+                    android:src="@drawable/drawable_vector_minus"
                     android:clickable="true"
                     app:layout_constraintTop_toTopOf="@+id/comp_title_2_tv"
                     app:layout_constraintRight_toRightOf="@+id/comp_title_expand_img" />
@@ -247,7 +247,7 @@
                     android:id="@+id/comp_title_3_expand_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/straight_line"
+                    android:src="@drawable/drawable_vector_minus"
                     app:layout_constraintTop_toTopOf="@+id/comp_title_3_tv"
                     app:layout_constraintRight_toRightOf="@+id/comp_title_expand_img" />
 
@@ -302,7 +302,7 @@
                     android:id="@+id/comp_title_4_expand_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/straight_line"
+                    android:src="@drawable/drawable_vector_minus"
                     app:layout_constraintTop_toTopOf="@+id/comp_title_4_tv"
                     app:layout_constraintRight_toRightOf="@+id/comp_title_expand_img" />
 
@@ -689,7 +689,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comp_sticky_recycler"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:orientation="horizontal"
                 android:paddingTop="15dp"
                 android:paddingLeft="20dp"

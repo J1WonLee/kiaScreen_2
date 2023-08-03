@@ -7,13 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.setPadding
 import com.copy.kiascreen.R
 import com.copy.kiascreen.databinding.LayoutCsChildBinding
 import com.copy.kiascreen.databinding.LayoutPurchaseChildBinding
 
 // 자식 5개짜리. 3개랑 따로 나눳음
-class LayoutMenuChild5  @JvmOverloads constructor(context: Context, attr : AttributeSet? = null, def : Int = 0): LinearLayout(context, attr, def) {
+class LayoutMenuChild5  @JvmOverloads constructor(context: Context, attr : AttributeSet? = null, def : Int = 0) : LinearLayout(context, attr, def) {
 
     private val binding : LayoutCsChildBinding by lazy {
         LayoutCsChildBinding.bind(

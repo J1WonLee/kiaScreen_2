@@ -33,30 +33,30 @@ class CompPerformanceAdapter(private val context : Context) : RecyclerView.Adapt
     private val diffAction = {
         fieldName : String, binding :  ItemCompDetail1Binding ->
         val color = context.resources.getColor(R.color.menu_wrapper)
-            when(fieldName) {
-                "width" -> binding.itemCompWidthLinear.setBackgroundColor(color)
-                "height"-> binding.itemCompHeightLinear.setBackgroundColor(color)
-                "engine" -> binding.itemCompCfcLinear.setBackgroundColor(color)
-                "fuel" -> binding.itemCompCityFcLinear.setBackgroundColor(color)
-                "gear" -> binding.itemCompHfcLinear.setBackgroundColor(color)
-                "maxOutput" -> binding.itemCompFegLinear.setBackgroundColor(color)
-                "maxTorque" -> binding.itemCompMaxTorqueLinear.setBackgroundColor(color)
-                "cc"        -> binding.itemCompCcLinear.setBackgroundColor(color)
-                "dm"        -> binding.itemCompDmLinear.setBackgroundColor(color)
-                "fuelTank"  -> binding.itemCompTankLinear.setBackgroundColor(color)
-                "batteryType" -> binding.itemCompBatteryLinear.setBackgroundColor(color)
-                "maxBatteryCapacity" -> binding.itemCompBcLinear.setBackgroundColor(color)
-                "driveDistance" -> binding.itemCompDriveDistanceLinear.setBackgroundColor(color)
-                "rapidCharge" -> binding.itemCompCtRapidLinear.setBackgroundColor(color)
-                "normalCharge" -> binding.itemCompCtNormalLinear.setBackgroundColor(color)
-                "overallLength" -> binding.itemCompOlLinear.setBackgroundColor(color)
-                "wheelB" -> binding.itemCompWbLinear.setBackgroundColor(color)
-                "frontT" -> binding.itemCompFtLinear.setBackgroundColor(color)
-                "backT" -> binding.itemCompBtLinear.setBackgroundColor(color)
-                "tire" -> binding.itemCompTireLinear.setBackgroundColor(color)
-                "weight" -> binding.itemCompCwLinear.setBackgroundColor(color)
-                else -> {}
-            }
+        when(fieldName) {
+            "width" -> binding.itemCompWidthLinear.setBackgroundColor(color)
+            "height"-> binding.itemCompHeightLinear.setBackgroundColor(color)
+            "engine" -> binding.itemCompCfcLinear.setBackgroundColor(color)
+            "fuel" -> binding.itemCompCityFcLinear.setBackgroundColor(color)
+            "gear" -> binding.itemCompHfcLinear.setBackgroundColor(color)
+            "maxOutput" -> binding.itemCompFegLinear.setBackgroundColor(color)
+            "maxTorque" -> binding.itemCompMaxTorqueLinear.setBackgroundColor(color)
+            "cc"        -> binding.itemCompCcLinear.setBackgroundColor(color)
+            "dm"        -> binding.itemCompDmLinear.setBackgroundColor(color)
+            "fuelTank"  -> binding.itemCompTankLinear.setBackgroundColor(color)
+            "batteryType" -> binding.itemCompBatteryLinear.setBackgroundColor(color)
+            "maxBatteryCapacity" -> binding.itemCompBcLinear.setBackgroundColor(color)
+            "driveDistance" -> binding.itemCompDriveDistanceLinear.setBackgroundColor(color)
+            "rapidCharge" -> binding.itemCompCtRapidLinear.setBackgroundColor(color)
+            "normalCharge" -> binding.itemCompCtNormalLinear.setBackgroundColor(color)
+            "overallLength" -> binding.itemCompOlLinear.setBackgroundColor(color)
+            "wheelB" -> binding.itemCompWbLinear.setBackgroundColor(color)
+            "frontT" -> binding.itemCompFtLinear.setBackgroundColor(color)
+            "backT" -> binding.itemCompBtLinear.setBackgroundColor(color)
+            "tire" -> binding.itemCompTireLinear.setBackgroundColor(color)
+            "weight" -> binding.itemCompCwLinear.setBackgroundColor(color)
+            else -> {}
+        }
     }
 
     init {
@@ -209,7 +209,7 @@ class CompPerformanceAdapter(private val context : Context) : RecyclerView.Adapt
             ccContentTv.text = item.cc
             dmContentTv.text = item.dm
             tankContentTv.text = item.fuelTank
-            btContentTv.text = item.batteryType
+            batteryContentTv.text = item.batteryType
             bcContentTv.text = item.maxBatteryCapacity
             driveDistanceContentTv.text = item.driveDistance
             driveCtRapidContentTv.text = item.rapidCharge
@@ -222,7 +222,6 @@ class CompPerformanceAdapter(private val context : Context) : RecyclerView.Adapt
             btContentTv.text = item.backT
             tireContentTv.text = item.tire
             cwContentTv.text = item.weight
-
         }
     }
 
@@ -269,7 +268,9 @@ class CompPerformanceAdapter(private val context : Context) : RecyclerView.Adapt
                     !Objects.equals(it.get(item), it.get(data[index].perform))
                 }
 
-                differentFields?.let { differentFieldsMap.put(index, it)  }
+                differentFields?.let {
+                    it.forEach { item -> Log.d("compTest", "showDiffItems = ${item.name}") }
+                    differentFieldsMap.put(index, it) }
             }
         }
         catch (e : Exception) {

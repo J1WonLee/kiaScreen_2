@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.copy.kiascreen.R
 import com.copy.kiascreen.comparison.adapter.ComparRecImgAdapter
@@ -178,12 +179,86 @@ fun AppCompatImageView.toggleRv(pager: RecyclerView) {
     }
 }
 
-// 서로 다른 항목 switch
+// 서로 다른 항목 switch toggle
 fun SwitchCompat.toggleDiffFields(performanceAdapter: CompPerformanceAdapter, econAdapter: CompEconAdapter, safetyAdapter: CompSafetyAdapter) {
     this.setOnCheckedChangeListener { _, isChecked ->
         performanceAdapter.toggleDiffItems(isChecked)
         econAdapter.toggleDiffItems(isChecked)
         safetyAdapter.toggleDiffItems(isChecked)
+    }
+}
+
+// vp vectorDrawable Animation
+fun AppCompatImageView.toggleVpAvd(pager: ViewPager2) {
+    this.setOnClickListener {
+        var isOpen = if (pager.visibility != View.GONE) {
+            pager.visibility = View.GONE
+            true
+        }
+        else {
+            pager.visibility = View.VISIBLE
+            false
+        }
+
+        try {
+            // 열린상태 -> 닫아줘야함
+            var drawable = if (isOpen) {
+                AnimatedVectorDrawableCompat.create(this.context, R.drawable.avd_vp_drawer_open)
+            }
+            // 닫힌상태 -> 열어줘야 함
+            else {
+                AnimatedVectorDrawableCompat.create(this.context, R.drawable.avd_vp_drawer_close)
+            }
+
+            this.setImageDrawable(drawable)
+            drawable?.start()
+
+        } catch (e : Exception) {
+            if (pager.visibility != View.GONE) {
+                this.setImageDrawable(resources.getDrawable(R.drawable.baseline_add_24))
+            }
+            else {
+                this.setImageDrawable(resources.getDrawable(R.drawable.straight_line))
+            }
+        }
+    }
+}
+
+// vp2 title img ( close and open toggle 이미지 클릭 리스너) , vp말고도 constraintWrapper 같이 붙어있는경우 (kncap 때문에 만듬)
+fun AppCompatImageView.toggleVpAvd(pager: ViewPager2, wrapper : ConstraintLayout) {
+    this.setOnClickListener {
+        var isOpen = if (pager.visibility != View.GONE) {
+            pager.visibility = View.GONE
+            wrapper.visibility = View.GONE
+            true
+        }
+        else {
+            pager.visibility = View.VISIBLE
+            wrapper.visibility = View.VISIBLE
+            false
+        }
+
+        try {
+            // 열린상태 -> 닫아줘야함
+            var drawable = if (isOpen) {
+                AnimatedVectorDrawableCompat.create(this.context, R.drawable.avd_vp_drawer_open)
+            }
+            // 닫힌상태 -> 열어줘야 함
+            else {
+                AnimatedVectorDrawableCompat.create(this.context, R.drawable.avd_vp_drawer_close)
+            }
+
+            this.setImageDrawable(drawable)
+            drawable?.start()
+
+        } catch (e : Exception) {
+            if (pager.visibility != View.GONE) {
+                this.setImageDrawable(resources.getDrawable(R.drawable.baseline_add_24))
+            }
+            else {
+                this.setImageDrawable(resources.getDrawable(R.drawable.straight_line))
+            }
+        }
     }
 }
 
